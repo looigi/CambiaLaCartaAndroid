@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="NotificaEN">Notify On</string>
+    <string name="NotificaIT">Notifica attiva</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Cambio La Carta</string>
+    <string name="app_nameEN">Wallpaper Changer</string>
+    <string name="attivoEN">Enabled</string>
+    <string name="attivoIT">Attivo</string>
+    <string name="avantiEN">Next</string>
+    <string name="avantiIT">Prossima</string>
+    <string name="caffeEN">If you want, please offer me a coffe...</string>
+    <string name="caffeIT">Se ti va, offrimi un caffè...</string>
+    <string name="cambiofolderEN">Change\nfolder</string>
+    <string name="cambiofolderIT">Cambio\norigine</string>
+    <string name="cambiosubitoEN">Set\nWallpaper</string>
+    <string name="cambiosubitoIT">Imposta\nImmagine</string>
+    <string name="clickEN">Touch to open app</string>
+    <string name="clickIT">Tocca per aprire</string>
+    <string name="errimmimpEN">Wallpaper NOT set</string>
+    <string name="errimmimpIT">Immagine NON impostata</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="immimpEN">Wallpaper set</string>
+    <string name="immimpIT">Immagine impostata</string>
+    <string name="immvisuaEN">Number of displayed image</string>
+    <string name="immvisuaIT">Immagine visualizzata</string>
+    <string name="inattivoEN">Disabled</string>
+    <string name="inattivoIT">NON Attivo</string>
+    <string name="indietroEN">Previous</string>
+    <string name="indietroIT">Precedente</string>
+    <string name="listaEN">Image\nlist</string>
+    <string name="listaIT">Lista\nimmagini</string>
+    <string name="minutinonvalidiEN">Value not valid (1 60)</string>
+    <string name="minutinonvalidiIT">Minuti non validi (1 60)</string>
+    <string name="modalitaEN">Modality</string>
+    <string name="modalitaIT">Modalità</string>
+    <string name="noimmimpEN">No image set</string>
+    <string name="noimmimpIT">Non ci sono immagini</string>
+    <string name="numimmEN">Images</string>
+    <string name="numimmIT">Numero immagini</string>
+    <string name="optseqEN">Sequential</string>
+    <string name="optseqIT">Sequenziale</string>
+    <string name="opzioniEN">Options</string>
+    <string name="opzioniIT">Opzioni</string>
+    <string name="percorsoEN">Path</string>
+    <string name="percorsoIT">Percorso</string>
+    <string name="salvatoEN">Saved</string>
+    <string name="salvatoIT">Salvataggio effettuato</string>
+    <string name="stretchEN">Stretch image</string>
+    <string name="stretchIT">Stretch immagine</string>
+    <string name="tNotificaEN">The selection prevents the appearance of the blank page when changing image</string>
+    <string name="tNotificaIT">La selezione evita la comparsa della pagina bianca durante il cambio immagine</string>
+    <string name="tempo2EN">Time to change: </string>
+    <string name="tempo2IT">Tempo per cambio: </string>
+    <string name="tempoEN">Time for change (minutes)</string>
+    <string name="tempoIT">Tempo per cambio (minuti)</string>
+    <string name="titoloEN">Wallpaper changer</string>
+    <string name="titoloIT">Cambio la carta</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

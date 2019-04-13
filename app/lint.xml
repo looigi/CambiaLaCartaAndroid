@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <issue id="DefaultLocale">
+        <ignore path="src\com\looigi\cambiolacarta\GestioneFilesCartelle.java" />
+    </issue>
+    <issue id="InlinedApi">
+        <ignore path="src\com\looigi\cambiolacarta\MainActivity.java" />
+    </issue>
+    <issue id="UseSparseArrays">
+        <ignore path="src\com\looigi\cambiolacarta\MainActivity.java" />
+        <ignore path="src\com\looigi\cambiolacarta\Opzioni.java" />
+        <ignore path="src\com\looigi\cambiolacarta\SceltaCartella.java" />
+    </issue>
+</lint>

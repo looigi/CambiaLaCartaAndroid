@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stile_sfondo"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtPath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Percorso"
+            android:textColor="#00AA00" />
+
+        <TextView
+            android:id="@+id/txtPercorsoSC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="TextView"
+            android:textColor="#AA0000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layTastoSC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imgIndietroCa"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:src="@drawable/indietro" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layTastiniSC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layTastoSC"
+        android:background="@drawable/stile_uguali"
+        android:padding="3dp"
+        android:weightSum="2" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imgSeleziona"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:src="@drawable/folder"
+                android:tag="40dp" />
+
+            <TextView
+                android:id="@+id/txtSeleziona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleziona"
+                android:textColor="#AAFF99" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imgNuova"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="3dp"
+                android:src="@drawable/newfolder" />
+
+            <TextView
+                android:id="@+id/txtNuovaC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crea cartella"
+                android:textColor="#AAFF99" />
+
+        </LinearLayout>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layTastiniSC"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layCheck"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lstFolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+    </LinearLayout>
+
+</RelativeLayout>
