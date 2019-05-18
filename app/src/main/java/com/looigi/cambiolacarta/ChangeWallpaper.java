@@ -11,6 +11,7 @@ public class ChangeWallpaper {
 	public Boolean setWallpaper(String src) {
 		Context context=SharedObjects.getInstance().getContext();
 		Boolean Ritorno=true;
+		Log l=new Log();
 		
 		Utility u=new Utility();
 		Bitmap setWallToDevice = u.PrendeImmagineReale(src);
@@ -25,6 +26,7 @@ public class ChangeWallpaper {
 				}
 				wallpaperManager.setBitmap(setWallToDevice);
 			} catch (IOException e) {
+			    l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));
 				e.printStackTrace();
 				Ritorno=false;
 			}			

@@ -17,6 +17,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 @SuppressWarnings("WeakerAccess")
 public class Utility {
@@ -34,7 +36,25 @@ public class Utility {
 		
 		return Ritorno;
 	}
-	
+
+	private String TransformError(String error) {
+		String Return=error;
+
+		if (Return.length()>250) {
+			Return=Return.substring(0,247)+"...";
+		}
+		Return=Return.replace("\n"," ");
+
+		return Return;
+	}
+
+	public String PrendeErroreDaException(Exception e) {
+		StringWriter errors = new StringWriter();
+		e.printStackTrace(new PrintWriter(errors));
+
+		return TransformError(errors.toString());
+	}
+
 	public Bitmap PrendeImmagineReale(String FileName) {
 		Bitmap myBitmap=null;
 		
