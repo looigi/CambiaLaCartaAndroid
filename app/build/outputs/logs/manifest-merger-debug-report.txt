@@ -1,137 +1,137 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-67:12
 	package
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:3:5-39
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:3:5-39
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:5:5-30
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:4:5-29
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:4:5-29
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.SET_WALLPAPER
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:5-71
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:5-71
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:22-69
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:22-69
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:3-79
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:3-79
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:20-76
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:20-76
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:5-81
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:5-81
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:22-78
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:22-78
 uses-permission#android.permission.INTERNET
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:3-64
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:3-64
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:20-62
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:20-62
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:5-78
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:5-78
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:22-76
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:22-76
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:2-71
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:2-71
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:19-69
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:19-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:2-75
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:2-75
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:19-73
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:19-73
 uses-permission#android.permission.SET_WALLPAPER_HINTS
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:3-75
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:3-75
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:20-73
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:20-73
 application
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:16:5-65:19
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:16:5-65:19
 	android:label
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:19:9-41
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:19:9-41
 	android:largeHeap
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:20:6-30
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:20:6-30
 	android:icon
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:18:9-45
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:18:9-45
 	android:allowBackup
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:17:9-35
 	android:theme
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:21:9-40
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:21:9-40
 activity#com.looigi.cambiolacarta.MainActivity
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:22:9-30:20
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:22:9-30:20
 	android:label
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:24:13-45
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:24:13-45
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:23:13-65
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:23:13-65
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:25:13-29:29
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:26:17-69
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:26:25-66
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:28:17-77
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:28:27-74
 activity#com.looigi.cambiolacarta.SceltaCartella
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:32:3-35:14
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:32:3-35:14
 	android:screenOrientation
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:33:13-49
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:33:13-49
 	android:label
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:34:13-45
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:34:13-45
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:32:13-67
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:32:13-67
 activity#com.looigi.cambiolacarta.PassaggioNotifica
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:37:3-40:14
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:37:3-40:14
 	android:screenOrientation
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:38:13-49
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:38:13-49
 	android:label
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:39:13-45
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:39:13-45
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:37:13-70
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:37:13-70
 activity#com.looigi.cambiolacarta.Opzioni
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:42:3-45:14
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:42:3-45:14
 	android:screenOrientation
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:43:13-49
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:43:13-49
 	android:label
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:44:13-45
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:44:13-45
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:42:13-60
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:42:13-60
 service#com.looigi.cambiolacarta.AutoStart.service
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:47:9-49:19
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:47:9-49:19
 	android:label
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:48:19-51
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:48:19-51
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:47:18-51
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:47:18-51
 receiver#com.looigi.cambiolacarta.AutoStart.autostart
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:50:9-54:20
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:50:9-54:20
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:50:19-54
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:50:19-54
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:51:13-53:29
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:51:13-53:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:52:17-79
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:52:17-79
 	android:name
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:52:25-76
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:52:25-76
 uses-sdk
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		ADDED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Looigi\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml

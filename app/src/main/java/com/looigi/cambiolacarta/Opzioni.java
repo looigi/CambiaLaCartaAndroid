@@ -83,13 +83,12 @@ public class Opzioni extends Activity{
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
-				MainActivity m=new MainActivity();
 				if (chkNotifica.isChecked()) {
 					SharedObjects.getInstance().setNotificaSiNo("S");
 					// m.CreaNotifica();
 				} else {
 					SharedObjects.getInstance().setNotificaSiNo("N");
-					m.RimuoviNotifica();
+					Notifiche.getInstance().RimuoviNotifica();
 				}
 				
 				DBLocale dbl=new DBLocale();
@@ -159,7 +158,24 @@ public class Opzioni extends Activity{
 				
 				ImpostaCheck();
             }
-        });					        
+        });
+
+		RadioButton optSincronizzata=(RadioButton) findViewById(R.id.optSincronizzata);
+		optSincronizzata.setText(u.ControllaLingua(context, R.string.optsinIT, R.string.optsinEN));
+		optSincronizzata.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				SuonAudio s=new SuonAudio();
+				s.SuonaAudio(1, soundPool);
+
+				SharedObjects.getInstance().setTipoCambio("SINCRONIZZATA");
+
+				DBLocale dbl=new DBLocale();
+				dbl.ScriveOpzioni(context);
+
+				ImpostaCheck();
+			}
+		});
 
 		ImageView imgIndietro=(ImageView) findViewById(R.id.imgIndietro);
 		imgIndietro.setOnClickListener(new View.OnClickListener() {
@@ -215,13 +231,22 @@ public class Opzioni extends Activity{
 	private void ImpostaCheck() {
 		RadioButton optRandom=(RadioButton) findViewById(R.id.optRandom);
 		RadioButton optSequenziale=(RadioButton) findViewById(R.id.optSequenziale);
+		RadioButton optSinc=(RadioButton) findViewById(R.id.optSincronizzata);
 
 		if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
 			optRandom.setChecked(true);
 			optSequenziale.setChecked(false);
+			optSinc.setChecked(false);
 		} else {
-			optRandom.setChecked(false);
-			optSequenziale.setChecked(true);
+			if (SharedObjects.getInstance().getTipoCambio().equals("SEQUENZIALE")) {
+				optRandom.setChecked(false);
+				optSequenziale.setChecked(true);
+				optSinc.setChecked(false);
+			} else {
+				optRandom.setChecked(false);
+				optSequenziale.setChecked(false);
+				optSinc.setChecked(true);
+			}
 		}
 		
 		EditText et=(EditText) findViewById(R.id.txtSecondi);

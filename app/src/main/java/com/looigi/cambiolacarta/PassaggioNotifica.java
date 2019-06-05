@@ -21,14 +21,13 @@ public class PassaggioNotifica extends Activity {
 			
 		}
 
+		Utility u = new Utility();
 		if (action.equals("cambia")) {
-			MainActivity ma=new MainActivity();
-			ma.CambiaImmagine(false);
+			u.CambiaImmagine(false, 0);
 		}
 		
 		if (action.equals("avanti")) {
-			MainActivity ma=new MainActivity();
-			ma.CambiaImmagine(true);
+			u.CambiaImmagine(true, 0);
 		}
 		
 		if (action.equals("apre")) {
@@ -42,7 +41,7 @@ public class PassaggioNotifica extends Activity {
 				
 			}
 			if (Nome!=null) {
-				ma.ImpostaImmagineDiSfondo(Nome);
+				u.ImpostaImmagineDiSfondo(Nome);
 			}
 			
 			Apre=true;

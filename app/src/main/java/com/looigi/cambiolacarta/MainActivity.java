@@ -28,6 +28,9 @@ import android.widget.Toast;
 
 import com.looigi.cambiolacarta.AutoStart.service;
 import com.looigi.cambiolacarta.R.string;
+import com.looigi.cambiolacarta.Soap.DBRemoto;
+
+import org.kobjects.util.Util;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -41,9 +44,6 @@ public class MainActivity extends Activity {
 	// private String BannerID="c1455de07e2c0c6071670d4cb8c4baec";
 	// Banner di pubblicit�
 
-	private NotificationManager notificationManager;
-	private NotificationCompat.Builder notificationBuilder;
-    private RemoteViews contentView;
 	private Context context;
 	private SoundPool soundPool;
 	private HashMap<Integer, Integer> soundPoolMap;
@@ -67,6 +67,10 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		context=this;
+
+		VariabiliGlobali.getInstance().setContext(this);
+		VariabiliGlobali.getInstance().setActivityPrincipale(this);
+
 		SharedObjects.getInstance().setContext(context);
 		SharedObjects.getInstance().setAudioManager((AudioManager)getSystemService(context.AUDIO_SERVICE));
 		
@@ -181,7 +185,7 @@ public class MainActivity extends Activity {
 	        	} */
 				
 				if (SharedObjects.getInstance().getQuanteImm()>0) {
-					Boolean Ritorno=CambiaImmagine(false);
+					Boolean Ritorno=u.CambiaImmagine(false,0);
 					
 					if (Ritorno) {
 						Toast.makeText(MainActivity.this, u.ControllaLingua(context, R.string.immimpIT, R.string.immimpEN), Toast.LENGTH_SHORT).show();
@@ -213,14 +217,19 @@ public class MainActivity extends Activity {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
-				SharedObjects.getInstance().setQualeImmagineHaVisualizzato(PrendeNuovoNumero("Avanti"));
-				
-				DBLocale dbl=new DBLocale();
-				dbl.ScriveOpzioni(context);
-				
-				ScriveInfo();
+				Utility u = new Utility();
+				int imm = u.PrendeNuovoNumero("Avanti");
 
-				ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+				if (imm>=0) {
+					SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
+
+					DBLocale dbl = new DBLocale();
+					dbl.ScriveOpzioni(context);
+
+					ScriveInfo();
+
+					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+				}
             }
         });					        
 
@@ -231,14 +240,19 @@ public class MainActivity extends Activity {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
-				SharedObjects.getInstance().setQualeImmagineHaVisualizzato(PrendeNuovoNumero("Indietro"));
-				
-				DBLocale dbl=new DBLocale();
-				dbl.ScriveOpzioni(context);
-				
-				ScriveInfo();
+				Utility u = new Utility();
+				int imm = u.PrendeNuovoNumero("Indietro");
 
-				ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+				if (imm>=0) {
+					SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
+
+					DBLocale dbl = new DBLocale();
+					dbl.ScriveOpzioni(context);
+
+					ScriveInfo();
+
+					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+				}
             }
         });					        
 
@@ -354,8 +368,8 @@ public class MainActivity extends Activity {
 
 		ImpostaDimensioni();
 		
-		CreaNotifica();
-		AggiornaNotifica();
+		Notifiche.getInstance().CreaNotifica();
+		Notifiche.getInstance().AggiornaNotifica();
 		
 		if (service.ChiudiMaschera==null) {
 			service.ChiudiMaschera=false;
@@ -442,10 +456,10 @@ public class MainActivity extends Activity {
 	            		MinutiPassati=0;
 	            		
 	            		Looper.prepare();
-	            		
-			        	Boolean Ritorno=CambiaImmagine(true);
+
+	            		Utility u = new Utility();
+			        	Boolean Ritorno=u.CambiaImmagine(true, 0);
 						if (!Ritorno) {
-							Utility u=new Utility();
 							Toast.makeText(MainActivity.this, u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
 						}
 						
@@ -521,191 +535,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	public Boolean CambiaImmagine(Boolean Cambia) {
-		Boolean Ritorno=true;
-		
-		if (SharedObjects.getInstance().getListaImmagini().size()>0) {
-			int NuovoNumero;
-			if (Cambia) {
-				NuovoNumero=PrendeNuovoNumero("Avanti");
-				DBLocale dbl=new DBLocale();
-				dbl.ScriveOpzioni(context);
-			} else {
-				NuovoNumero=SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
-			}
-			String NomeFile=SharedObjects.getInstance().getListaImmagini().get(NuovoNumero);
-
-			// Sistema immagine
-			// Sistema immagine
-
-			ChangeWallpaper cw=new ChangeWallpaper();
-			Ritorno=cw.setWallpaper(NomeFile);
-			
-			if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
-				AggiornaNotifica();
-			}
-		} else {
-			Ritorno=false;
-		}
-		
-		return Ritorno;
-	}
-
-    public void AggiornaNotifica() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-	    	try {
-				setListeners(contentView);
-			    notificationBuilder.setContent(contentView);
-			    notificationBuilder.setOngoing(true);
-			    notificationManager.notify(1, notificationBuilder.build());
-	    	} catch (Exception ignored) {
-	    		
-	    	}
-        } else {
-        	CreaNotifica();
-        }
-    }
-
-    public void setListeners(RemoteViews view){
-    	Utility u=new Utility();
-		if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
-	    	String Immagine="";
-	    	GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-	    	try {
-	    		Immagine=gfc.PrendeNomeFile(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
-	    		int pos=Immagine.indexOf(".");
-	    		if (pos>-1) {
-	    			Immagine=Immagine.substring(0, pos);
-	    		}
-	    	} catch (Exception ignored) {
-	    		
-	    	}
-	    	if (!Immagine.equals("")) {
-	    		view.setTextViewText(R.id.txtImmagine, Immagine);
-	    	} else {
-	    		view.setTextViewText(R.id.txtImmagine, "");
-	    	}
-	    	view.setTextViewText(R.id.TextView01, u.ControllaLingua(context, string.app_name, R.string.app_nameEN));
-	    	
-			Immagine=SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato());
-	       	Bitmap Immagin=null;
-	       	
-			view.setViewVisibility(R.id.imgCopertinaM, LinearLayout.VISIBLE);
-			view.setViewVisibility(R.id.txtImmagine, LinearLayout.VISIBLE);
-			view.setViewVisibility(R.id.layPicture, LinearLayout.VISIBLE);
-
-			if (Immagine!=null && !Immagine.equals("")) {
-		       	try {
-		       		Immagin=u.PrendeImmagineCompressa(Immagine);
-			       	view.setImageViewBitmap(R.id.imgCopertinaM, Immagin);
-		       	} catch (Exception ignored) {
-		       		view.setImageViewResource(R.id.imgCopertinaM, R.drawable.ic_launcher);
-		       	}
-	    	} else {
-	       		view.setImageViewResource(R.id.imgCopertinaM, R.drawable.ic_launcher);
-	    	}
-		} else {
-			view.setTextViewText(R.id.txtImmagine, u.ControllaLingua(context, string.app_name, R.string.app_nameEN));
-
-			view.setViewVisibility(R.id.imgCopertinaM, LinearLayout.GONE);
-			view.setViewVisibility(R.id.TextView01, LinearLayout.GONE);
-			view.setViewVisibility(R.id.layPicture, LinearLayout.GONE);
-		}
-    }
-    
-	public void CreaNotifica() {
-		if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
-	        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-	    	    notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);        	
-	        	notificationBuilder = new NotificationCompat.Builder(MainActivity.this);
-			    notificationBuilder.setSmallIcon(R.drawable.ic_launcher);
-			    notificationBuilder.setOngoing(true);
-	 
-			    contentView = new RemoteViews(getPackageName(), R.layout.barra_notifica);
-	           	setListenersTasti(contentView);
-	
-	           	notificationBuilder.setContent(contentView);
-	          	notificationBuilder.setAutoCancel(false);
-	           	
-			    notificationManager.notify(1, notificationBuilder.build());
-	       } else {
-				Utility u=new Utility();
-				String Titolo=u.ControllaLingua(context, string.app_name, R.string.app_nameEN);
-				String Titolo2=u.ControllaLingua(context, string.clickIT, R.string.clickEN);
-	   		
-				Intent notificationIntent = new Intent(this, MainActivity.class);
-			    PendingIntent pi = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-			    
-			    // PendingIntent pi = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT);
-				Notification notification =  new NotificationCompat.Builder(this).setAutoCancel(false)
-	                       .setContentTitle(Titolo)
-	                       .setContentText(Titolo2)
-	                       .setContentIntent(pi)
-	                       .setSmallIcon(R.drawable.ic_launcher)
-	                       .setWhen(System.currentTimeMillis())
-	                       .setTicker(Titolo)
-	                       .build();       
-				NotificationManager notificationManager =
-				            (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-				notificationManager.notify(0, notification);       
-	       }
-		}
-	}
-
-    private void setListenersTasti(RemoteViews view){
-    	Utility u=new Utility();
-		view.setTextViewText(R.id.TextView01, u.ControllaLingua(context, string.app_name, R.string.app_nameEN));
-
-		Intent cambia=new Intent(context, PassaggioNotifica.class);
-	    cambia.putExtra("DO", "cambia");
-	    PendingIntent pCambia = PendingIntent.getActivity(context, 0, cambia, 0);
-	    view.setOnClickPendingIntent(R.id.imgCambia, pCambia);
-	    view.setImageViewResource(R.id.imgCambia, R.drawable.refresh);
-	
-	    Intent avanti=new Intent(context, PassaggioNotifica.class);
-	    avanti.putExtra("DO", "avanti");
-	    PendingIntent pAvanti = PendingIntent.getActivity(context, 1, avanti, 0);
-	    view.setOnClickPendingIntent(R.id.ImgAvanti, pAvanti);
-	    view.setImageViewResource(R.id.ImgAvanti, R.drawable.avanti);
-	
-	    Intent apre=new Intent(context, PassaggioNotifica.class);
-	    apre.putExtra("DO", "apre");
-	    PendingIntent pApre= PendingIntent.getActivity(context, 2, apre, 0);
-	    view.setOnClickPendingIntent(R.id.ImgApreNB, pApre);
-    }
-	
-	public int PrendeNuovoNumero(String Come) {
-		int Ritorno=0;
-		
-		if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
-			Random r;
-			r=new Random();
-			int i1=r.nextInt(SharedObjects.getInstance().getListaImmagini().size());
-			i1--;
-			if (i1<0) {
-				i1=0;
-			}
-			Ritorno=i1;
-			SharedObjects.getInstance().setQualeImmagineHaVisualizzato(i1);
-		} else {
-			if (Come.equals("Indietro")) {
-				SharedObjects.getInstance().setQualeImmagineHaVisualizzato(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()-1);
-				if (SharedObjects.getInstance().getQualeImmagineHaVisualizzato()<0){
-					SharedObjects.getInstance().setQualeImmagineHaVisualizzato(SharedObjects.getInstance().getListaImmagini().size());
-				}
-				Ritorno=SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
-			} else {
-				SharedObjects.getInstance().setQualeImmagineHaVisualizzato(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()+1);
-				if (SharedObjects.getInstance().getQualeImmagineHaVisualizzato()>=SharedObjects.getInstance().getListaImmagini().size()){
-					SharedObjects.getInstance().setQualeImmagineHaVisualizzato(0);
-				}
-				Ritorno=SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
-			}
-		}
-		
-		return Ritorno;
-	}
-	
 	public void ScriveInfo() {
     	Context context=SharedObjects.getInstance().getContext();
 		Utility u = new Utility();
@@ -732,8 +561,10 @@ public class MainActivity extends Activity {
 		s = u.ControllaLingua(context, R.string.immvisuaIT, R.string.immvisuaEN) + ": " + SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
 		SharedObjects.getInstance().getTxtImmVisua().setText(s);
 		try {
-			SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
-			ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+			SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini()
+					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+			u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini()
+					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
 		} catch (Exception ignored) {
 			SharedObjects.getInstance().getTxtNomeImm().setText("");
 		}
@@ -763,26 +594,7 @@ public class MainActivity extends Activity {
 
 		setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
 	}
-	
-	public void ImpostaImmagineDiSfondo(String NomeImm) {
-		if (NomeImm!=null) {
-			if (!NomeImm.trim().equals("")) {
-				GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-				if (gfc.EsisteFile(gfc.PrendeNomeFile(NomeImm), gfc.PrendeNomeCartella(NomeImm))) {
-					Utility u=new Utility();
-					
-					Bitmap myBitmap = u.getPreview(NomeImm);
-					myBitmap=u.ConverteDimensioniInterne(myBitmap);
-					SharedObjects.getInstance().getImm().setImageBitmap(myBitmap);
-				} else {
-					SharedObjects.getInstance().getImm().setBackgroundResource(R.drawable.ic_launcher);
-				}
-			} else {
-				SharedObjects.getInstance().getImm().setBackgroundResource(R.drawable.ic_launcher);
-			}
-		}
-	}
-	
+
 	private void LeggeImmagini(DBLocale dbl) {
 		SharedObjects.getInstance().setListaImmagini(dbl.RitornaImmagini(context));
 		if (SharedObjects.getInstance().getListaImmagini()==null) {
@@ -792,17 +604,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	public void RimuoviNotifica() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-        	try {
-        		notificationManager.cancel(1);
-        		notificationManager=null;
-        	} catch (Exception ignored) {
-        		
-        	}
-        }
-	}
-	
 	/* @Override
 	protected void onUserLeaveHint() {
 	    super.onUserLeaveHint();

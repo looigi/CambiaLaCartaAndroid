@@ -28,6 +28,13 @@
             android:text="Sequenziale"
             android:textColor="#CCCC99" />
 
+        <RadioButton
+            android:id="@+id/optSincronizzata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sincronizzata"
+            android:textColor="#CCCC99" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >

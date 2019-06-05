@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="Bianco">#FFFFFF</color>
+    <color name="Nero">#000000</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="NotificaEN">Notify On</string>
@@ -42,6 +47,8 @@
     <string name="numimmIT">Numero immagini</string>
     <string name="optseqEN">Sequential</string>
     <string name="optseqIT">Sequenziale</string>
+    <string name="optsinEN">Synchronized</string>
+    <string name="optsinIT">Sincronizzata</string>
     <string name="opzioniEN">Options</string>
     <string name="opzioniIT">Opzioni</string>
     <string name="percorsoEN">Path</string>

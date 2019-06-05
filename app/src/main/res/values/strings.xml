@@ -25,6 +25,8 @@
     <string name="opzioniEN">Options</string>
     <string name="optseqIT">Sequenziale</string>
     <string name="optseqEN">Sequential</string>
+    <string name="optsinIT">Sincronizzata</string>
+    <string name="optsinEN">Synchronized</string>
     <string name="tempoIT">Tempo per cambio (minuti)</string>
     <string name="tempoEN">Time for change (minutes)</string>
     <string name="tempo2IT">Tempo per cambio: </string>
