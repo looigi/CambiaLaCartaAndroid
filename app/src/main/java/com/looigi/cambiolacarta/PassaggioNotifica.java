@@ -31,8 +31,7 @@ public class PassaggioNotifica extends Activity {
 		}
 		
 		if (action.equals("apre")) {
-			MainActivity ma=new MainActivity();
-			ma.ScriveInfo();
+			u.ScriveInfo();
 			String Nome="";
 			
 			try {

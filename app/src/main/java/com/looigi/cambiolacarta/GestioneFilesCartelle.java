@@ -186,9 +186,48 @@ public class GestioneFilesCartelle {
 			
 		}
 	}
-	
-	public void LeggeImmagini(final Context context, String Percorso) {
+
+	private void displayDirectoryContents(File dir) {
 		try {
+			File[] files = dir.listFiles();
+			for (File file : files) {
+				if (file.isDirectory()) {
+					// System.out.println("directory:" + file.getCanonicalPath());
+					Cartelle.add(file.getCanonicalPath());
+					displayDirectoryContents(file);
+				} else {
+					// System.out.println("     file:" + file.getCanonicalPath());
+					ListImages.add(file.getCanonicalPath());
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void LeggeImmagini(final Context context, String Percorso) {
+		ListImages=new ArrayList<String>();
+		Cartelle=new ArrayList<String>();
+
+		File currentDir = new File(Percorso); // current directory
+		displayDirectoryContents(currentDir);
+
+		DBLocale dbl=new DBLocale();
+		dbl.ScriveListaImmagini(context, ListImages);
+
+		SharedObjects.getInstance().setListaImmagini(ListImages);
+		SharedObjects.getInstance().setQuanteImm(ListImages.size());
+
+		Utility u = new Utility();
+		u.ScriveInfo();
+
+		if (SharedObjects.getInstance().getAttivo().equals("S")) {
+			u.FaiPartireTimer();
+			// u.FaiPartireAggiornatore();
+		}
+
+
+		/* try {
 			if (SharedObjects.getInstance().getLingua().equals("INGLESE")) {
 				ApreProgress(context, "Please wait...\nReading folders in progress");
 			} else {
@@ -339,7 +378,7 @@ public class GestioneFilesCartelle {
 			l.ScriveLog("Error on LeggeImmagini: "+e.getMessage());
 			EsciDalCiclo=true;
 			VisualizzaPOPUP(context, "Error: "+e.getMessage()+"\nRoutine: LeggeImmagini\nDo you want send Log file to developer?", true);
-		}
+		} */
 	}
 
 	public void CreaCartelleApplicazione(String Percorso) {

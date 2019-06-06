@@ -53,13 +53,9 @@ public class MainActivity extends Activity {
 	//private int nIT;
 	//private int nEN;
 	
-  	private Handler handler;
-  	private Runnable r;
-  	private Handler handlerAgg;
-  	private Runnable rAgg;
-	private int MinutiPassati;
-	private Timer timer;
-	
+  	// private Handler handlerAgg;
+  	// private Runnable rAgg;
+
 	@SuppressWarnings("static-access")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -129,8 +125,9 @@ public class MainActivity extends Activity {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
             	
-				FermaTimerAggiornatore();
-				FermaTimer();
+				// FermaTimerAggiornatore();
+				Utility u = new Utility();
+				u.FermaTimer();
 				
 				Intent Folder= new Intent(MainActivity.this, SceltaCartella.class);
 		        startActivity(Folder);
@@ -146,8 +143,9 @@ public class MainActivity extends Activity {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
             	
-				FermaTimerAggiornatore();
-				FermaTimer();
+				// FermaTimerAggiornatore();
+				Utility u = new Utility();
+				u.FermaTimer();
 				
 				GestioneFilesCartelle gfc=new GestioneFilesCartelle();
 				gfc.LeggeImmagini(context, SharedObjects.getInstance().getOrigine());
@@ -161,7 +159,7 @@ public class MainActivity extends Activity {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
             	
-				FermaTimerAggiornatore();
+				// FermaTimerAggiornatore();
 				
 				Intent Folder= new Intent(MainActivity.this, Opzioni.class);
 		        startActivity(Folder);
@@ -179,7 +177,7 @@ public class MainActivity extends Activity {
 				Utility u=new Utility();
 
 	        	// CreaBannerPubb();
-	        	MinutiPassati=0;
+	        	// MinutiPassati=0;
 	        	/* if (MinutiPassati<1) {
 	        		MinutiPassati=1;
 	        	} */
@@ -226,7 +224,7 @@ public class MainActivity extends Activity {
 					DBLocale dbl = new DBLocale();
 					dbl.ScriveOpzioni(context);
 
-					ScriveInfo();
+					u.ScriveInfo();
 
 					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
 				}
@@ -249,7 +247,7 @@ public class MainActivity extends Activity {
 					DBLocale dbl = new DBLocale();
 					dbl.ScriveOpzioni(context);
 
-					ScriveInfo();
+					u.ScriveInfo();
 
 					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
 				}
@@ -277,18 +275,19 @@ public class MainActivity extends Activity {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
+				Utility u = new Utility();
 				if (SharedObjects.getInstance().getAttivo().equals("S")) {
 					SharedObjects.getInstance().setAttivo("N");
-					FermaTimer();
+					u.FermaTimer();
 				} else {
 					SharedObjects.getInstance().setAttivo("S");
-					FaiPartireTimer();
+					u.FaiPartireTimer();
 				}
 				
 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);
-				
-				ScriveInfo();
+
+				u.ScriveInfo();
             }
         });					        
 		
@@ -303,8 +302,9 @@ public class MainActivity extends Activity {
 				
 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);
-				
-				ScriveInfo();
+
+				Utility u = new Utility();
+				u.ScriveInfo();
             }
         });					        
 		
@@ -319,8 +319,9 @@ public class MainActivity extends Activity {
 				
 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);
-				
-				ScriveInfo();
+
+				Utility u = new Utility();
+				u.ScriveInfo();
             }
         });					        
 		
@@ -362,7 +363,8 @@ public class MainActivity extends Activity {
 			gfc.LeggeImmagini(context, SharedObjects.getInstance().getOrigine());
 		} else {
 			LeggeImmagini(dbl);
-			ScriveInfo();
+			Utility u = new Utility();
+			u.ScriveInfo();
 		}
 		SharedObjects.getInstance().setStaPartendo(false);
 
@@ -379,7 +381,7 @@ public class MainActivity extends Activity {
 			service.ChiudiMaschera=false;
 		}
 		
-		FaiPartireAggiornatore();
+		// FaiPartireAggiornatore();
 	}
 
 	private void ImpostaDimensioni() {
@@ -440,160 +442,31 @@ public class MainActivity extends Activity {
 	//
 	// 	}
 	// }
-	
-	public void FaiPartireTimer() {
-		if (SharedObjects.getInstance().getListaImmagini().size()>0) {
-			SharedObjects.getInstance().setTimerPartito(true);
-			
-	       	final int TotMinuti=SharedObjects.getInstance().getMinutiPerCambio();
-	        
-	        timer = new Timer();
-	        timer.scheduleAtFixedRate( new java.util.TimerTask() {
-	           @Override
-	           public void run() {
-	             	MinutiPassati++;
-	            	if (MinutiPassati>TotMinuti) {
-	            		MinutiPassati=0;
-	            		
-	            		Looper.prepare();
 
-	            		Utility u = new Utility();
-			        	Boolean Ritorno=u.CambiaImmagine(true, 0);
-						if (!Ritorno) {
-							Toast.makeText(MainActivity.this, u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
-						}
-						
-			        	timer.cancel();
-			        	timer=null;
-						
-			        	FaiRipartireTimer();
-			        	
-						Looper.loop();
-	            	}
-	          }}, 0, 60000 );        
-		}
-	}
-	
-	private void FaiRipartireTimer() {
-		handler = new Handler(); 
-        r = new Runnable() {
-            public void run() {
-            	FaiPartireTimer();
-            	
-            	handler.removeCallbacks(r);
-            	
-            	handler=null;
-            	r=null;
-           }
-        };
-        handler.postDelayed(r, 1000);
-	}
-	
-	public void FaiPartireAggiornatore() {
-		/* handlerAgg = new Handler(); 
-        rAgg = new Runnable() {
-            public void run() {
-             	ScriveInfo();
-            	AggiornaNotifica();
-            	CreaBannerPubb();
-            	
-                handlerAgg.postDelayed(rAgg, 90000);
-            }
-        };
-        handlerAgg.postDelayed(rAgg, 90000); */
-	}
+	// public void FaiPartireAggiornatore() {
+	// 	/* handlerAgg = new Handler();
+    //     rAgg = new Runnable() {
+    //         public void run() {
+    //          	ScriveInfo();
+    //         	AggiornaNotifica();
+    //         	CreaBannerPubb();
+    //
+    //             handlerAgg.postDelayed(rAgg, 90000);
+    //         }
+    //     };
+    //     handlerAgg.postDelayed(rAgg, 90000); */
+	// }
 
-	private void FermaTimerAggiornatore() {
-		try {
-	    	handlerAgg.removeCallbacks(rAgg);
-	    	
-	    	handlerAgg=null;
-	    	rAgg=null;
-		} catch (Exception ignored) {
-			
-		}
-	}
-	
-	private void FermaTimer() {
-		SharedObjects.getInstance().setTimerPartito(false);
-		
-		if (SharedObjects.getInstance().getListaImmagini()!=null) {
-			if (SharedObjects.getInstance().getListaImmagini().size()>0) {
-		    	if (handler!=null) {
-					try {
-						handler.removeCallbacks(r);
-					} catch (Exception ignored) {
-						
-					}
-					handler = null;
-			        r = null;
-				}
-		    	
-		    	timer.cancel();
-		    	timer=null;
-			}
-		}
-	}
-
-	public void ScriveInfo() {
-    	Context context=SharedObjects.getInstance().getContext();
-		Utility u = new Utility();
-		String s = u.ControllaLingua(context, R.string.percorsoIT, R.string.percorsoEN) + ": " + SharedObjects.getInstance().getOrigine();
-		SharedObjects.getInstance().getTxtPercorso().setText(s);
-		s = u.ControllaLingua(context, R.string.numimmIT, R.string.numimmEN) + ": " + SharedObjects.getInstance().getQuanteImm();
-		SharedObjects.getInstance().getTxtNumImm().setText(s);
-		SharedObjects.getInstance().getTxtSceltaCartella().setText(u.ControllaLingua(context, R.string.cambiofolderIT, R.string.cambiofolderEN));
-		SharedObjects.getInstance().getTxtCambiaSubito().setText(u.ControllaLingua(context, R.string.cambiosubitoIT, R.string.cambiosubitoEN));
-		SharedObjects.getInstance().getTxtListaImm().setText(u.ControllaLingua(context, R.string.listaIT, R.string.listaEN));
-		SharedObjects.getInstance().getTxtOpzioni().setText(u.ControllaLingua(context, R.string.opzioniIT, R.string.opzioniEN));
-		SharedObjects.getInstance().getTxtProssima().setText(u.ControllaLingua(context, R.string.avantiIT, R.string.avantiEN));
-		SharedObjects.getInstance().getTxtPrecedente().setText(u.ControllaLingua(context, R.string.indietroIT, R.string.indietroEN));
-		s = u.ControllaLingua(context, R.string.tempoIT, R.string.tempoEN) + ": " + SharedObjects.getInstance().getMinutiPerCambio();
-		SharedObjects.getInstance().getTxtMinuti().setText(s);
-		String sTipoCambio;
-		if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
-			sTipoCambio = "Random";
-		} else {
-			sTipoCambio = u.ControllaLingua(context, R.string.optseqIT, R.string.optseqEN);
-		}
-		s = u.ControllaLingua(context, R.string.modalitaIT, R.string.modalitaEN) + ": " + sTipoCambio;
-		SharedObjects.getInstance().getTxtTipoCambio().setText(s);
-		s = u.ControllaLingua(context, R.string.immvisuaIT, R.string.immvisuaEN) + ": " + SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
-		SharedObjects.getInstance().getTxtImmVisua().setText(s);
-		try {
-			SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini()
-					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
-			u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini()
-					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
-		} catch (Exception ignored) {
-			SharedObjects.getInstance().getTxtNomeImm().setText("");
-		}
-		if (SharedObjects.getInstance().getAttivo().equals("S")) {
-			SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.attivoIT, R.string.attivoEN));
-			SharedObjects.getInstance().getChkAttivo().setChecked(true);
-			if (SharedObjects.getInstance().getStaPartendo()) {
-				if (SharedObjects.getInstance().getTimerPartito() == null) {
-					SharedObjects.getInstance().setTimerPartito (false);
-				}
-				if (!SharedObjects.getInstance().getTimerPartito()) {
-					FaiPartireTimer();
-				}
-			}
-		} else {
-			SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.inattivoIT, R.string.inattivoEN));
-			SharedObjects.getInstance().getChkAttivo().setChecked(false);
-			if (SharedObjects.getInstance().getStaPartendo()) {
-				FermaTimer();
-			}
-		}
-		// txtTempo2.setText(u.ControllaLingua(context, R.string.tempo2IT, R.string.tempo2EN));
-		SharedObjects.getInstance().getTxtCaffe().setText(u.ControllaLingua(context, R.string.caffeIT, R.string.caffeEN));
-		SharedObjects.getInstance().getTxtCaffe().setSelected(true);
-
-		// ImpostaDimensioni();
-
-		setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
-	}
+	// private void FermaTimerAggiornatore() {
+	// 	try {
+	//     	handlerAgg.removeCallbacks(rAgg);
+	//
+	//     	handlerAgg=null;
+	//     	rAgg=null;
+	// 	} catch (Exception ignored) {
+	//
+	// 	}
+	// }
 
 	private void LeggeImmagini(DBLocale dbl) {
 		SharedObjects.getInstance().setListaImmagini(dbl.RitornaImmagini(context));

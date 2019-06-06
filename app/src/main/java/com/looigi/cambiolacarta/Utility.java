@@ -10,6 +10,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
@@ -18,6 +20,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import com.looigi.cambiolacarta.Soap.DBRemoto;
 
@@ -30,6 +33,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Random;
+import java.util.Timer;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -37,7 +41,11 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class Utility {
 	private int BordoX=5;
 	private int BordoY=5;
-	
+	private Timer timer;
+	private int MinutiPassati;
+	private Handler handler;
+	private Runnable r;
+
 	public String ControllaLingua(Context context, int CosaIT, int CosaEN) {
 		String Ritorno="";
 		
@@ -364,6 +372,139 @@ public class Utility {
 		return Ritorno;
 	}
 
+	public void ScriveInfo() {
+		Context context=SharedObjects.getInstance().getContext();
+		Utility u = new Utility();
+		String s = u.ControllaLingua(context, R.string.percorsoIT, R.string.percorsoEN) + ": " + SharedObjects.getInstance().getOrigine();
+		SharedObjects.getInstance().getTxtPercorso().setText(s);
+		s = u.ControllaLingua(context, R.string.numimmIT, R.string.numimmEN) + ": " + SharedObjects.getInstance().getQuanteImm();
+		SharedObjects.getInstance().getTxtNumImm().setText(s);
+		SharedObjects.getInstance().getTxtSceltaCartella().setText(u.ControllaLingua(context, R.string.cambiofolderIT, R.string.cambiofolderEN));
+		SharedObjects.getInstance().getTxtCambiaSubito().setText(u.ControllaLingua(context, R.string.cambiosubitoIT, R.string.cambiosubitoEN));
+		SharedObjects.getInstance().getTxtListaImm().setText(u.ControllaLingua(context, R.string.listaIT, R.string.listaEN));
+		SharedObjects.getInstance().getTxtOpzioni().setText(u.ControllaLingua(context, R.string.opzioniIT, R.string.opzioniEN));
+		SharedObjects.getInstance().getTxtProssima().setText(u.ControllaLingua(context, R.string.avantiIT, R.string.avantiEN));
+		SharedObjects.getInstance().getTxtPrecedente().setText(u.ControllaLingua(context, R.string.indietroIT, R.string.indietroEN));
+		s = u.ControllaLingua(context, R.string.tempoIT, R.string.tempoEN) + ": " + SharedObjects.getInstance().getMinutiPerCambio();
+		SharedObjects.getInstance().getTxtMinuti().setText(s);
+		String sTipoCambio;
+		if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
+			sTipoCambio = "Random";
+		} else {
+			sTipoCambio = u.ControllaLingua(context, R.string.optseqIT, R.string.optseqEN);
+		}
+		s = u.ControllaLingua(context, R.string.modalitaIT, R.string.modalitaEN) + ": " + sTipoCambio;
+		SharedObjects.getInstance().getTxtTipoCambio().setText(s);
+		s = u.ControllaLingua(context, R.string.immvisuaIT, R.string.immvisuaEN) + ": " + SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
+		SharedObjects.getInstance().getTxtImmVisua().setText(s);
+		try {
+			SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini()
+					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+			u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini()
+					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+		} catch (Exception ignored) {
+			SharedObjects.getInstance().getTxtNomeImm().setText("");
+		}
+		if (SharedObjects.getInstance().getAttivo().equals("S")) {
+			SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.attivoIT, R.string.attivoEN));
+			SharedObjects.getInstance().getChkAttivo().setChecked(true);
+			if (SharedObjects.getInstance().getStaPartendo()) {
+				if (SharedObjects.getInstance().getTimerPartito() == null) {
+					SharedObjects.getInstance().setTimerPartito (false);
+				}
+				if (!SharedObjects.getInstance().getTimerPartito()) {
+					FaiPartireTimer();
+				}
+			}
+		} else {
+			SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.inattivoIT, R.string.inattivoEN));
+			SharedObjects.getInstance().getChkAttivo().setChecked(false);
+			if (SharedObjects.getInstance().getStaPartendo()) {
+				FermaTimer();
+			}
+		}
+		// txtTempo2.setText(u.ControllaLingua(context, R.string.tempo2IT, R.string.tempo2EN));
+		SharedObjects.getInstance().getTxtCaffe().setText(u.ControllaLingua(context, R.string.caffeIT, R.string.caffeEN));
+		SharedObjects.getInstance().getTxtCaffe().setSelected(true);
+
+		// ImpostaDimensioni();
+
+		VariabiliGlobali.getInstance().getActivityPrincipale().setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
+	}
+
+	public void FaiPartireTimer() {
+		if (SharedObjects.getInstance().getListaImmagini().size()>0) {
+			SharedObjects.getInstance().setTimerPartito(true);
+
+			final int TotMinuti=SharedObjects.getInstance().getMinutiPerCambio();
+
+			timer = new Timer();
+			timer.scheduleAtFixedRate( new java.util.TimerTask() {
+				@Override
+				public void run() {
+					MinutiPassati++;
+					if (MinutiPassati>=TotMinuti) {
+						MinutiPassati=0;
+
+						Looper.prepare();
+
+						Utility u = new Utility();
+						Boolean Ritorno=u.CambiaImmagine(true, 0);
+						if (!Ritorno) {
+							Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+									u.ControllaLingua(VariabiliGlobali.getInstance().getContext(),
+											R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
+						}
+
+						timer.cancel();
+						timer=null;
+
+						FaiRipartireTimer();
+
+						Looper.loop();
+					}
+				}}, 0, 60000 );
+		}
+	}
+
+	private void FaiRipartireTimer() {
+		handler = new Handler();
+		r = new Runnable() {
+			public void run() {
+				FaiPartireTimer();
+
+				handler.removeCallbacks(r);
+
+				handler=null;
+				r=null;
+			}
+		};
+		handler.postDelayed(r, 1000);
+	}
+
+	public void FermaTimer() {
+		SharedObjects.getInstance().setTimerPartito(false);
+
+		if (SharedObjects.getInstance().getListaImmagini()!=null) {
+			if (SharedObjects.getInstance().getListaImmagini().size()>0) {
+				if (handler!=null) {
+					try {
+						handler.removeCallbacks(r);
+					} catch (Exception ignored) {
+
+					}
+					handler = null;
+					r = null;
+				}
+
+				if (timer != null) {
+					timer.cancel();
+					timer = null;
+				}
+			}
+		}
+	}
+
 	public void ImpostaImmagineDiSfondo(String NomeImm) {
 		if (NomeImm!=null) {
 			if (!NomeImm.trim().equals("")) {
@@ -403,7 +544,6 @@ public class Utility {
 					DBLocale dbl = new DBLocale();
 					dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
 				}
-
 			} else {
 				NuovoNumero=SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
 			}
@@ -417,6 +557,8 @@ public class Utility {
 				if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
 					Notifiche.getInstance().AggiornaNotifica();
 				}
+
+				MinutiPassati = 0;
 			}
 		} else {
 			Ritorno=false;

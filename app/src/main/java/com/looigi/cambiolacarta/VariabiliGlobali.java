@@ -21,6 +21,7 @@ public class VariabiliGlobali {
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
     private RemoteViews contentView;
+    private int VecchiaImmagine = -1;
 
     public Activity getActivityPrincipale() {
         return activityPrincipale;
@@ -36,6 +37,14 @@ public class VariabiliGlobali {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public int getVecchiaImmagine() {
+        return VecchiaImmagine;
+    }
+
+    public void setVecchiaImmagine(int vecchiaImmagine) {
+        VecchiaImmagine = vecchiaImmagine;
     }
 
     public NotificationManager getNotificationManager() {
