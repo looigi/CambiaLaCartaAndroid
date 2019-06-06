@@ -206,9 +206,13 @@ public class MainActivity extends Activity {
 					Boolean Ritorno=u.CambiaImmagine(false,0);
 					
 					if (Ritorno) {
-						Toast.makeText(MainActivity.this, u.ControllaLingua(context, R.string.immimpIT, R.string.immimpEN), Toast.LENGTH_SHORT).show();
+						Toast.makeText(MainActivity.this, u.ControllaLingua(context,
+								R.string.immimpIT, R.string.immimpEN),
+								Toast.LENGTH_SHORT).show();
 					} else {
-						Toast.makeText(MainActivity.this, u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
+						Toast.makeText(MainActivity.this,
+								u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN),
+								Toast.LENGTH_SHORT).show();
 					}
 				} else {
 					Toast.makeText(MainActivity.this, u.ControllaLingua(context, R.string.noimmimpIT, R.string.noimmimpEN), Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package com.looigi.cambiolacarta;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -10,7 +11,7 @@ public class ChangeWallpaper {
 
 	public Boolean setWallpaper(String src) {
 		Context context=SharedObjects.getInstance().getContext();
-		Boolean Ritorno=true;
+		boolean Ritorno=true;
 		Log l=new Log();
 		
 		Utility u=new Utility();
@@ -26,8 +27,13 @@ public class ChangeWallpaper {
 				}
 				wallpaperManager.setBitmap(setWallToDevice);
 			} catch (IOException e) {
-			    l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));
-				e.printStackTrace();
+			    // l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));
+				// e.printStackTrace();
+
+				Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+						u.PrendeErroreDaException(e),
+						Toast.LENGTH_SHORT).show();
+
 				Ritorno=false;
 			}			
 		} else {

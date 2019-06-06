@@ -37,7 +37,7 @@ public class SharedObjects {
     private String NotificaSiNo;
     private List<String> ListaImmagini;
     private int QuanteImm;
-    private Boolean LogAttivo=true;
+    private Boolean LogAttivo=false;
     private Boolean CaricaDati;
     private Boolean SuonaAudio=true;
     private AudioManager audioManager;
