@@ -525,43 +525,47 @@ public class Utility {
 	}
 
 	public Boolean CambiaImmagine(Boolean Cambia, int NumeroDarete) {
-		Boolean Ritorno=true;
+		Boolean Ritorno = false;
 
-		if (SharedObjects.getInstance().getListaImmagini().size()>0) {
-			int NuovoNumero;
+		if (VariabiliGlobali.getInstance().getScreenON()) {
+			if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
+				int NuovoNumero;
 
-			if (Cambia) {
-				if (NumeroDarete==0) {
-					NuovoNumero = PrendeNuovoNumero("Avanti");
+				if (Cambia) {
+					if (NumeroDarete == 0) {
+						NuovoNumero = PrendeNuovoNumero("Avanti");
 
-					if (NuovoNumero>-1){
+						if (NuovoNumero > -1) {
+							DBLocale dbl = new DBLocale();
+							dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
+						}
+					} else {
+						NuovoNumero = NumeroDarete;
+
 						DBLocale dbl = new DBLocale();
 						dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
 					}
 				} else {
-					NuovoNumero = NumeroDarete;
+					NuovoNumero = SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
+				}
 
-					DBLocale dbl = new DBLocale();
-					dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
+				if (NuovoNumero >= 0) {
+					String NomeFile = SharedObjects.getInstance().getListaImmagini().get(NuovoNumero);
+
+					ChangeWallpaper cw = new ChangeWallpaper();
+					Ritorno = cw.setWallpaper(NomeFile);
+
+					if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
+						Notifiche.getInstance().AggiornaNotifica();
+					}
+
+					MinutiPassati = 0;
 				}
 			} else {
-				NuovoNumero=SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
-			}
-
-			if (NuovoNumero>=0) {
-				String NomeFile = SharedObjects.getInstance().getListaImmagini().get(NuovoNumero);
-
-				ChangeWallpaper cw = new ChangeWallpaper();
-				Ritorno = cw.setWallpaper(NomeFile);
-
-				if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
-					Notifiche.getInstance().AggiornaNotifica();
-				}
-
-				MinutiPassati = 0;
+				Ritorno = false;
 			}
 		} else {
-			Ritorno=false;
+			VariabiliGlobali.getInstance().setCambiataImmagine(true);
 		}
 
 		return Ritorno;

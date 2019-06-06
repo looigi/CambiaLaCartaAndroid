@@ -22,6 +22,8 @@ public class VariabiliGlobali {
     private NotificationCompat.Builder notificationBuilder;
     private RemoteViews contentView;
     private int VecchiaImmagine = -1;
+    private Boolean ScreenON = true;
+    private boolean CambiataImmagine=false;
 
     public Activity getActivityPrincipale() {
         return activityPrincipale;
@@ -37,6 +39,22 @@ public class VariabiliGlobali {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public boolean isCambiataImmagine() {
+        return CambiataImmagine;
+    }
+
+    public void setCambiataImmagine(boolean cambiataImmagine) {
+        CambiataImmagine = cambiataImmagine;
+    }
+
+    public Boolean getScreenON() {
+        return ScreenON;
+    }
+
+    public void setScreenON(Boolean screenON) {
+        ScreenON = screenON;
     }
 
     public int getVecchiaImmagine() {

@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -47,6 +48,7 @@ public class MainActivity extends Activity {
 	private Context context;
 	private SoundPool soundPool;
 	private HashMap<Integer, Integer> soundPoolMap;
+	private PhoneUnlockedReceiver receiver;
 
 	//private int pIT;
 	//private int pEN;
@@ -66,6 +68,16 @@ public class MainActivity extends Activity {
 
 		VariabiliGlobali.getInstance().setContext(this);
 		VariabiliGlobali.getInstance().setActivityPrincipale(this);
+
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
+		receiver = new PhoneUnlockedReceiver();
+		IntentFilter fRecv = new IntentFilter();
+		fRecv.addAction(Intent.ACTION_USER_PRESENT);
+		fRecv.addAction(Intent.ACTION_SCREEN_OFF);
+		registerReceiver(receiver, fRecv);
 
 		SharedObjects.getInstance().setContext(context);
 		SharedObjects.getInstance().setAudioManager((AudioManager)getSystemService(context.AUDIO_SERVICE));
