@@ -26,7 +26,7 @@ public class DBRemoto {
 				NS,
 				SA,
 				1420000,
-				true);
+				false);
 		g.Esegue();
 	}
 }

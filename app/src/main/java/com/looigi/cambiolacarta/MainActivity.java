@@ -307,7 +307,7 @@ public class MainActivity extends Activity {
 					SharedObjects.getInstance().setAttivo("S");
 					u.FaiPartireTimer();
 				}
-				
+
 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);
 
@@ -377,21 +377,6 @@ public class MainActivity extends Activity {
             }
         });					        
 
-		SharedObjects.getInstance().setStaPartendo(true);
-		if (SharedObjects.getInstance().getCaricaDati()==null) {
-			SharedObjects.getInstance().setCaricaDati(false);
-		}
-		if (SharedObjects.getInstance().getCaricaDati()) {
-			SharedObjects.getInstance().setCaricaDati(false);
-			GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-			gfc.LeggeImmagini(context, SharedObjects.getInstance().getOrigine());
-		} else {
-			LeggeImmagini(dbl);
-			Utility u = new Utility();
-			u.ScriveInfo();
-		}
-		SharedObjects.getInstance().setStaPartendo(false);
-
 		ImpostaDimensioni();
 		
 		Notifiche.getInstance().CreaNotifica();
@@ -404,8 +389,11 @@ public class MainActivity extends Activity {
 			moveTaskToBack(true);
 			service.ChiudiMaschera=false;
 		}
-		
-		// FaiPartireAggiornatore();
+
+		Intent i= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), bckService.class);
+		VariabiliGlobali.getInstance().setiServizio(i);
+		VariabiliGlobali.getInstance().getActivityPrincipale().startService(
+				VariabiliGlobali.getInstance().getiServizio());
 	}
 
 	private void ImpostaDimensioni() {
@@ -492,14 +480,14 @@ public class MainActivity extends Activity {
 	// 	}
 	// }
 
-	private void LeggeImmagini(DBLocale dbl) {
-		SharedObjects.getInstance().setListaImmagini(dbl.RitornaImmagini(context));
-		if (SharedObjects.getInstance().getListaImmagini()==null) {
-			SharedObjects.getInstance().setQuanteImm(0);
-		} else {
-			SharedObjects.getInstance().setQuanteImm(SharedObjects.getInstance().getListaImmagini().size());
-		}
-	}
+	// private void LeggeImmagini(DBLocale dbl) {
+	// 	SharedObjects.getInstance().setListaImmagini(dbl.RitornaImmagini(context));
+	// 	if (SharedObjects.getInstance().getListaImmagini()==null) {
+	// 		SharedObjects.getInstance().setQuanteImm(0);
+	// 	} else {
+	// 		SharedObjects.getInstance().setQuanteImm(SharedObjects.getInstance().getListaImmagini().size());
+	// 	}
+	// }
 
 	/* @Override
 	protected void onUserLeaveHint() {

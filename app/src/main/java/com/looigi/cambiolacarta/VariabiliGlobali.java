@@ -3,6 +3,7 @@ package com.looigi.cambiolacarta;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
@@ -24,6 +25,7 @@ public class VariabiliGlobali {
     private int VecchiaImmagine = -1;
     private Boolean ScreenON = true;
     private boolean CambiataImmagine=false;
+    private Intent iServizio;
 
     public Activity getActivityPrincipale() {
         return activityPrincipale;
@@ -39,6 +41,14 @@ public class VariabiliGlobali {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public Intent getiServizio() {
+        return iServizio;
+    }
+
+    public void setiServizio(Intent iServizio) {
+        this.iServizio = iServizio;
     }
 
     public boolean isCambiataImmagine() {
