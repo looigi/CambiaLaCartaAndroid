@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.looigi.cambiolacarta.AutoStart.service;
 import com.looigi.cambiolacarta.Soap.DBRemoto;
 
 import java.io.ByteArrayOutputStream;
@@ -528,6 +529,20 @@ public class Utility {
 		Boolean Ritorno = false;
 
 		if (VariabiliGlobali.getInstance().getScreenON()) {
+			// Se per qualche motivo si è perso la lista delle immagini le ricarico
+			if (SharedObjects.getInstance().getListaImmagini().size() == 0) {
+				if (VariabiliGlobali.getInstance().getContext()==null) {
+					MainActivity m = new MainActivity();
+					VariabiliGlobali.getInstance().setContext(m.getContext());
+				}
+				DBLocale d = new DBLocale();
+				d.LeggeOpzioni(VariabiliGlobali.getInstance().getContext());
+				GestioneFilesCartelle gf = new GestioneFilesCartelle();
+				gf.LeggeImmagini(VariabiliGlobali.getInstance().getContext(), SharedObjects.getInstance().getOrigine());
+				service.ChiudiMaschera = true;
+			}
+			// Se per qualche motivo si è perso la lista delle immagini le ricarico
+
 			if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
 				int NuovoNumero;
 

@@ -58,6 +58,14 @@ public class MainActivity extends Activity {
   	// private Handler handlerAgg;
   	// private Runnable rAgg;
 
+    public Context getContext() {
+        if (context!=null) {
+            return context;
+        } else {
+            return this;
+        }
+    }
+
 	@SuppressWarnings("static-access")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
