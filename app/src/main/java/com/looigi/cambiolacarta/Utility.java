@@ -553,9 +553,9 @@ public class Utility {
 						if (NuovoNumero > -1) {
 							DBLocale dbl = new DBLocale();
 							dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
-
-							Ritorno = true;
 						}
+
+						Ritorno = true;
 					} else {
 						NuovoNumero = NumeroDarete;
 

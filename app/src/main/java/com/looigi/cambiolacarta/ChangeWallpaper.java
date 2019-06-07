@@ -32,7 +32,7 @@ public class ChangeWallpaper {
 
 				Toast.makeText(VariabiliGlobali.getInstance().getContext(),
 						u.PrendeErroreDaException(e),
-						Toast.LENGTH_SHORT).show();
+						Toast.LENGTH_LONG).show();
 
 				Ritorno=false;
 			}			
