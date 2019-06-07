@@ -43,6 +43,7 @@
     <string name="modalitaIT">Modalità</string>
     <string name="noimmimpEN">No image set</string>
     <string name="noimmimpIT">Non ci sono immagini</string>
+    <string name="not_used">Only here to ensure that android-maven-plugin:4.4.3 creates an R.txt</string>
     <string name="numimmEN">Images</string>
     <string name="numimmIT">Numero immagini</string>
     <string name="optseqEN">Sequential</string>
@@ -65,6 +66,7 @@
     <string name="tempoIT">Tempo per cambio (minuti)</string>
     <string name="titoloEN">Wallpaper changer</string>
     <string name="titoloIT">Cambio la carta</string>
+    <string name="toast_crash_report">Errore in Cambia la Carta</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in

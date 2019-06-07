@@ -144,8 +144,12 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 17 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: com.android.support:support-v4:18.0.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.sun.mail:android-mail:1.5.5@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:24.1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.sun.mail:android-activation:1.5.5@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:D.\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\libs\ksoap2-android-assembly-3.2.0-jar-with-dependencies.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-v4:24.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: ch.acra:acra:4.9.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Looigi\AppData\Local\Android\Sdk\build-tools\28.0.3\renderscript\lib\renderscript-v8.jar:unspecified@jar" level="project" />
   </component>
 </module>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="toast_crash_report">Errore in Cambia la Carta</string>
     <string name="app_name">Cambio La Carta</string>
     <string name="app_nameEN">Wallpaper Changer</string>
     <string name="action_settings">Settings</string>
