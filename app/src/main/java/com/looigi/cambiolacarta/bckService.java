@@ -12,6 +12,7 @@ public class bckService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         DBLocale dbl=new DBLocale();
+        Log l = new Log();
 
         SharedObjects.getInstance().setStaPartendo(true);
         if (SharedObjects.getInstance().getCaricaDati()==null) {
@@ -25,7 +26,7 @@ public class bckService extends Service {
         } else {
             LeggeImmagini(dbl);
             Utility u = new Utility();
-            u.ScriveInfo();
+            u.ScriveInfo(l);
         }
         SharedObjects.getInstance().setStaPartendo(false);
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
@@ -17,6 +18,7 @@ public class VariabiliGlobali {
     private VariabiliGlobali() {
     }
 
+    public String PercorsoDIR= Environment.getExternalStorageDirectory().getPath()+"/LooigiSoft/CambiaLaCarta";
     private Context context;
     private Activity activityPrincipale;
     private NotificationManager notificationManager;

@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 
 import com.looigi.cambiolacarta.DialogMessaggio;
+import com.looigi.cambiolacarta.Log;
 import com.looigi.cambiolacarta.Utility;
 import com.looigi.cambiolacarta.VariabiliGlobali;
 
@@ -330,6 +331,7 @@ public class GestioneWEBServiceSOAP {
 	    }
 	 	
 	    private void ControllaFineCiclo() {
+			Log l = new Log();
 				if (!messErrore.equals("ESCI")) {
 					String Ritorno = result;
 
@@ -346,7 +348,7 @@ public class GestioneWEBServiceSOAP {
 					if (!Errore) {
 						while (Ancora) {
 							if (tOperazione.equals("TornaNumeroImmaginePerSfondo")) {
-									rRit.TornaNumeroImmaginePerSfondo(Ritorno);
+									rRit.TornaNumeroImmaginePerSfondo(Ritorno, l);
 									Ancora = false;
 									break;
 							}

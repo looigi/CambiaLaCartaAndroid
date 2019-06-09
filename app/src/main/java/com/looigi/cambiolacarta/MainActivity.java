@@ -236,11 +236,12 @@ public class MainActivity extends Activity {
 		imgProssima.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            	Log l = new Log();
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
 				Utility u = new Utility();
-				int imm = u.PrendeNuovoNumero("Avanti");
+				int imm = u.PrendeNuovoNumero("Avanti", l);
 
 				if (imm>=0) {
 					SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
@@ -248,9 +249,9 @@ public class MainActivity extends Activity {
 					DBLocale dbl = new DBLocale();
 					dbl.ScriveOpzioni(context);
 
-					u.ScriveInfo();
+					u.ScriveInfo(l);
 
-					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
 				}
             }
         });					        
@@ -261,9 +262,10 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
+				Log l = new Log();
 
 				Utility u = new Utility();
-				int imm = u.PrendeNuovoNumero("Indietro");
+				int imm = u.PrendeNuovoNumero("Indietro", l);
 
 				if (imm>=0) {
 					SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
@@ -271,9 +273,9 @@ public class MainActivity extends Activity {
 					DBLocale dbl = new DBLocale();
 					dbl.ScriveOpzioni(context);
 
-					u.ScriveInfo();
+					u.ScriveInfo(l);
 
-					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
 				}
             }
         });					        
@@ -296,6 +298,7 @@ public class MainActivity extends Activity {
 		SharedObjects.getInstance().getChkAttivo().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            	Log l = new Log();
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
@@ -311,7 +314,7 @@ public class MainActivity extends Activity {
 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);
 
-				u.ScriveInfo();
+				u.ScriveInfo(l);
             }
         });					        
 		
@@ -319,6 +322,7 @@ public class MainActivity extends Activity {
 		imgItaliano.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            	Log l = new Log();
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
@@ -328,7 +332,7 @@ public class MainActivity extends Activity {
 				dbl.ScriveOpzioni(context);
 
 				Utility u = new Utility();
-				u.ScriveInfo();
+				u.ScriveInfo(l);
             }
         });					        
 		
@@ -336,6 +340,7 @@ public class MainActivity extends Activity {
 		imgInglese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            	Log l = new Log();
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
 
@@ -345,7 +350,7 @@ public class MainActivity extends Activity {
 				dbl.ScriveOpzioni(context);
 
 				Utility u = new Utility();
-				u.ScriveInfo();
+				u.ScriveInfo(l);
             }
         });					        
 		

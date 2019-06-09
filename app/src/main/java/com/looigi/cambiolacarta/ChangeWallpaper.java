@@ -9,30 +9,50 @@ import java.io.IOException;
 
 public class ChangeWallpaper {
 
-	public Boolean setWallpaper(String src) {
+	public Boolean setWallpaper(String src, Log l) {
 		Context context=SharedObjects.getInstance().getContext();
 		boolean Ritorno=true;
-		Log l=new Log();
-		
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Cambio immagine: Caricamento bitmap.");
+
 		Utility u=new Utility();
-		Bitmap setWallToDevice = u.PrendeImmagineReale(src);
+		Bitmap setWallToDevice = u.PrendeImmagineReale(src, l);
 		
 		if (setWallToDevice!=null) {
-			WallpaperManager wallpaperManager = WallpaperManager.getInstance(context); 
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Cambio immagine: Applicazione wallpaper.");
+
+			WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
 			try {
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine: Impostazione dimensioni.");
+
 				if (SharedObjects.getInstance().getStretch().equals("S")) {
 					wallpaperManager.suggestDesiredDimensions(SharedObjects.getInstance().getSchermoX(), SharedObjects.getInstance().getSchermoY());
 				} else {
 					wallpaperManager.suggestDesiredDimensions(SharedObjects.getInstance().getDimeWallWidthOriginale(), SharedObjects.getInstance().getDimeWallHeightOriginale());
 				}
+
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine: Settaggio bitmap.");
+
 				wallpaperManager.setBitmap(setWallToDevice);
 			} catch (IOException e) {
 			    // l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));
 				// e.printStackTrace();
 
-				Toast.makeText(VariabiliGlobali.getInstance().getContext(),
-						u.PrendeErroreDaException(e),
-						Toast.LENGTH_LONG).show();
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine: Errore\n" + u.PrendeErroreDaException(e));
+
+				// Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+				// 		u.PrendeErroreDaException(e),
+				// 		Toast.LENGTH_LONG).show();
 
 				Ritorno=false;
 			}			

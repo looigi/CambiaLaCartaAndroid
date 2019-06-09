@@ -14,6 +14,7 @@ public class PassaggioNotifica extends Activity {
 		context=this;
 		String action="";
 		Boolean Apre=false;
+		Log l = new Log();
 		
 		try {
 			action= (String)getIntent().getExtras().get("DO");
@@ -31,7 +32,7 @@ public class PassaggioNotifica extends Activity {
 		}
 		
 		if (action.equals("apre")) {
-			u.ScriveInfo();
+			u.ScriveInfo(l);
 			String Nome="";
 			
 			try {
@@ -40,7 +41,7 @@ public class PassaggioNotifica extends Activity {
 				
 			}
 			if (Nome!=null) {
-				u.ImpostaImmagineDiSfondo(Nome);
+				u.ImpostaImmagineDiSfondo(Nome, l);
 			}
 			
 			Apre=true;

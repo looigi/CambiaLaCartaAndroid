@@ -101,6 +101,7 @@ public class Notifiche {
     }
 
     public void setListeners(RemoteViews view){
+        Log l = new Log();
         Utility u=new Utility();
         if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
             String Immagine="";
@@ -131,7 +132,7 @@ public class Notifiche {
 
             if (Immagine!=null && !Immagine.equals("")) {
                 try {
-                    Immagin=u.PrendeImmagineCompressa(Immagine);
+                    Immagin=u.PrendeImmagineCompressa(Immagine, l);
                     view.setImageViewBitmap(R.id.imgCopertinaM, Immagin);
                 } catch (Exception ignored) {
                     view.setImageViewResource(R.id.imgCopertinaM, R.drawable.ic_launcher);

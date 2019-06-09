@@ -28,7 +28,7 @@ public class GestioneFilesCartelle {
 	private int QuanteCart=0;
 	private String Cartella="";
 	private ProgressDialog progressDialog;
-	private Log l=new Log();
+	// private Log l=new Log();
 	private Boolean EsciDalCiclo=false;
 	
 	public long DimensioniFile(String NomeFile) {
@@ -54,12 +54,12 @@ public class GestioneFilesCartelle {
 			
 			root = new File(Percorso);
 			files = root.listFiles();
-			l.ScriveLog("------------------------------------");
+			// l.ScriveLog("------------------------------------");
 			if (files!=null) {
 		        for (File file : files){
 		        	if (!file.isDirectory()) {
 		        		NomeFile=file.getPath().toString().toUpperCase();
-		        		l.ScriveLog("IMG Count: "+NomeFile);
+		        		// l.ScriveLog("IMG Count: "+NomeFile);
 	
 		        		if (NomeFile.contains(".JPG") || NomeFile.contains(".JPEG")
 		        				|| NomeFile.contains(".BMP") || NomeFile.contains(".PNG")) {
@@ -68,9 +68,9 @@ public class GestioneFilesCartelle {
 		        	}
 		        }
 			}
-			l.ScriveLog("------------------------------------");
+			// l.ScriveLog("------------------------------------");
 		} catch (Exception e) {
-			l.ScriveLog("Error on CONTAIMMAGINICARTELLA: "+e.getMessage());
+			// l.ScriveLog("Error on CONTAIMMAGINICARTELLA: "+e.getMessage());
 			EsciDalCiclo=true;
 			VisualizzaPOPUP(context, "Error: "+e.getMessage()+"\nRoutine: ContaImmaginiCartella\nDo you want send Log file to developer?", true);
 		}
@@ -84,21 +84,21 @@ public class GestioneFilesCartelle {
 			File [] files = root.listFiles();
 
 			String NomeCartella="";
-			l.ScriveLog("------------------------------------");
+			// l.ScriveLog("------------------------------------");
 			if (files!=null) {
 		        for (File file : files){
 		        	if (file.isDirectory()) {
 		        		NomeCartella=file.getPath().toString();
-		        		l.ScriveLog("Read folder - Inner loop - : "+NomeCartella);
+		        		// l.ScriveLog("Read folder - Inner loop - : "+NomeCartella);
 	
 	        			Cartelle.add(NomeCartella);
 	        			Letta.add("NO");
 		        	}
 		        }
 			}
-			l.ScriveLog("------------------------------------");
+			// l.ScriveLog("------------------------------------");
 		} catch (Exception e) {
-			l.ScriveLog("Error on LEGGECARTELLE: "+e.getMessage());
+			// l.ScriveLog("Error on LEGGECARTELLE: "+e.getMessage());
 			EsciDalCiclo=true;
 			VisualizzaPOPUP(context, "Error: "+e.getMessage()+"\nRoutine: LeggeCartelle\nDo you want send Log file to developer?", true);
 		}
@@ -152,12 +152,12 @@ public class GestioneFilesCartelle {
 			File [] files = root.listFiles();
 			
 			String NomeFile="";
-			l.ScriveLog("------------------------------------");
+			// l.ScriveLog("------------------------------------");
 			if (files!=null) {
 		        for (File file : files){
 		        	if (!file.isDirectory()) {
 		        		NomeFile=file.getPath().toString().toUpperCase();
-		        		l.ScriveLog("Read IMG folder: "+NomeFile);
+		        		// l.ScriveLog("Read IMG folder: "+NomeFile);
 	
 		        		if (NomeFile.contains(".JPG") || NomeFile.contains(".JPEG")
 		        				|| NomeFile.contains(".PNG") || NomeFile.contains(".BMP")) {
@@ -166,9 +166,9 @@ public class GestioneFilesCartelle {
 		        	}
 		        }
 			}
-			l.ScriveLog("------------------------------------");
+			// l.ScriveLog("------------------------------------");
 		} catch (Exception e) {
-			l.ScriveLog("Error on LEGGEIMMAGINICARTELLA: "+e.getMessage());
+			// l.ScriveLog("Error on LEGGEIMMAGINICARTELLA: "+e.getMessage());
 			EsciDalCiclo=true;
 			VisualizzaPOPUP(context, "Error: "+e.getMessage()+"\nRoutine: LeggeImmaginiCartella\nDo you want send Log file to developer?", true);
 		}
@@ -206,6 +206,7 @@ public class GestioneFilesCartelle {
 	}
 
 	public void LeggeImmagini(final Context context, String Percorso) {
+		Log l = new Log();
 		ListImages=new ArrayList<String>();
 		Cartelle=new ArrayList<String>();
 
@@ -219,7 +220,7 @@ public class GestioneFilesCartelle {
 		SharedObjects.getInstance().setQuanteImm(ListImages.size());
 
 		Utility u = new Utility();
-		u.ScriveInfo();
+		u.ScriveInfo(l);
 
 		if (SharedObjects.getInstance().getAttivo().equals("S")) {
 			u.FaiPartireTimer();
@@ -386,23 +387,23 @@ public class GestioneFilesCartelle {
 		String AppPerc=Percorso;
 		String Perc="";
 		
-		l.ScriveLog("------------------------------------");
-		l.ScriveLog("Start Folder Creation: "+Percorso);
+		// l.ScriveLog("------------------------------------");
+		// l.ScriveLog("Start Folder Creation: "+Percorso);
 
 		pos=AppPerc.indexOf("/");
 		while (pos>-1) {
 			Perc+="/"+AppPerc.substring(0,pos);
 			Perc=Perc.replace("//", "/");
-			l.ScriveLog("      Folder Creation: "+Perc);
+			// l.ScriveLog("      Folder Creation: "+Perc);
 			CreaCartella(Perc);
 
 			AppPerc=AppPerc.substring(pos+1,AppPerc.length());
 			pos=AppPerc.indexOf("/");
 		}
 		Perc+="/"+AppPerc;
-		l.ScriveLog("      Folder Creation: "+Perc);
+		// l.ScriveLog("      Folder Creation: "+Perc);
 		CreaCartella(Perc);
-		l.ScriveLog("------------------------------------");
+		// l.ScriveLog("------------------------------------");
 	}
     	
 	public void CreaCartella(String Percorso) {

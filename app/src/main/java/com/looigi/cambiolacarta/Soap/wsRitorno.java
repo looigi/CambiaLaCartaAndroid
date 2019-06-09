@@ -5,6 +5,7 @@ import android.os.Looper;
 
 import com.looigi.cambiolacarta.DBLocale;
 import com.looigi.cambiolacarta.DialogMessaggio;
+import com.looigi.cambiolacarta.Log;
 import com.looigi.cambiolacarta.Notifiche;
 import com.looigi.cambiolacarta.SharedObjects;
 import com.looigi.cambiolacarta.Utility;
@@ -16,7 +17,7 @@ public class wsRitorno {
     private Runnable runRiga;
     private Handler hSelezionaRiga;
 
-    public void TornaNumeroImmaginePerSfondo(final String Ritorno) {
+    public void TornaNumeroImmaginePerSfondo(final String Ritorno, final Log l) {
         if (Ritorno.toUpperCase().contains("ERROR:")) {
             DialogMessaggio.getInstance().show(VariabiliGlobali.getInstance().getContext(),
                     Ritorno,
@@ -24,6 +25,10 @@ public class wsRitorno {
                     "looVF",
                     false);
         } else {
+            l.ScriveLog(new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Torna numero immagine. Ritorno: " + Ritorno);
+
             hSelezionaRiga = new Handler(Looper.getMainLooper());
             hSelezionaRiga.postDelayed(runRiga = new Runnable() {
                 @Override
@@ -45,6 +50,11 @@ public class wsRitorno {
                         }
                         conta++;
                     }
+
+                    l.ScriveLog(new Object() {
+                            }.getClass().getEnclosingMethod().getName(),
+                            "Torna numero immagine 1");
+
                     if (numero == -1) {
                         numero = Integer.parseInt(r[0]);
                         if (numero>SharedObjects.getInstance().getListaImmagini().size()-1){
@@ -59,7 +69,15 @@ public class wsRitorno {
                         }
                     }
 
+                    l.ScriveLog(new Object() {
+                            }.getClass().getEnclosingMethod().getName(),
+                            "Torna numero immagine 2");
+
                     if (numero != VariabiliGlobali.getInstance().getVecchiaImmagine()) {
+                        l.ScriveLog(new Object() {
+                                }.getClass().getEnclosingMethod().getName(),
+                                "Torna numero immagine 3: " + Integer.toString(numero));
+
                         VariabiliGlobali.getInstance().setVecchiaImmagine(numero);
 
                         SharedObjects.getInstance().setQualeImmagineHaVisualizzato(numero);
@@ -67,12 +85,20 @@ public class wsRitorno {
                         DBLocale dbl = new DBLocale();
                         dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
 
+                        l.ScriveLog(new Object() {
+                                }.getClass().getEnclosingMethod().getName(),
+                                "Torna numero immagine 4");
+
                         Utility u = new Utility();
                         u.CambiaImmagine(true, numero);
-                        u.ScriveInfo();
+                        u.ScriveInfo(l);
                         String NomeFile = SharedObjects.getInstance().getListaImmagini().get(numero);
-                        u.ImpostaImmagineDiSfondo(NomeFile);
+                        u.ImpostaImmagineDiSfondo(NomeFile, l);
                         Notifiche.getInstance().AggiornaNotifica();
+
+                        l.ScriveLog(new Object() {
+                                }.getClass().getEnclosingMethod().getName(),
+                                "Torna numero immagine uscita");
                     }
                 }
             },50);
