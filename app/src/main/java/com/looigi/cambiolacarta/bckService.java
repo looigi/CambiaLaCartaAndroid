@@ -14,6 +14,16 @@ public class bckService extends Service {
         DBLocale dbl=new DBLocale();
         Log l = new Log();
 
+        if (VariabiliGlobali.getInstance().getContext()==null) {
+            l.ScriveLog(new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Contex vuoto, Ricarico dal servizio");
+
+            VariabiliGlobali.getInstance().setContext(this);
+            MainActivity m = new MainActivity();
+            m.setContext(this);
+        }
+
         SharedObjects.getInstance().setStaPartendo(true);
         if (SharedObjects.getInstance().getCaricaDati()==null) {
             SharedObjects.getInstance().setCaricaDati(false);

@@ -58,6 +58,10 @@ public class MainActivity extends Activity {
   	// private Handler handlerAgg;
   	// private Runnable rAgg;
 
+    public void setContext(Context c) {
+        this.context = c;
+    }
+
     public Context getContext() {
         if (context!=null) {
             return context;
