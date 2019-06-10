@@ -49,7 +49,11 @@ public class Utility {
 
 	public String ControllaLingua(Context context, int CosaIT, int CosaEN) {
 		String Ritorno="";
-		
+
+		if (SharedObjects.getInstance().getLingua()==null) {
+			SharedObjects.getInstance().setLingua("ITALIANO");
+		}
+
 		if (SharedObjects.getInstance().getLingua().equals("INGLESE")) {
 			Ritorno=context.getString(CosaEN);
 		} else {
