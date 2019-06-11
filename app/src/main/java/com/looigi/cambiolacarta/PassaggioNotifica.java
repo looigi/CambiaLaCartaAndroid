@@ -2,6 +2,7 @@ package com.looigi.cambiolacarta;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class PassaggioNotifica extends Activity {
@@ -53,6 +54,9 @@ public class PassaggioNotifica extends Activity {
 			} catch (Exception ignored) {
 				
 			}
+		} else {
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
 		}
 		
     	finish();
