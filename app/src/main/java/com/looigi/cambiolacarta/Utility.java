@@ -541,63 +541,67 @@ public class Utility {
 	}
 
 	public void ScriveInfo(Log l) {
-		Context context=SharedObjects.getInstance().getContext();
-		Utility u = new Utility();
-		String s = u.ControllaLingua(context, R.string.percorsoIT, R.string.percorsoEN) + ": " + SharedObjects.getInstance().getOrigine();
-		SharedObjects.getInstance().getTxtPercorso().setText(s);
-		s = u.ControllaLingua(context, R.string.numimmIT, R.string.numimmEN) + ": " + SharedObjects.getInstance().getQuanteImm();
-		SharedObjects.getInstance().getTxtNumImm().setText(s);
-		SharedObjects.getInstance().getTxtSceltaCartella().setText(u.ControllaLingua(context, R.string.cambiofolderIT, R.string.cambiofolderEN));
-		SharedObjects.getInstance().getTxtCambiaSubito().setText(u.ControllaLingua(context, R.string.cambiosubitoIT, R.string.cambiosubitoEN));
-		SharedObjects.getInstance().getTxtListaImm().setText(u.ControllaLingua(context, R.string.listaIT, R.string.listaEN));
-		SharedObjects.getInstance().getTxtOpzioni().setText(u.ControllaLingua(context, R.string.opzioniIT, R.string.opzioniEN));
-		SharedObjects.getInstance().getTxtProssima().setText(u.ControllaLingua(context, R.string.avantiIT, R.string.avantiEN));
-		SharedObjects.getInstance().getTxtPrecedente().setText(u.ControllaLingua(context, R.string.indietroIT, R.string.indietroEN));
-		s = u.ControllaLingua(context, R.string.tempoIT, R.string.tempoEN) + ": " + SharedObjects.getInstance().getMinutiPerCambio();
-		SharedObjects.getInstance().getTxtMinuti().setText(s);
-		String sTipoCambio;
-		if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
-			sTipoCambio = "Random";
-		} else {
-			sTipoCambio = u.ControllaLingua(context, R.string.optseqIT, R.string.optseqEN);
-		}
-		s = u.ControllaLingua(context, R.string.modalitaIT, R.string.modalitaEN) + ": " + sTipoCambio;
-		SharedObjects.getInstance().getTxtTipoCambio().setText(s);
-		s = u.ControllaLingua(context, R.string.immvisuaIT, R.string.immvisuaEN) + ": " + SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
-		SharedObjects.getInstance().getTxtImmVisua().setText(s);
 		try {
-			SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini()
-					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
-			u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini()
-					.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+			Context context = SharedObjects.getInstance().getContext();
+			Utility u = new Utility();
+			String s = u.ControllaLingua(context, R.string.percorsoIT, R.string.percorsoEN) + ": " + SharedObjects.getInstance().getOrigine();
+			SharedObjects.getInstance().getTxtPercorso().setText(s);
+			s = u.ControllaLingua(context, R.string.numimmIT, R.string.numimmEN) + ": " + SharedObjects.getInstance().getQuanteImm();
+			SharedObjects.getInstance().getTxtNumImm().setText(s);
+			SharedObjects.getInstance().getTxtSceltaCartella().setText(u.ControllaLingua(context, R.string.cambiofolderIT, R.string.cambiofolderEN));
+			SharedObjects.getInstance().getTxtCambiaSubito().setText(u.ControllaLingua(context, R.string.cambiosubitoIT, R.string.cambiosubitoEN));
+			SharedObjects.getInstance().getTxtListaImm().setText(u.ControllaLingua(context, R.string.listaIT, R.string.listaEN));
+			SharedObjects.getInstance().getTxtOpzioni().setText(u.ControllaLingua(context, R.string.opzioniIT, R.string.opzioniEN));
+			SharedObjects.getInstance().getTxtProssima().setText(u.ControllaLingua(context, R.string.avantiIT, R.string.avantiEN));
+			SharedObjects.getInstance().getTxtPrecedente().setText(u.ControllaLingua(context, R.string.indietroIT, R.string.indietroEN));
+			s = u.ControllaLingua(context, R.string.tempoIT, R.string.tempoEN) + ": " + SharedObjects.getInstance().getMinutiPerCambio();
+			SharedObjects.getInstance().getTxtMinuti().setText(s);
+			String sTipoCambio;
+			if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
+				sTipoCambio = "Random";
+			} else {
+				sTipoCambio = u.ControllaLingua(context, R.string.optseqIT, R.string.optseqEN);
+			}
+			s = u.ControllaLingua(context, R.string.modalitaIT, R.string.modalitaEN) + ": " + sTipoCambio;
+			SharedObjects.getInstance().getTxtTipoCambio().setText(s);
+			s = u.ControllaLingua(context, R.string.immvisuaIT, R.string.immvisuaEN) + ": " + SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
+			SharedObjects.getInstance().getTxtImmVisua().setText(s);
+			try {
+				SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini()
+						.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+				u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini()
+						.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+			} catch (Exception ignored) {
+				SharedObjects.getInstance().getTxtNomeImm().setText("");
+			}
+			if (SharedObjects.getInstance().getAttivo().equals("S")) {
+				SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.attivoIT, R.string.attivoEN));
+				SharedObjects.getInstance().getChkAttivo().setChecked(true);
+				if (SharedObjects.getInstance().getStaPartendo()) {
+					if (SharedObjects.getInstance().getTimerPartito() == null) {
+						SharedObjects.getInstance().setTimerPartito(false);
+					}
+					if (!SharedObjects.getInstance().getTimerPartito()) {
+						FaiPartireTimer();
+					}
+				}
+			} else {
+				SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.inattivoIT, R.string.inattivoEN));
+				SharedObjects.getInstance().getChkAttivo().setChecked(false);
+				if (SharedObjects.getInstance().getStaPartendo()) {
+					FermaTimer();
+				}
+			}
+			// txtTempo2.setText(u.ControllaLingua(context, R.string.tempo2IT, R.string.tempo2EN));
+			SharedObjects.getInstance().getTxtCaffe().setText(u.ControllaLingua(context, R.string.caffeIT, R.string.caffeEN));
+			SharedObjects.getInstance().getTxtCaffe().setSelected(true);
+
+			// ImpostaDimensioni();
+
+			VariabiliGlobali.getInstance().getActivityPrincipale().setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
 		} catch (Exception ignored) {
-			SharedObjects.getInstance().getTxtNomeImm().setText("");
-		}
-		if (SharedObjects.getInstance().getAttivo().equals("S")) {
-			SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.attivoIT, R.string.attivoEN));
-			SharedObjects.getInstance().getChkAttivo().setChecked(true);
-			if (SharedObjects.getInstance().getStaPartendo()) {
-				if (SharedObjects.getInstance().getTimerPartito() == null) {
-					SharedObjects.getInstance().setTimerPartito (false);
-				}
-				if (!SharedObjects.getInstance().getTimerPartito()) {
-					FaiPartireTimer();
-				}
-			}
-		} else {
-			SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.inattivoIT, R.string.inattivoEN));
-			SharedObjects.getInstance().getChkAttivo().setChecked(false);
-			if (SharedObjects.getInstance().getStaPartendo()) {
-				FermaTimer();
-			}
-		}
-		// txtTempo2.setText(u.ControllaLingua(context, R.string.tempo2IT, R.string.tempo2EN));
-		SharedObjects.getInstance().getTxtCaffe().setText(u.ControllaLingua(context, R.string.caffeIT, R.string.caffeEN));
-		SharedObjects.getInstance().getTxtCaffe().setSelected(true);
 
-		// ImpostaDimensioni();
-
-		VariabiliGlobali.getInstance().getActivityPrincipale().setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
+		}
 	}
 
 	public void FaiPartireTimer() {
