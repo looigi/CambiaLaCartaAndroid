@@ -50,14 +50,20 @@ public class Utility {
 	public String ControllaLingua(Context context, int CosaIT, int CosaEN) {
 		String Ritorno="";
 
+		if (context==null) {
+			context = VariabiliGlobali.getInstance().getContext();
+		}
+
 		if (SharedObjects.getInstance().getLingua()==null) {
 			SharedObjects.getInstance().setLingua("ITALIANO");
 		}
 
-		if (SharedObjects.getInstance().getLingua().equals("INGLESE")) {
-			Ritorno=context.getString(CosaEN);
-		} else {
-			Ritorno=context.getString(CosaIT);
+		if (context!=null) {
+			if (SharedObjects.getInstance().getLingua().equals("INGLESE")) {
+				Ritorno = context.getString(CosaEN);
+			} else {
+				Ritorno = context.getString(CosaIT);
+			}
 		}
 		
 		return Ritorno;
