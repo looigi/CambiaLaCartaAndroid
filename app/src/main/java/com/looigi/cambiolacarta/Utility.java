@@ -722,8 +722,8 @@ public class Utility {
 							}.getClass().getEnclosingMethod().getName(),
 							"Contex vuoto, Ricarico dal main");
 
-					MainActivity m = new MainActivity();
-					VariabiliGlobali.getInstance().setContext(m.getContext());
+					// MainActivity m = new MainActivity();
+					// VariabiliGlobali.getInstance().setContext(m.getContext());
 				}
 
 				DBLocale d = new DBLocale();

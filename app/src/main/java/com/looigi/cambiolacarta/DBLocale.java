@@ -117,8 +117,8 @@ public class DBLocale extends Activity {
 		if (context==null) {
 			context=SharedObjects.getInstance().getContext();
 			if (context == null) {
-				MainActivity m = new MainActivity();
-				context = m.getContext();
+				// MainActivity m = new MainActivity();
+				// context = m.getContext();
 			}
 		}
 		mDB = context.openOrCreateDatabase(DB, MODE_PRIVATE, null);
