@@ -678,20 +678,26 @@ public class Utility {
 	}
 
 	public void ImpostaImmagineDiSfondo(String NomeImm, Log l) {
-		if (NomeImm!=null) {
-			if (!NomeImm.trim().equals("")) {
-				GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-				if (gfc.EsisteFile(gfc.PrendeNomeFile(NomeImm), gfc.PrendeNomeCartella(NomeImm))) {
-					Utility u=new Utility();
+		if (SharedObjects.getInstance().getImm()==null) {
+			Notifiche.getInstance().CreaNotifica();
+		}
 
-					Bitmap myBitmap = u.getPreview(NomeImm);
-					myBitmap=u.ConverteDimensioniInterne(myBitmap, l);
-					SharedObjects.getInstance().getImm().setImageBitmap(myBitmap);
+		if (SharedObjects.getInstance().getImm()!=null) {
+			if (NomeImm != null) {
+				if (!NomeImm.trim().equals("")) {
+					GestioneFilesCartelle gfc = new GestioneFilesCartelle();
+					if (gfc.EsisteFile(gfc.PrendeNomeFile(NomeImm), gfc.PrendeNomeCartella(NomeImm))) {
+						Utility u = new Utility();
+
+						Bitmap myBitmap = u.getPreview(NomeImm);
+						myBitmap = u.ConverteDimensioniInterne(myBitmap, l);
+						SharedObjects.getInstance().getImm().setImageBitmap(myBitmap);
+					} else {
+						SharedObjects.getInstance().getImm().setBackgroundResource(R.drawable.ic_launcher);
+					}
 				} else {
 					SharedObjects.getInstance().getImm().setBackgroundResource(R.drawable.ic_launcher);
 				}
-			} else {
-				SharedObjects.getInstance().getImm().setBackgroundResource(R.drawable.ic_launcher);
 			}
 		}
 	}
