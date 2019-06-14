@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -31,8 +32,32 @@ public class bckService extends Service {
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
 
+    public interface ServiceCallbacks {
+        void doSomething();
+    }
+
+    private final IBinder binder = new LocalBinder();
+    // Registered callbacks
+    private ServiceCallbacks serviceCallbacks;
+
+    public void setCallbacks(ServiceCallbacks callbacks) {
+        serviceCallbacks = callbacks;
+    }
+
+    // Class used for the client Binder.
+    public class LocalBinder extends Binder {
+        bckService getService() {
+            // Return this instance of MyService so clients can call public methods
+            return bckService.this;
+        }
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (serviceCallbacks != null) {
+            serviceCallbacks.doSomething();
+        }
+
         v = VariabiliGlobali.getInstance().getActivityPrincipale();
         context = this;
 
@@ -119,7 +144,7 @@ public class bckService extends Service {
                 u.FermaTimer();
 
                 Intent Folder= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), SceltaCartella.class);
-                startActivity(Folder);
+                VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(Folder);
 
                 VariabiliGlobali.getInstance().getActivityPrincipale().finish();
             }
@@ -151,7 +176,7 @@ public class bckService extends Service {
                 // FermaTimerAggiornatore();
 
                 Intent Folder= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), Opzioni.class);
-                startActivity(Folder);
+                VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(Folder);
 
                 VariabiliGlobali.getInstance().getActivityPrincipale().finish();
             }
@@ -260,7 +285,7 @@ public class bckService extends Service {
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.looigi.cambiolacarta_donate"));
-                startActivity(intent);
+                VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(intent);
             }
         });
 

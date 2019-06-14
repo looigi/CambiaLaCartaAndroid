@@ -5,9 +5,11 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.WallpaperManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -15,6 +17,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
 import android.support.v4.app.NotificationCompat;
 import android.util.DisplayMetrics;
@@ -37,7 +40,54 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements bckService.ServiceCallbacks {
+	private bckService myService;
+	private boolean bound = false;
+
+	/** Callbacks for service binding, passed to bindService() */
+	private ServiceConnection serviceConnection = new ServiceConnection() {
+
+		@Override
+		public void onServiceConnected(ComponentName className, IBinder service) {
+			// cast the IBinder and get MyService instance
+			bckService.LocalBinder binder = (bckService.LocalBinder) service;
+			myService = binder.getService();
+			bound = true;
+			myService.setCallbacks(MainActivity.this); // register
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName arg0) {
+			bound = false;
+		}
+	};
+
+	/* Defined by ServiceCallbacks interface */
+	@Override
+	public void doSomething() {
+		SharedObjects.getInstance().setContext(MainActivity.this);
+		VariabiliGlobali.getInstance().setContext(MainActivity.this);
+		VariabiliGlobali.getInstance().setActivityPrincipale(MainActivity.this);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		// bind to Service
+		Intent intent = new Intent(this, bckService.class);
+		bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		// Unbind from service
+		if (bound) {
+			myService.setCallbacks(null); // unregister
+			unbindService(serviceConnection);
+			bound = false;
+		}
+	}
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
 	// private AdView mAdView;
