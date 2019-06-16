@@ -19,8 +19,8 @@ public class VariabiliGlobali {
     }
 
     public String PercorsoDIR= Environment.getExternalStorageDirectory().getPath()+"/LooigiSoft/CambiaLaCarta";
-    private Context context;
-    private Activity activityPrincipale;
+    protected Context context;
+    protected Activity activityPrincipale;
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
     private RemoteViews contentView;

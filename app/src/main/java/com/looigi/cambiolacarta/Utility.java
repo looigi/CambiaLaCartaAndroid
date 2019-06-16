@@ -1,5 +1,6 @@
 package com.looigi.cambiolacarta;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -703,6 +704,12 @@ public class Utility {
 	}
 
 	public Boolean CambiaImmagine(Boolean Cambia, int NumeroDarete) {
+		if (VariabiliGlobali.getInstance().getContext()==null ||
+				VariabiliGlobali.getInstance().getActivityPrincipale()==null ||
+				SharedObjects.getInstance().getListaImmagini() == null) {
+			RefreshActivity.getInstance().RilanciaActivity();
+		}
+
 		Boolean Ritorno = false;
 		Log l = new Log();
 
@@ -820,4 +827,5 @@ public class Utility {
 
 		return Ritorno;
 	}
+
 }

@@ -40,54 +40,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
 
-public class MainActivity extends Activity implements bckService.ServiceCallbacks {
-	private bckService myService;
-	private boolean bound = false;
-
-	/** Callbacks for service binding, passed to bindService() */
-	private ServiceConnection serviceConnection = new ServiceConnection() {
-
-		@Override
-		public void onServiceConnected(ComponentName className, IBinder service) {
-			// cast the IBinder and get MyService instance
-			bckService.LocalBinder binder = (bckService.LocalBinder) service;
-			myService = binder.getService();
-			bound = true;
-			myService.setCallbacks(MainActivity.this); // register
-		}
-
-		@Override
-		public void onServiceDisconnected(ComponentName arg0) {
-			bound = false;
-		}
-	};
-
-	/* Defined by ServiceCallbacks interface */
-	@Override
-	public void doSomething() {
-		SharedObjects.getInstance().setContext(MainActivity.this);
-		VariabiliGlobali.getInstance().setContext(MainActivity.this);
-		VariabiliGlobali.getInstance().setActivityPrincipale(MainActivity.this);
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-		// bind to Service
-		Intent intent = new Intent(this, bckService.class);
-		bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		// Unbind from service
-		if (bound) {
-			myService.setCallbacks(null); // unregister
-			unbindService(serviceConnection);
-			bound = false;
-		}
-	}
+public class MainActivity extends Activity {
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
 	// private AdView mAdView;
@@ -130,10 +83,14 @@ public class MainActivity extends Activity implements bckService.ServiceCallback
 		VariabiliGlobali.getInstance().setContext(this);
 		VariabiliGlobali.getInstance().setActivityPrincipale(this);
 
-		Intent i= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), bckService.class);
-		VariabiliGlobali.getInstance().setiServizio(i);
+		VariabiliGlobali.getInstance().setiServizio(new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), bckService.class));
 		VariabiliGlobali.getInstance().getActivityPrincipale().startService(
 				VariabiliGlobali.getInstance().getiServizio());
+
+		String AutomaticReload = getIntent().getStringExtra("AUTOMATIC RELOAD");
+		if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
+			moveTaskToBack(true);
+		}
 	}
 
 	// private void CreaBannerPubb() {

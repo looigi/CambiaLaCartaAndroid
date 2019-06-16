@@ -21,7 +21,7 @@ public class SharedObjects {
     	return instance;
     }
 
-    private Context context;
+    protected Context context;
     private String Stretch;
     private int SchermoX;
     private int SchermoY;
@@ -35,7 +35,7 @@ public class SharedObjects {
     private int QualeImmagineHaVisualizzato;
     private String ModalitaVisua;
     private String NotificaSiNo;
-    private List<String> ListaImmagini;
+    protected List<String> ListaImmagini;
     private int QuanteImm;
     private Boolean LogAttivo=true;
     private Boolean CaricaDati;

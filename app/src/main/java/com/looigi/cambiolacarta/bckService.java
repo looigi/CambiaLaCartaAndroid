@@ -12,7 +12,9 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Binder;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.CheckBox;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import com.looigi.cambiolacarta.AutoStart.service;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class bckService extends Service {
     private Activity v;
@@ -32,44 +35,21 @@ public class bckService extends Service {
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
 
-    public interface ServiceCallbacks {
-        void doSomething();
-    }
-
-    private final IBinder binder = new LocalBinder();
-    // Registered callbacks
-    private ServiceCallbacks serviceCallbacks;
-
-    public void setCallbacks(ServiceCallbacks callbacks) {
-        serviceCallbacks = callbacks;
-    }
-
-    // Class used for the client Binder.
-    public class LocalBinder extends Binder {
-        bckService getService() {
-            // Return this instance of MyService so clients can call public methods
-            return bckService.this;
-        }
-    }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (serviceCallbacks != null) {
-            serviceCallbacks.doSomething();
-        }
-
         v = VariabiliGlobali.getInstance().getActivityPrincipale();
         context = this;
 
         // DBLocale dbl=new DBLocale();
         Log l = new Log();
 
-        if (VariabiliGlobali.getInstance().getContext()==null) {
+        if (v == null || VariabiliGlobali.getInstance().getContext()==null) {
             l.ScriveLog(new Object() {
                     }.getClass().getEnclosingMethod().getName(),
                     "Contex vuoto, Ricarico dal servizio");
 
             VariabiliGlobali.getInstance().setContext(this);
+            RefreshActivity.getInstance().RilanciaActivity();
         }
 
         if (receiver != null) {
@@ -445,12 +425,27 @@ public class bckService extends Service {
         layAvanti.setLayoutParams(new LinearLayout.LayoutParams(SchermoX2, SchermoY2));
         layIndietro.setLayoutParams(new LinearLayout.LayoutParams(SchermoX2, SchermoY2));
         layOpzioni.setLayoutParams(new LinearLayout.LayoutParams(SchermoX2, SchermoY2));
+
+        RefreshActivity.getInstance().RilanciaServizio(context, v);
     }
+
 
     @Override
     public IBinder onBind(Intent intent) {
 
         return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        Log l = new Log();
+        l.ScriveLog(new Object() {
+        }.getClass().getEnclosingMethod().getName(),"Destroy service");
+        // Intent dialogIntent = new Intent(this, MainActivity.class);
+        // dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // startActivity(dialogIntent);
     }
 
     private void LeggeImmagini(DBLocale dbl) {
