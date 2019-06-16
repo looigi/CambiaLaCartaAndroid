@@ -29,9 +29,9 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class bckService extends Service {
-    private Activity v;
+    protected static Activity v;
     private PhoneUnlockedReceiver receiver;
-    private Context context;
+    protected static Context context;
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
 
@@ -48,8 +48,10 @@ public class bckService extends Service {
                     }.getClass().getEnclosingMethod().getName(),
                     "Contex vuoto, Ricarico dal servizio");
 
-            VariabiliGlobali.getInstance().setContext(this);
             RefreshActivity.getInstance().RilanciaActivity();
+            v = RefreshActivity.getAct();
+            context = RefreshActivity.getContext();
+            VariabiliGlobali.getInstance().setContext(context);
         }
 
         if (receiver != null) {

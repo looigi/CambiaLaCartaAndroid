@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
 
 public class RefreshActivity {
     private static final RefreshActivity ourInstance = new RefreshActivity();
@@ -14,6 +15,22 @@ public class RefreshActivity {
     private int conta;
     protected static Context context;
     protected static Activity act;
+
+    public static Context getContext() {
+        return context;
+    }
+
+    public static void setContext(Context context) {
+        RefreshActivity.context = context;
+    }
+
+    public static Activity getAct() {
+        return act;
+    }
+
+    public static void setAct(FragmentActivity act) {
+        RefreshActivity.act = act;
+    }
 
     public static RefreshActivity getInstance() {
         return ourInstance;
