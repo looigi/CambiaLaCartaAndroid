@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DialogMessaggio
 {
@@ -66,12 +67,30 @@ public class DialogMessaggio
             builder.setPositiveButton("Ok", onClickOK);
         }
 
-        VariabiliGlobali.getInstance().getActivityPrincipale().runOnUiThread(new Runnable() {
-            public void run() {
-             AlertDialog alert = builder.create();
-             alert.show();
+        if (VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
+            RefreshActivity.getInstance().RilanciaActivity();
+        }
+
+        if (VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
+            if (VariabiliGlobali.getInstance().getContext()!=null) {
+                Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+                        Message,
+                        Toast.LENGTH_SHORT).show();
             }
-        });
+        } else {
+            VariabiliGlobali.getInstance().getActivityPrincipale().runOnUiThread(new Runnable() {
+                public void run() {
+                    try {
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    } catch (Exception ignored) {
+                        Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+                                Message,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     private OnClickListener onClickAnnulla = new OnClickListener()

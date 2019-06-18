@@ -67,21 +67,24 @@ public class RefreshActivity {
         }
 
         if (VariabiliGlobali.getInstance().getContext()==null ||
-            VariabiliGlobali.getInstance().getActivityPrincipale()==null ||
-                SharedObjects.getInstance().getListaImmagini() == null) {
-            if (this.context!=null) {
-                VariabiliGlobali.getInstance().setContext(this.context);
+                VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
+            if (context!=null) {
+                VariabiliGlobali.getInstance().setContext(context);
             }
-            if (this.act!=null) {
-                VariabiliGlobali.getInstance().setActivityPrincipale(this.act);
+            if (act!=null) {
+                VariabiliGlobali.getInstance().setActivityPrincipale(act);
             }
             if (VariabiliGlobali.getInstance().getContext()==null ||
                     VariabiliGlobali.getInstance().getActivityPrincipale()==null ||
                     SharedObjects.getInstance().getListaImmagini() == null) {
-                Intent dialogIntent = new Intent(context, MainActivity.class);
-                dialogIntent.putExtra("AUTOMATIC RELOAD", "YES");
-                dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                act.startActivity(dialogIntent);
+                if (context != null) {
+                    Intent dialogIntent = new Intent(context, MainActivity.class);
+                    dialogIntent.putExtra("AUTOMATIC RELOAD", "YES");
+                    dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    act.startActivity(dialogIntent);
+                } else {
+                    hSelezionaRiga.postDelayed(runRiga, 60000);
+                }
             } else {
                 hSelezionaRiga.postDelayed(runRiga, 60000);
             }
