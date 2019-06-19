@@ -83,13 +83,19 @@ public class RefreshActivity {
                     dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     act.startActivity(dialogIntent);
                 } else {
-                    hSelezionaRiga.postDelayed(runRiga, 60000);
+                    if (runRiga!=null && hSelezionaRiga!=null) {
+                        hSelezionaRiga.postDelayed(runRiga, 60000);
+                    }
                 }
             } else {
-                hSelezionaRiga.postDelayed(runRiga, 60000);
+                if (runRiga!=null && hSelezionaRiga!=null) {
+                    hSelezionaRiga.postDelayed(runRiga, 60000);
+                }
             }
         } else {
-            hSelezionaRiga.postDelayed(runRiga, 60000);
+            if (runRiga!=null && hSelezionaRiga!=null) {
+                hSelezionaRiga.postDelayed(runRiga, 60000);
+            }
         }
     }
 }

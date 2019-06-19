@@ -72,6 +72,13 @@ public class MainActivity extends Activity {
         }
     } */
 
+    @Override
+	protected void onResume() {
+		super.onResume();
+
+		this.onCreate(null);
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
