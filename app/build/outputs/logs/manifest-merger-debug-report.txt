@@ -4,8 +4,8 @@ ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\Andr
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:10:6-44:12
-MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\340bc3ff9f28d12628c0c6892032005f\AndroidManifest.xml:17:1-27:12
+MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:10:6-44:12
+MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\cdfd3650a0ba2cb2fc5e98f6a5f12151\AndroidManifest.xml:17:1-27:12
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
@@ -57,10 +57,10 @@ ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\Andr
 		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:20-73
 application
 ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:16:5-72:19
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:39:5-43:19
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:39:5-43:19
-MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\340bc3ff9f28d12628c0c6892032005f\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\340bc3ff9f28d12628c0c6892032005f\AndroidManifest.xml:25:5-20
+MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:39:5-43:19
+MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:39:5-43:19
+MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\cdfd3650a0ba2cb2fc5e98f6a5f12151\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\cdfd3650a0ba2cb2fc5e98f6a5f12151\AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:20:9-41
 	android:largeHeap
@@ -141,14 +141,14 @@ uses-sdk
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:37:5-42
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:37:5-42
-MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\340bc3ff9f28d12628c0c6892032005f\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\340bc3ff9f28d12628c0c6892032005f\AndroidManifest.xml:21:5-23:54
+MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:37:5-42
+MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:37:5-42
+MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\cdfd3650a0ba2cb2fc5e98f6a5f12151\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:24.1.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\cdfd3650a0ba2cb2fc5e98f6a5f12151\AndroidManifest.xml:21:5-23:54
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.android.support:support-v4:24.1.1] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\340bc3ff9f28d12628c0c6892032005f\AndroidManifest.xml:23:9-51
+		ADDED from [com.android.support:support-v4:24.1.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\cdfd3650a0ba2cb2fc5e98f6a5f12151\AndroidManifest.xml:23:9-51
 	android:targetSdkVersion
 		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
@@ -158,24 +158,24 @@ INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\A
 		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 activity#org.acra.dialog.CrashReportDialog
-ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:40:9-241
+ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:40:9-241
 	android:process
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:40:172-195
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:40:172-195
 	android:excludeFromRecents
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:40:19-52
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:40:19-52
 	android:launchMode
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:40:87-122
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:40:87-122
 	android:theme
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:40:196-239
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:40:196-239
 	android:finishOnTaskLaunch
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:40:53-86
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:40:53-86
 	android:name
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:40:123-171
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:40:123-171
 service#org.acra.sender.SenderService
-ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:42:9-113
+ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:42:9-113
 	android:process
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:42:88-111
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:42:88-111
 	android:exported
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:42:18-42
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:42:18-42
 	android:name
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Looigi\.gradle\caches\transforms-2\files-2.1\4010779c2d698421ff143657f10ffd80\AndroidManifest.xml:42:43-87
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\d32ef3b62a82164f214c8ce96e3adf70\AndroidManifest.xml:42:43-87

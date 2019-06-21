@@ -43,7 +43,7 @@ public class bckService extends Service {
         // DBLocale dbl=new DBLocale();
         Log l = new Log();
 
-        if (v == null || VariabiliGlobali.getInstance().getContext()==null) {
+        if (v == null || VariabiliGlobali.getInstance().getContext()==null || context==null) {
             l.ScriveLog(new Object() {
                     }.getClass().getEnclosingMethod().getName(),
                     "Contex vuoto, Ricarico dal servizio");
