@@ -17,7 +17,6 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
-import android.support.v4.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 import android.widget.RemoteViews;
@@ -624,9 +623,9 @@ public class Utility {
 						Utility u = new Utility();
 						Boolean Ritorno=u.CambiaImmagine(true, 0);
 						if (!Ritorno) {
-							Toast.makeText(VariabiliGlobali.getInstance().getContext(),
-									u.ControllaLingua(VariabiliGlobali.getInstance().getContext(),
-											R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
+							// Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+							// 		u.ControllaLingua(VariabiliGlobali.getInstance().getContext(),
+							// 				R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
 						}
 
 						timer.cancel();

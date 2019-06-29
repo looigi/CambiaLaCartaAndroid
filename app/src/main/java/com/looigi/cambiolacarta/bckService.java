@@ -67,6 +67,7 @@ public class bckService extends Service {
         SharedObjects.getInstance().setAudioManager((AudioManager)getSystemService(context.AUDIO_SERVICE));
 
         if (SharedObjects.getInstance().getDimeWallWidthOriginale()==0 && SharedObjects.getInstance().getDimeWallHeightOriginale()==0) {
+            if (context == null) { context = this; }
             WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
             SharedObjects.getInstance().setDimeWallWidthOriginale (wallpaperManager.getDesiredMinimumWidth());
             SharedObjects.getInstance().setDimeWallHeightOriginale (wallpaperManager.getDesiredMinimumHeight());
@@ -182,16 +183,16 @@ public class bckService extends Service {
                     Boolean Ritorno=u.CambiaImmagine(false,0);
 
                     if (Ritorno) {
-                        Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context,
-                                R.string.immimpIT, R.string.immimpEN),
-                                Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context,
+                        //         R.string.immimpIT, R.string.immimpEN),
+                        //         Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(),
-                                u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN),
-                                Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(),
+                        //         u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN),
+                        //         Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context, R.string.noimmimpIT, R.string.noimmimpEN), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context, R.string.noimmimpIT, R.string.noimmimpEN), Toast.LENGTH_SHORT).show();
                 }
             }
         });

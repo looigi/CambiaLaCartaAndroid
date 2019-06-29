@@ -15,6 +15,7 @@ import java.util.List;
 public class Log {
 	private String NomeFile="log.csv";
 	private Thread tScoda=null;
+	private boolean FaiLog = false;
 	private final List<String> listaCompleta = Collections.synchronizedList(new ArrayList<String>());
 
 	public void PulisceFileDiLog() {
@@ -99,20 +100,22 @@ public class Log {
 	}
 
 	public void ScriveLog(String DaDove, String Messaggio) {
-		CreaCartella(VariabiliGlobali.getInstance().PercorsoDIR);
+		if (FaiLog) {
+			CreaCartella(VariabiliGlobali.getInstance().PercorsoDIR);
 
-		String Datella="";
-		Datella=PrendeDataAttuale()+";"+PrendeOraAttuale()+";***DataScrittura***;***Differenza***;" + DaDove.replace(";", "_") +";";
+			String Datella = "";
+			Datella = PrendeDataAttuale() + ";" + PrendeOraAttuale() + ";***DataScrittura***;***Differenza***;" + DaDove.replace(";", "_") + ";";
 
-		String sBody=Datella+Messaggio.replace(";", "_");
+			String sBody = Datella + Messaggio.replace(";", "_");
 
-		synchronized (listaCompleta) {
-			listaCompleta.add(sBody);
+			synchronized (listaCompleta) {
+				listaCompleta.add(sBody);
 
-			if (tScoda == null) {
-				tScoda = new ScodaMessaggiDebug();
-				tScoda.setPriority(Thread.MIN_PRIORITY);
-				tScoda.start();
+				if (tScoda == null) {
+					tScoda = new ScodaMessaggiDebug();
+					tScoda.setPriority(Thread.MIN_PRIORITY);
+					tScoda.start();
+				}
 			}
 		}
 	}

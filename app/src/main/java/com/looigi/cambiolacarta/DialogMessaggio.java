@@ -73,9 +73,9 @@ public class DialogMessaggio
 
         if (VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
             if (VariabiliGlobali.getInstance().getContext()!=null) {
-                Toast.makeText(VariabiliGlobali.getInstance().getContext(),
-                        Message,
-                        Toast.LENGTH_SHORT).show();
+                // Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+                //         Message,
+                //         Toast.LENGTH_SHORT).show();
             }
         } else {
             VariabiliGlobali.getInstance().getActivityPrincipale().runOnUiThread(new Runnable() {
@@ -84,9 +84,9 @@ public class DialogMessaggio
                         AlertDialog alert = builder.create();
                         alert.show();
                     } catch (Exception ignored) {
-                        Toast.makeText(VariabiliGlobali.getInstance().getContext(),
-                                Message,
-                                Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+                        //         Message,
+                        //         Toast.LENGTH_SHORT).show();
                     }
                 }
             });
