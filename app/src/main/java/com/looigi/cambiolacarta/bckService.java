@@ -77,25 +77,56 @@ public class bckService extends Service {
         soundPoolMap = new HashMap<Integer, Integer>();
         soundPoolMap.put(1, soundPool.load(this, R.raw.premuto, 1));
 
-        SharedObjects.getInstance().setTxtPercorso((TextView) v.findViewById(R.id.txtPercorso));
-        SharedObjects.getInstance().setTxtNumImm((TextView) v.findViewById(R.id.txtNumImm));
-        SharedObjects.getInstance().setTxtSceltaCartella((TextView) v.findViewById(R.id.txtSceltaCartella));
-        SharedObjects.getInstance().setTxtCambiaSubito((TextView) v.findViewById(R.id.txtCambiaSubito));
-        SharedObjects.getInstance().setTxtListaImm((TextView) v.findViewById(R.id.txtListaImm));
-        SharedObjects.getInstance().setTxtOpzioni((TextView) v.findViewById(R.id.txtOpzioni));
-        SharedObjects.getInstance().setTxtTipoCambio((TextView) v.findViewById(R.id.txtTipoCambio));
-        SharedObjects.getInstance().setTxtMinuti((TextView) v.findViewById(R.id.txtMinuti));
-        SharedObjects.getInstance().setTxtImmVisua((TextView) v.findViewById(R.id.txtImmVisualizzata));
-        SharedObjects.getInstance().setTxtNomeImm((TextView) v.findViewById(R.id.txtNomeImm));
-        SharedObjects.getInstance().setTxtProssima((TextView) v.findViewById(R.id.txtProssima));
-        SharedObjects.getInstance().setTxtPrecedente((TextView) v.findViewById(R.id.txtPrecedente));
-        SharedObjects.getInstance().setTxtTempo((TextView) v.findViewById(R.id.txtTempo));
-        SharedObjects.getInstance().setTxtCaffe((TextView) v.findViewById(R.id.txtCaffe));
+        ImageView imgSceltaFolder=null;
+        ImageView imgRefresh=null;
+        ImageView imgOpzioni=null;
+        ImageView imgCambia=null;
+        LinearLayout layLista=null;
+        ImageView imgLista=null;
+        ImageView imgProssima=null;
+        ImageView imgPrec=null;
+        ImageView imgCaffe=null;
+        ImageView imgItaliano=null;
+        ImageView imgInglese=null;
+        ImageView imgApreInfo=null;
+        ImageView imgChiudeInfo=null;
 
-        // txtTempo2=(TextView) findViewById(R.v.idv..txtTempo2);
-        SharedObjects.getInstance().setChkAttivo((CheckBox) v.findViewById(R.id.chkAttivo));
-        SharedObjects.getInstance().setImm((ImageView) v.findViewById(R.id.imgImmagine));
+        if (v!=null) {
+            SharedObjects.getInstance().setTxtPercorso((TextView) v.findViewById(R.id.txtPercorso));
+            SharedObjects.getInstance().setTxtNumImm((TextView) v.findViewById(R.id.txtNumImm));
+            SharedObjects.getInstance().setTxtSceltaCartella((TextView) v.findViewById(R.id.txtSceltaCartella));
+            SharedObjects.getInstance().setTxtCambiaSubito((TextView) v.findViewById(R.id.txtCambiaSubito));
+            SharedObjects.getInstance().setTxtListaImm((TextView) v.findViewById(R.id.txtListaImm));
+            SharedObjects.getInstance().setTxtOpzioni((TextView) v.findViewById(R.id.txtOpzioni));
+            SharedObjects.getInstance().setTxtTipoCambio((TextView) v.findViewById(R.id.txtTipoCambio));
+            SharedObjects.getInstance().setTxtMinuti((TextView) v.findViewById(R.id.txtMinuti));
+            SharedObjects.getInstance().setTxtImmVisua((TextView) v.findViewById(R.id.txtImmVisualizzata));
+            SharedObjects.getInstance().setTxtNomeImm((TextView) v.findViewById(R.id.txtNomeImm));
+            SharedObjects.getInstance().setTxtProssima((TextView) v.findViewById(R.id.txtProssima));
+            SharedObjects.getInstance().setTxtPrecedente((TextView) v.findViewById(R.id.txtPrecedente));
+            SharedObjects.getInstance().setTxtTempo((TextView) v.findViewById(R.id.txtTempo));
+            SharedObjects.getInstance().setTxtCaffe((TextView) v.findViewById(R.id.txtCaffe));
 
+            // txtTempo2=(TextView) findViewById(R.v.idv..txtTempo2);
+            SharedObjects.getInstance().setChkAttivo((CheckBox) v.findViewById(R.id.chkAttivo));
+            SharedObjects.getInstance().setImm((ImageView) v.findViewById(R.id.imgImmagine));
+
+            SharedObjects.getInstance().setA1(v.getWindowManager());
+
+            imgSceltaFolder=(ImageView) v.findViewById(R.id.imgSceltaCartella);
+            imgRefresh=(ImageView) v.findViewById(R.id.imgRefresh);
+            imgOpzioni=(ImageView) v.findViewById(R.id.imgAOpzioni);
+            imgCambia=(ImageView) v.findViewById(R.id.imgCambiaSubito);
+            layLista=(LinearLayout) v.findViewById(R.id.layLista);
+            imgLista=(ImageView) v.findViewById(R.id.imgListaImm);
+            imgProssima=(ImageView) v.findViewById(R.id.imgProssima);
+            imgPrec=(ImageView) v.findViewById(R.id.imgIndietro);
+            imgCaffe=(ImageView) v.findViewById(R.id.imgCaffe);
+            imgItaliano=(ImageView) v.findViewById(R.id.imgItaliano);
+            imgInglese=(ImageView) v.findViewById(R.id.imgInglese);
+            imgApreInfo=(ImageView) v.findViewById(R.id.imgApreInfo);
+            imgChiudeInfo=(ImageView) v.findViewById(R.id.imgChiudeInfo);
+        }
         //pIT=R.string.percorsoIT;
         //pEN=R.string.percorsoEN;
         //nIT=R.string.numimmIT;
@@ -104,7 +135,6 @@ public class bckService extends Service {
         // CreaBannerPubb();
 
         DisplayMetrics metrics = new DisplayMetrics();
-        SharedObjects.getInstance().setA1(v.getWindowManager());
         SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
 
         SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
@@ -115,7 +145,6 @@ public class bckService extends Service {
         dbl.LeggeOpzioni(context);
         dbl.LeggePercorsi(context);
 
-        ImageView imgSceltaFolder=(ImageView) v.findViewById(R.id.imgSceltaCartella);
         imgSceltaFolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,7 +162,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgRefresh=(ImageView) v.findViewById(R.id.imgRefresh);
         imgRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,7 +177,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgOpzioni=(ImageView) v.findViewById(R.id.imgAOpzioni);
         imgOpzioni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,7 +192,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgCambia=(ImageView) v.findViewById(R.id.imgCambiaSubito);
         imgCambia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,10 +223,8 @@ public class bckService extends Service {
             }
         });
 
-        LinearLayout layLista=(LinearLayout) v.findViewById(R.id.layLista);
         layLista.setVisibility(LinearLayout.GONE);
 
-        ImageView imgLista=(ImageView) v.findViewById(R.id.imgListaImm);
         imgLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,7 +233,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgProssima=(ImageView) v.findViewById(R.id.imgProssima);
         imgProssima.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,7 +256,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgPrec=(ImageView) v.findViewById(R.id.imgIndietro);
         imgPrec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -257,7 +279,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgCaffe=(ImageView) v.findViewById(R.id.imgCaffe);
         imgCaffe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -295,7 +316,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgItaliano=(ImageView) v.findViewById(R.id.imgItaliano);
         imgItaliano.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -313,7 +333,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgInglese=(ImageView) v.findViewById(R.id.imgInglese);
         imgInglese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -331,7 +350,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgApreInfo=(ImageView) v.findViewById(R.id.imgApreInfo);
         imgApreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -345,7 +363,6 @@ public class bckService extends Service {
             }
         });
 
-        ImageView imgChiudeInfo=(ImageView) v.findViewById(R.id.imgChiudeInfo);
         imgChiudeInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -368,7 +385,9 @@ public class bckService extends Service {
             service.ChiudiMaschera=false;
         }
         if (service.ChiudiMaschera) {
-            v.moveTaskToBack(true);
+            if (v!=null) {
+                v.moveTaskToBack(true);
+            }
             service.ChiudiMaschera=false;
         }
 
