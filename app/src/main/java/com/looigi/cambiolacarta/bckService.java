@@ -135,7 +135,9 @@ public class bckService extends Service {
         // CreaBannerPubb();
 
         DisplayMetrics metrics = new DisplayMetrics();
-        SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
+        if (SharedObjects.getInstance().getA1() != null) {
+            SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
+        }
 
         SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
         SharedObjects.getInstance().setSchermoY(metrics.heightPixels);
