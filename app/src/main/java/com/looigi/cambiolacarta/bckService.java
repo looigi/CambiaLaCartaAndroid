@@ -126,290 +126,291 @@ public class bckService extends Service {
             imgInglese=(ImageView) v.findViewById(R.id.imgInglese);
             imgApreInfo=(ImageView) v.findViewById(R.id.imgApreInfo);
             imgChiudeInfo=(ImageView) v.findViewById(R.id.imgChiudeInfo);
-        }
-        //pIT=R.string.percorsoIT;
-        //pEN=R.string.percorsoEN;
-        //nIT=R.string.numimmIT;
-        //nEN=R.string.numimmEN;
-//
-        // CreaBannerPubb();
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        if (SharedObjects.getInstance().getA1() != null) {
-            SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
-        }
+            //pIT=R.string.percorsoIT;
+            //pEN=R.string.percorsoEN;
+            //nIT=R.string.numimmIT;
+            //nEN=R.string.numimmEN;
+    //
+            // CreaBannerPubb();
 
-        SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
-        SharedObjects.getInstance().setSchermoY(metrics.heightPixels);
-
-        DBLocale dbl=new DBLocale();
-        dbl.CreaDB(context);
-        dbl.LeggeOpzioni(context);
-        dbl.LeggePercorsi(context);
-
-        imgSceltaFolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                // FermaTimerAggiornatore();
-                Utility u = new Utility();
-                u.FermaTimer();
-
-                Intent Folder= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), SceltaCartella.class);
-                VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(Folder);
-
-                VariabiliGlobali.getInstance().getActivityPrincipale().finish();
+            DisplayMetrics metrics = new DisplayMetrics();
+            if (SharedObjects.getInstance().getA1() != null) {
+                SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
             }
-        });
 
-        imgRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
+            SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
+            SharedObjects.getInstance().setSchermoY(metrics.heightPixels);
 
-                // FermaTimerAggiornatore();
-                Utility u = new Utility();
-                u.FermaTimer();
+            DBLocale dbl=new DBLocale();
+            dbl.CreaDB(context);
+            dbl.LeggeOpzioni(context);
+            dbl.LeggePercorsi(context);
 
-                GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-                gfc.LeggeImmagini(context, SharedObjects.getInstance().getOrigine());
-            }
-        });
+            imgSceltaFolder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
 
-        imgOpzioni.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                // FermaTimerAggiornatore();
-
-                Intent Folder= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), Opzioni.class);
-                VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(Folder);
-
-                VariabiliGlobali.getInstance().getActivityPrincipale().finish();
-            }
-        });
-
-        imgCambia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-                Utility u=new Utility();
-
-                // CreaBannerPubb();
-                // MinutiPassati=0;
-	        	/* if (MinutiPassati<1) {
-	        		MinutiPassati=1;
-	        	} */
-
-                if (SharedObjects.getInstance().getQuanteImm()>0) {
-                    Boolean Ritorno=u.CambiaImmagine(false,0);
-
-                    if (Ritorno) {
-                        // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context,
-                        //         R.string.immimpIT, R.string.immimpEN),
-                        //         Toast.LENGTH_SHORT).show();
-                    } else {
-                        // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(),
-                        //         u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN),
-                        //         Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context, R.string.noimmimpIT, R.string.noimmimpEN), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        layLista.setVisibility(LinearLayout.GONE);
-
-        imgLista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-            }
-        });
-
-        imgProssima.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log l = new Log();
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                Utility u = new Utility();
-                int imm = u.PrendeNuovoNumero("Avanti", l);
-
-                if (imm>=0) {
-                    SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
-
-                    DBLocale dbl = new DBLocale();
-                    dbl.ScriveOpzioni(context);
-
-                    u.ScriveInfo(l);
-
-                    u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
-                }
-            }
-        });
-
-        imgPrec.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-                Log l = new Log();
-
-                Utility u = new Utility();
-                int imm = u.PrendeNuovoNumero("Indietro", l);
-
-                if (imm>=0) {
-                    SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
-
-                    DBLocale dbl = new DBLocale();
-                    dbl.ScriveOpzioni(context);
-
-                    u.ScriveInfo(l);
-
-                    u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
-                }
-            }
-        });
-
-        imgCaffe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.looigi.cambiolacarta_donate"));
-                VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(intent);
-            }
-        });
-
-        SharedObjects.getInstance().getChkAttivo().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log l = new Log();
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                Utility u = new Utility();
-                if (SharedObjects.getInstance().getAttivo().equals("S")) {
-                    SharedObjects.getInstance().setAttivo("N");
+                    // FermaTimerAggiornatore();
+                    Utility u = new Utility();
                     u.FermaTimer();
-                } else {
-                    SharedObjects.getInstance().setAttivo("S");
-                    u.FaiPartireTimer();
+
+                    Intent Folder= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), SceltaCartella.class);
+                    VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(Folder);
+
+                    VariabiliGlobali.getInstance().getActivityPrincipale().finish();
                 }
+            });
 
-                DBLocale dbl=new DBLocale();
-                dbl.ScriveOpzioni(context);
+            imgRefresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
 
-                u.ScriveInfo(l);
+                    // FermaTimerAggiornatore();
+                    Utility u = new Utility();
+                    u.FermaTimer();
+
+                    GestioneFilesCartelle gfc=new GestioneFilesCartelle();
+                    gfc.LeggeImmagini(context, SharedObjects.getInstance().getOrigine());
+                }
+            });
+
+            imgOpzioni.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    // FermaTimerAggiornatore();
+
+                    Intent Folder= new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), Opzioni.class);
+                    VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(Folder);
+
+                    VariabiliGlobali.getInstance().getActivityPrincipale().finish();
+                }
+            });
+
+            imgCambia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+                    Utility u=new Utility();
+
+                    // CreaBannerPubb();
+                    // MinutiPassati=0;
+                    /* if (MinutiPassati<1) {
+                        MinutiPassati=1;
+                    } */
+
+                    if (SharedObjects.getInstance().getQuanteImm()>0) {
+                        Boolean Ritorno=u.CambiaImmagine(false,0);
+
+                        if (Ritorno) {
+                            // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context,
+                            //         R.string.immimpIT, R.string.immimpEN),
+                            //         Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(),
+                            //         u.ControllaLingua(context, R.string.errimmimpIT, R.string.errimmimpEN),
+                            //         Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        // Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), u.ControllaLingua(context, R.string.noimmimpIT, R.string.noimmimpEN), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            layLista.setVisibility(LinearLayout.GONE);
+
+            imgLista.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+                }
+            });
+
+            imgProssima.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log l = new Log();
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    Utility u = new Utility();
+                    int imm = u.PrendeNuovoNumero("Avanti", l);
+
+                    if (imm>=0) {
+                        SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
+
+                        DBLocale dbl = new DBLocale();
+                        dbl.ScriveOpzioni(context);
+
+                        u.ScriveInfo(l);
+
+                        u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+                    }
+                }
+            });
+
+            imgPrec.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+                    Log l = new Log();
+
+                    Utility u = new Utility();
+                    int imm = u.PrendeNuovoNumero("Indietro", l);
+
+                    if (imm>=0) {
+                        SharedObjects.getInstance().setQualeImmagineHaVisualizzato(imm);
+
+                        DBLocale dbl = new DBLocale();
+                        dbl.ScriveOpzioni(context);
+
+                        u.ScriveInfo(l);
+
+                        u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+                    }
+                }
+            });
+
+            imgCaffe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.looigi.cambiolacarta_donate"));
+                    VariabiliGlobali.getInstance().getActivityPrincipale().startActivity(intent);
+                }
+            });
+
+            SharedObjects.getInstance().getChkAttivo().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log l = new Log();
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    Utility u = new Utility();
+                    if (SharedObjects.getInstance().getAttivo().equals("S")) {
+                        SharedObjects.getInstance().setAttivo("N");
+                        u.FermaTimer();
+                    } else {
+                        SharedObjects.getInstance().setAttivo("S");
+                        u.FaiPartireTimer();
+                    }
+
+                    DBLocale dbl=new DBLocale();
+                    dbl.ScriveOpzioni(context);
+
+                    u.ScriveInfo(l);
+                }
+            });
+
+            imgItaliano.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log l = new Log();
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    SharedObjects.getInstance().setLingua("ITALIANO");
+
+                    DBLocale dbl=new DBLocale();
+                    dbl.ScriveOpzioni(context);
+
+                    Utility u = new Utility();
+                    u.ScriveInfo(l);
+                }
+            });
+
+            imgInglese.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log l = new Log();
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    SharedObjects.getInstance().setLingua("INGLESE");
+
+                    DBLocale dbl=new DBLocale();
+                    dbl.ScriveOpzioni(context);
+
+                    Utility u = new Utility();
+                    u.ScriveInfo(l);
+                }
+            });
+
+            imgApreInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    LinearLayout layInfo=(LinearLayout) v.findViewById(R.id.layInfo);
+                    layInfo.setVisibility(LinearLayout.VISIBLE);
+                    LinearLayout layApreInfo=(LinearLayout) v.findViewById(R.id.layApriInfo);
+                    layApreInfo.setVisibility(LinearLayout.GONE);
+                }
+            });
+
+            imgChiudeInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SuonAudio s=new SuonAudio();
+                    s.SuonaAudio(1, soundPool);
+
+                    LinearLayout layInfo=(LinearLayout) v.findViewById(R.id.layInfo);
+                    layInfo.setVisibility(LinearLayout.GONE);
+                    LinearLayout layApreInfo=(LinearLayout) v.findViewById(R.id.layApriInfo);
+                    layApreInfo.setVisibility(LinearLayout.VISIBLE);
+                }
+            });
+
+            ImpostaDimensioni();
+
+            Notifiche.getInstance().CreaNotifica();
+            Notifiche.getInstance().AggiornaNotifica();
+
+            if (service.ChiudiMaschera==null) {
+                service.ChiudiMaschera=false;
             }
-        });
+            if (service.ChiudiMaschera) {
+                if (v!=null) {
+                    v.moveTaskToBack(true);
+                }
+                service.ChiudiMaschera=false;
+            }
 
-        imgItaliano.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log l = new Log();
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                SharedObjects.getInstance().setLingua("ITALIANO");
-
-                DBLocale dbl=new DBLocale();
-                dbl.ScriveOpzioni(context);
-
+            SharedObjects.getInstance().setStaPartendo(true);
+            if (SharedObjects.getInstance().getCaricaDati()==null) {
+                SharedObjects.getInstance().setCaricaDati(false);
+            }
+            if (SharedObjects.getInstance().getCaricaDati()) {
+                SharedObjects.getInstance().setCaricaDati(false);
+                GestioneFilesCartelle gfc=new GestioneFilesCartelle();
+                gfc.LeggeImmagini(VariabiliGlobali.getInstance().getContext(),
+                        SharedObjects.getInstance().getOrigine());
+            } else {
+                LeggeImmagini(dbl);
                 Utility u = new Utility();
                 u.ScriveInfo(l);
             }
-        });
-
-        imgInglese.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log l = new Log();
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                SharedObjects.getInstance().setLingua("INGLESE");
-
-                DBLocale dbl=new DBLocale();
-                dbl.ScriveOpzioni(context);
-
-                Utility u = new Utility();
-                u.ScriveInfo(l);
-            }
-        });
-
-        imgApreInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                LinearLayout layInfo=(LinearLayout) v.findViewById(R.id.layInfo);
-                layInfo.setVisibility(LinearLayout.VISIBLE);
-                LinearLayout layApreInfo=(LinearLayout) v.findViewById(R.id.layApriInfo);
-                layApreInfo.setVisibility(LinearLayout.GONE);
-            }
-        });
-
-        imgChiudeInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SuonAudio s=new SuonAudio();
-                s.SuonaAudio(1, soundPool);
-
-                LinearLayout layInfo=(LinearLayout) v.findViewById(R.id.layInfo);
-                layInfo.setVisibility(LinearLayout.GONE);
-                LinearLayout layApreInfo=(LinearLayout) v.findViewById(R.id.layApriInfo);
-                layApreInfo.setVisibility(LinearLayout.VISIBLE);
-            }
-        });
-
-        ImpostaDimensioni();
-
-        Notifiche.getInstance().CreaNotifica();
-        Notifiche.getInstance().AggiornaNotifica();
-
-        if (service.ChiudiMaschera==null) {
-            service.ChiudiMaschera=false;
-        }
-        if (service.ChiudiMaschera) {
-            if (v!=null) {
-                v.moveTaskToBack(true);
-            }
-            service.ChiudiMaschera=false;
+            SharedObjects.getInstance().setStaPartendo(false);
         }
 
-        SharedObjects.getInstance().setStaPartendo(true);
-        if (SharedObjects.getInstance().getCaricaDati()==null) {
-            SharedObjects.getInstance().setCaricaDati(false);
-        }
-        if (SharedObjects.getInstance().getCaricaDati()) {
-            SharedObjects.getInstance().setCaricaDati(false);
-            GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-            gfc.LeggeImmagini(VariabiliGlobali.getInstance().getContext(),
-                    SharedObjects.getInstance().getOrigine());
-        } else {
-            LeggeImmagini(dbl);
-            Utility u = new Utility();
-            u.ScriveInfo(l);
-        }
-        SharedObjects.getInstance().setStaPartendo(false);
-
-        return Service.START_STICKY;
+        return Service.START_NOT_STICKY;
     }
 
     private void ImpostaDimensioni() {
