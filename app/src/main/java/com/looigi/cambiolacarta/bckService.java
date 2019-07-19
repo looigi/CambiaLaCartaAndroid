@@ -149,7 +149,7 @@ public class bckService extends Service {
 
             imgSceltaFolder.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
 
@@ -166,7 +166,7 @@ public class bckService extends Service {
 
             imgRefresh.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
 
@@ -181,7 +181,7 @@ public class bckService extends Service {
 
             imgOpzioni.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
 
@@ -196,7 +196,7 @@ public class bckService extends Service {
 
             imgCambia.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
                     Utility u=new Utility();
@@ -229,7 +229,7 @@ public class bckService extends Service {
 
             imgLista.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
                 }
@@ -237,7 +237,7 @@ public class bckService extends Service {
 
             imgProssima.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     Log l = new Log();
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
@@ -260,7 +260,7 @@ public class bckService extends Service {
 
             imgPrec.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
                     Log l = new Log();
@@ -283,7 +283,7 @@ public class bckService extends Service {
 
             imgCaffe.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
 
@@ -297,7 +297,7 @@ public class bckService extends Service {
 
             SharedObjects.getInstance().getChkAttivo().setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     Log l = new Log();
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
@@ -320,7 +320,7 @@ public class bckService extends Service {
 
             imgItaliano.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     Log l = new Log();
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
@@ -337,7 +337,7 @@ public class bckService extends Service {
 
             imgInglese.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     Log l = new Log();
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
@@ -354,7 +354,7 @@ public class bckService extends Service {
 
             imgApreInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
 
@@ -367,7 +367,7 @@ public class bckService extends Service {
 
             imgChiudeInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View vv) {
                     SuonAudio s=new SuonAudio();
                     s.SuonaAudio(1, soundPool);
 

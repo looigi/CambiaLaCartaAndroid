@@ -96,6 +96,9 @@ public class MainActivity extends Activity {
 
 		String AutomaticReload = getIntent().getStringExtra("AUTOMATIC RELOAD");
 		if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
+			Permessi pp = new Permessi();
+			pp.ControllaPermessi(this);
+
 			moveTaskToBack(true);
 		}
 	}

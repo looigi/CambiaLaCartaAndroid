@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 17
+    compileSdkVersion 26
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.looigi.cambiolacarta"
         minSdkVersion 17
-        targetSdkVersion 17
+        targetSdkVersion 26
 
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true

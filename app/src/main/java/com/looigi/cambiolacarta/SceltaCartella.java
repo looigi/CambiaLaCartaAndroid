@@ -47,7 +47,7 @@ public class SceltaCartella extends Activity {
 
 		Percorso=SharedObjects.getInstance().getOrigine();
 		if (Percorso.trim().equals("")) {
-			Percorso=Environment.getExternalStorageDirectory().getPath();
+			Percorso=Environment.getExternalStorageDirectory().getAbsolutePath();
 		}
 		TextView tp=(TextView) findViewById(R.id.txtPercorsoSC);
 		tp.setText(Percorso);
@@ -133,7 +133,6 @@ public class SceltaCartella extends Activity {
 		});
 
 		CaricaFolder(Percorso);
-
 	}
 
 	@Override

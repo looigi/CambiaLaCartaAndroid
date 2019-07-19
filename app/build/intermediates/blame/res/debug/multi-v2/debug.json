@@ -91,23 +91,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Looigi\\.gradle\\caches\\transforms-2\\files-2.1\\4010779c2d698421ff143657f10ffd80\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "6",
-                        "startColumns": "4",
-                        "startOffsets": "272",
-                        "endColumns": "105",
-                        "endOffsets": "373"
-                    },
-                    "to": {
-                        "startLines": "45",
-                        "startColumns": "4",
-                        "startOffsets": "2373",
-                        "endColumns": "105",
-                        "endOffsets": "2474"
-                    }
-                },
-                {
                     "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "6,15",
@@ -141,6 +124,23 @@
                         "startOffsets": "55,96,135,181,228",
                         "endColumns": "40,38,45,46,50",
                         "endOffsets": "91,130,176,223,274"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Luigi Pecce\\.gradle\\caches\\transforms-2\\files-2.1\\66e6c01ca3e7671a2398ea6c3d578e35\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "272",
+                        "endColumns": "105",
+                        "endOffsets": "373"
+                    },
+                    "to": {
+                        "startLines": "45",
+                        "startColumns": "4",
+                        "startOffsets": "2373",
+                        "endColumns": "105",
+                        "endOffsets": "2474"
                     }
                 },
                 {
