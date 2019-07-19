@@ -622,11 +622,11 @@ public class Utility {
 
 						Utility u = new Utility();
 						Boolean Ritorno=u.CambiaImmagine(true, 0);
-						if (!Ritorno) {
+						// if (!Ritorno) {
 							// Toast.makeText(VariabiliGlobali.getInstance().getContext(),
 							// 		u.ControllaLingua(VariabiliGlobali.getInstance().getContext(),
 							// 				R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
-						}
+						// }
 
 						timer.cancel();
 						timer=null;
@@ -818,9 +818,9 @@ public class Utility {
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
 					"Cambio immagine: Setto flag cambiata immagine = true.");
-
+//
 			VariabiliGlobali.getInstance().setCambiataImmagine(true);
-
+//
 			Ritorno = true;
 		}
 

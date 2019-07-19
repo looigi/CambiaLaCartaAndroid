@@ -29,9 +29,9 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class bckService extends Service {
-    protected static Activity v;
-    private PhoneUnlockedReceiver receiver;
-    protected static Context context;
+    protected Activity v;
+    protected static PhoneUnlockedReceiver receiver;
+    protected Context context;
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
 
@@ -54,9 +54,11 @@ public class bckService extends Service {
             VariabiliGlobali.getInstance().setContext(context);
         }
 
-        if (receiver != null) {
+        try {
             unregisterReceiver(receiver);
             receiver = null;
+        } catch (Exception ignored) {
+
         }
         receiver = new PhoneUnlockedReceiver();
         IntentFilter fRecv = new IntentFilter();
@@ -407,6 +409,10 @@ public class bckService extends Service {
                 Utility u = new Utility();
                 u.ScriveInfo(l);
             }
+
+            Utility u = new Utility();
+            Boolean Ritorno=u.CambiaImmagine(true, 0);
+
             SharedObjects.getInstance().setStaPartendo(false);
         }
 
