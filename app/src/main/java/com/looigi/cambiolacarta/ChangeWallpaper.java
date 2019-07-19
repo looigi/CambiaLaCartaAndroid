@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class ChangeWallpaper {
@@ -42,6 +44,16 @@ public class ChangeWallpaper {
 						"Cambio immagine: Settaggio bitmap.");
 
 				wallpaperManager.setBitmap(setWallToDevice);
+
+				// set wallpaper lock screen
+				ByteArrayOutputStream bos = new ByteArrayOutputStream();
+				setWallToDevice.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+				byte[] bitmapdata = bos.toByteArray();
+				ByteArrayInputStream bs = new ByteArrayInputStream(bitmapdata);
+
+				WallpaperManager.getInstance(VariabiliGlobali.getInstance().getContext())
+						.setStream(bs, null, true, WallpaperManager.FLAG_LOCK);
+				// set wallpaper lock screen
 			} catch (IOException e) {
 			    // l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));
 				// e.printStackTrace();
