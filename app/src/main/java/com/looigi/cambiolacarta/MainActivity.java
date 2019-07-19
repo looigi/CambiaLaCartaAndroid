@@ -84,6 +84,9 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		String AutomaticReload = getIntent().getStringExtra("AUTOMATIC RELOAD");
+		// if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
+		// }
 		// context=this;
 
 		SharedObjects.getInstance().setContext(this);
@@ -94,7 +97,6 @@ public class MainActivity extends Activity {
 		VariabiliGlobali.getInstance().getActivityPrincipale().startService(
 				VariabiliGlobali.getInstance().getiServizio());
 
-		String AutomaticReload = getIntent().getStringExtra("AUTOMATIC RELOAD");
 		if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
 			Permessi pp = new Permessi();
 			pp.ControllaPermessi(this);

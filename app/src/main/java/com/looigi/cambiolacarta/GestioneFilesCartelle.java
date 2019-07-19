@@ -190,14 +190,19 @@ public class GestioneFilesCartelle {
 	private void displayDirectoryContents(File dir) {
 		try {
 			File[] files = dir.listFiles();
-			for (File file : files) {
-				if (file.isDirectory()) {
-					// System.out.println("directory:" + file.getCanonicalPath());
-					Cartelle.add(file.getCanonicalPath());
-					displayDirectoryContents(file);
-				} else {
-					// System.out.println("     file:" + file.getCanonicalPath());
-					ListImages.add(file.getCanonicalPath());
+			if (files != null) {
+				for (File file : files) {
+					if (file.isDirectory()) {
+						// System.out.println("directory:" + file.getCanonicalPath());
+						Cartelle.add(file.getCanonicalPath());
+						displayDirectoryContents(file);
+					} else {
+						// System.out.println("     file:" + file.getCanonicalPath());
+						String ff = file.getCanonicalPath().toUpperCase().trim();
+						if (ff.contains(".JPG") || ff.contains(".JPEG") || ff.contains(".BMP") || ff.contains(".GIF") || ff.contains(".PNG")) {
+							ListImages.add(file.getCanonicalPath());
+						}
+					}
 				}
 			}
 		} catch (IOException e) {
