@@ -129,6 +129,18 @@ public class bckService extends Service {
             imgApreInfo=(ImageView) v.findViewById(R.id.imgApreInfo);
             imgChiudeInfo=(ImageView) v.findViewById(R.id.imgChiudeInfo);
 
+            LinearLayout layImposta = (LinearLayout) v.findViewById(R.id.layImposta);
+            LinearLayout layPrec = (LinearLayout) v.findViewById(R.id.layIndietro);
+            LinearLayout layProssimo = (LinearLayout) v.findViewById(R.id.layAvanti);
+            LinearLayout layRefresh = (LinearLayout) v.findViewById(R.id.layRefresh);
+            LinearLayout layCambiaDir = (LinearLayout) v.findViewById(R.id.layDirectory);
+
+            SharedObjects.getInstance().setImgPrec(layPrec);
+            SharedObjects.getInstance().setImgSucc(layProssimo);
+            SharedObjects.getInstance().setImgCambia(layImposta);
+            SharedObjects.getInstance().setImgRefresh(layRefresh);
+            SharedObjects.getInstance().setImgCambiaDir(layCambiaDir);
+
             //pIT=R.string.percorsoIT;
             //pEN=R.string.percorsoEN;
             //nIT=R.string.numimmIT;
@@ -255,7 +267,11 @@ public class bckService extends Service {
 
                         u.ScriveInfo(l);
 
-                        u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+                        if (!SharedObjects.getInstance().getTipoCambio().equals("SINCRONIZZATA")) {
+                            u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+                        } else {
+                            u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getPercorsoDIR() + "/Download.jpg", l);
+                        }
                     }
                 }
             });
@@ -278,7 +294,11 @@ public class bckService extends Service {
 
                         u.ScriveInfo(l);
 
-                        u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+                        if (!SharedObjects.getInstance().getTipoCambio().equals("SINCRONIZZATA")) {
+                            u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+                        } else {
+                            u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getPercorsoDIR() + "/Download.jpg", l);
+                        }
                     }
                 }
             });

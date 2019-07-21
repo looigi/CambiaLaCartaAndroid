@@ -97,6 +97,13 @@
             android:text="CheckBox"
             android:textColor="#CCCC99" />
 
+        <CheckBox
+            android:id="@+id/chkLockScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cambia anche Lock Screen"
+            android:textColor="#CCCC99" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import android.os.Looper;
 
 import com.looigi.cambiolacarta.DBLocale;
 import com.looigi.cambiolacarta.DialogMessaggio;
+import com.looigi.cambiolacarta.DownloadFileFromURL;
 import com.looigi.cambiolacarta.Log;
 import com.looigi.cambiolacarta.Notifiche;
 import com.looigi.cambiolacarta.SharedObjects;
@@ -39,9 +40,15 @@ public class wsRitorno {
                     String[] r = Ritorno.split(";");
                     // int numero = Integer.parseInt(r[0]);
 
-                    int numero = -1;
+                    String PathImm = r[1].replace("\\", "/");
 
-                    String i = r[1].replace("\\", "/").toUpperCase().trim();
+                    SharedObjects.getInstance().setPathUltimaImaggineDL(PathImm);
+
+                    PathImm = "http://looigi.no-ip.biz:12345/looVF/SfondiDir/" + PathImm;
+
+                    int numero = Integer.parseInt(r[0]);
+
+                    /* String i = r[1].replace("\\", "/").toUpperCase().trim();
                     int conta = 0;
                     for (String s : SharedObjects.getInstance().getListaImmagini()){
                         if (s.toUpperCase().trim().contains(i)) {
@@ -71,7 +78,7 @@ public class wsRitorno {
 
                     l.ScriveLog(new Object() {
                             }.getClass().getEnclosingMethod().getName(),
-                            "Torna numero immagine 2");
+                            "Torna numero immagine 2"); */
 
                     if (numero != VariabiliGlobali.getInstance().getVecchiaImmagine()) {
                         l.ScriveLog(new Object() {
@@ -85,20 +92,13 @@ public class wsRitorno {
                         DBLocale dbl = new DBLocale();
                         dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
 
-                        l.ScriveLog(new Object() {
-                                }.getClass().getEnclosingMethod().getName(),
-                                "Torna numero immagine 4");
-
-                        Utility u = new Utility();
+                        /* Utility u = new Utility();
                         u.CambiaImmagine(true, numero);
                         u.ScriveInfo(l);
                         String NomeFile = SharedObjects.getInstance().getListaImmagini().get(numero);
                         u.ImpostaImmagineDiSfondo(NomeFile, l);
-                        Notifiche.getInstance().AggiornaNotifica();
-
-                        l.ScriveLog(new Object() {
-                                }.getClass().getEnclosingMethod().getName(),
-                                "Torna numero immagine uscita");
+                        Notifiche.getInstance().AggiornaNotifica(); */
+                        new DownloadFileFromURL(l).execute(PathImm);
                     }
                 }
             },50);

@@ -2,9 +2,11 @@ package com.looigi.cambiolacarta;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Environment;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public class SharedObjects {
     	return instance;
     }
 
+    private String PercorsoDIR= Environment.getExternalStorageDirectory().getPath()+"/LooigiSoft/CambiaLaCarta";
     protected Context context;
     private String Stretch;
     private int SchermoX;
@@ -40,6 +43,7 @@ public class SharedObjects {
     private Boolean LogAttivo=true;
     private Boolean CaricaDati;
     private Boolean SuonaAudio=true;
+    private boolean SettaLockScreen=true;
     private AudioManager audioManager;
     private android.view.WindowManager a1;
     private ImageView imm;
@@ -60,6 +64,76 @@ public class SharedObjects {
     private CheckBox chkAttivo;
     private Boolean TimerPartito;
     private Boolean StaPartendo;
+    private String PathUltimaImaggineDL;
+    private LinearLayout imgPrec;
+    private LinearLayout imgSucc;
+    private LinearLayout imgCambia;
+    private LinearLayout imgRefresh;
+    private LinearLayout imgCambiaDir;
+
+    public LinearLayout getImgRefresh() {
+        return imgRefresh;
+    }
+
+    public void setImgRefresh(LinearLayout imgRefresh) {
+        this.imgRefresh = imgRefresh;
+    }
+
+    public LinearLayout getImgCambiaDir() {
+        return imgCambiaDir;
+    }
+
+    public void setImgCambiaDir(LinearLayout imgCambiaDir) {
+        this.imgCambiaDir = imgCambiaDir;
+    }
+
+    public LinearLayout getImgPrec() {
+        return imgPrec;
+    }
+
+    public void setImgPrec(LinearLayout imgPrec) {
+        this.imgPrec = imgPrec;
+    }
+
+    public LinearLayout getImgSucc() {
+        return imgSucc;
+    }
+
+    public void setImgSucc(LinearLayout imgSucc) {
+        this.imgSucc = imgSucc;
+    }
+
+    public LinearLayout getImgCambia() {
+        return imgCambia;
+    }
+
+    public void setImgCambia(LinearLayout imgCambia) {
+        this.imgCambia = imgCambia;
+    }
+
+    public String getPathUltimaImaggineDL() {
+        return PathUltimaImaggineDL;
+    }
+
+    public void setPathUltimaImaggineDL(String pathUltimaImaggineDL) {
+        PathUltimaImaggineDL = pathUltimaImaggineDL;
+    }
+
+    public String getPercorsoDIR() {
+        return PercorsoDIR;
+    }
+
+    public void setPercorsoDIR(String percorsoDIR) {
+        PercorsoDIR = percorsoDIR;
+    }
+
+    public boolean isSettaLockScreen() {
+        return SettaLockScreen;
+    }
+
+    public void setSettaLockScreen(boolean settaLockScreen) {
+        SettaLockScreen = settaLockScreen;
+    }
 
     public Boolean getStaPartendo() {
         return StaPartendo;

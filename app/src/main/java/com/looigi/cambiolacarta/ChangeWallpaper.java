@@ -45,15 +45,17 @@ public class ChangeWallpaper {
 
 				wallpaperManager.setBitmap(setWallToDevice);
 
-				// set wallpaper lock screen
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				setWallToDevice.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-				byte[] bitmapdata = bos.toByteArray();
-				ByteArrayInputStream bs = new ByteArrayInputStream(bitmapdata);
+				if (SharedObjects.getInstance().isSettaLockScreen()) {
+                    // set wallpaper lock screen
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    setWallToDevice.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+                    byte[] bitmapdata = bos.toByteArray();
+                    ByteArrayInputStream bs = new ByteArrayInputStream(bitmapdata);
 
-				WallpaperManager.getInstance(VariabiliGlobali.getInstance().getContext())
-						.setStream(bs, null, true, WallpaperManager.FLAG_LOCK);
-				// set wallpaper lock screen
+                    WallpaperManager.getInstance(VariabiliGlobali.getInstance().getContext())
+                            .setStream(bs, null, true, WallpaperManager.FLAG_LOCK);
+                    // set wallpaper lock screen
+                }
 			} catch (IOException e) {
 			    // l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));
 				// e.printStackTrace();

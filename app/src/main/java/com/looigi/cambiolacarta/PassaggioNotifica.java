@@ -37,11 +37,15 @@ public class PassaggioNotifica extends Activity {
 		if (action.equals("apre")) {
 			u.ScriveInfo(l);
 			String Nome="";
-			
-			try {
-				Nome=SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato());
-			} catch (Exception ignored) {
-				
+
+			if (!SharedObjects.getInstance().getTipoCambio().equals("SINCRONIZZATA")) {
+				try {
+					Nome = SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato());
+				} catch (Exception ignored) {
+
+				}
+			} else {
+				Nome = SharedObjects.getInstance().getPercorsoDIR() + "/Download.jpg";
 			}
 			if (Nome!=null) {
 				u.ImpostaImmagineDiSfondo(Nome, l);

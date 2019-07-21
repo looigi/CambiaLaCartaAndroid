@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class DBLocale extends Activity {
 			myDB.execSQL("CREATE TABLE IF NOT EXISTS Opzioni2 (ModalitaVisua Text, Stretch Text);");
 			myDB.execSQL("CREATE TABLE IF NOT EXISTS Percorsi (Origine Text);");
 			myDB.execSQL("CREATE TABLE IF NOT EXISTS Notifica (SiNo Text);");
+            myDB.execSQL("CREATE TABLE IF NOT EXISTS LockScreen (SiNo Text);");
 			myDB.close();
     	} catch(Exception ignored) {
 
@@ -54,6 +56,8 @@ public class DBLocale extends Activity {
 			myDB.execSQL("DROP TABLE Opzioni;");
 			myDB.execSQL("DROP TABLE Opzioni2;");
 			myDB.execSQL("DROP TABLE Percorsi;");
+            myDB.execSQL("DROP TABLE Notifica;");
+            myDB.execSQL("DROP TABLE LockScreen;");
     	} catch (Exception ignored) {
     		
     	}
@@ -173,6 +177,20 @@ public class DBLocale extends Activity {
 			Ritorno=c.getString(1);
 			SharedObjects.getInstance().setTipoCambio(Ritorno);
 
+			if (Ritorno.equals("SINCRONIZZATA")) {
+				SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.GONE);
+			} else {
+				SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.VISIBLE);
+			}
+
 			Ritorno=c.getString(2);
 			SharedObjects.getInstance().setMinutiPerCambio(Integer.parseInt(Ritorno));
 
@@ -193,6 +211,12 @@ public class DBLocale extends Activity {
 			SharedObjects.getInstance().setMinutiPerCambio(5);
 			SharedObjects.getInstance().setQualeImmagineHaVisualizzato(0);
 			SharedObjects.getInstance().setAttivo("S");
+
+			SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.VISIBLE);
+			SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.VISIBLE);
+			SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.VISIBLE);
+			SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.VISIBLE);
+			SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.VISIBLE);
 		}
 		c.close();
 
@@ -238,6 +262,27 @@ public class DBLocale extends Activity {
 		}
 		c.close();
 
+
+        Sql="SELECT * FROM LockScreen;";
+        c = myDB.rawQuery(Sql , null);
+        c.moveToFirst();
+        try {
+            String Ritorno;
+
+            Ritorno=c.getString(0);
+            boolean r = Ritorno.equals("S");
+            SharedObjects.getInstance().setSettaLockScreen(r);
+        } catch (Exception ignored) {
+            Sql="Delete From LockScreen";
+            myDB.execSQL(Sql);
+
+            Sql="Insert Into LockScreen Values ('S')";
+            myDB.execSQL(Sql);
+
+            SharedObjects.getInstance().setSettaLockScreen(true);
+        }
+        c.close();
+
 		myDB.close();
 	}
 	
@@ -250,7 +295,8 @@ public class DBLocale extends Activity {
 		String MVisua=SharedObjects.getInstance().getModalitaVisua();
 		String Stretch=SharedObjects.getInstance().getStretch();
 		String MNotSiNo=SharedObjects.getInstance().getNotificaSiNo();
-		
+        String LockScreen=SharedObjects.getInstance().isSettaLockScreen() ? "S": "N";
+
 		SQLiteDatabase myDB= ApreDB(context, "DatiLocali");
 	   	
 	   	String Sql="Update Opzioni Set "+
@@ -272,7 +318,12 @@ public class DBLocale extends Activity {
 	   			"SiNo='"+MNotSiNo+"' "+
 	   			";";
 	   	myDB.execSQL(Sql);
-	   	
+
+        Sql="Update LockScreen Set "+
+                "SiNo='"+LockScreen+"' "+
+                ";";
+        myDB.execSQL(Sql);
+
 	   	myDB.close();
 	}
 	

@@ -567,10 +567,15 @@ public class Utility {
 			s = u.ControllaLingua(context, R.string.immvisuaIT, R.string.immvisuaEN) + ": " + SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
 			SharedObjects.getInstance().getTxtImmVisua().setText(s);
 			try {
-				SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini()
-						.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
-				u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini()
-						.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+				if (!SharedObjects.getInstance().getTipoCambio().equals("SINCRONIZZATA")) {
+					SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getListaImmagini()
+							.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getListaImmagini()
+							.get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()), l);
+				} else {
+					SharedObjects.getInstance().getTxtNomeImm().setText(SharedObjects.getInstance().getPathUltimaImaggineDL());
+					u.ImpostaImmagineDiSfondo(SharedObjects.getInstance().getPercorsoDIR() + "/Download.jpg", l);
+				}
 			} catch (Exception ignored) {
 				SharedObjects.getInstance().getTxtNomeImm().setText("");
 			}

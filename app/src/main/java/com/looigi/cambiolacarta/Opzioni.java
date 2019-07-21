@@ -65,7 +65,24 @@ public class Opzioni extends Activity{
 				
 				ImpostaCheck();
             }
-        });					        
+        });
+
+		final CheckBox chkLockScreen=(CheckBox) findViewById(R.id.chkLockScreen);
+		chkLockScreen.setChecked(SharedObjects.getInstance().isSettaLockScreen());
+		chkLockScreen.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				SuonAudio s=new SuonAudio();
+				s.SuonaAudio(1, soundPool);
+
+				SharedObjects.getInstance().setSettaLockScreen(chkLockScreen.isChecked());
+
+				DBLocale dbl=new DBLocale();
+				dbl.ScriveOpzioni(context);
+
+				ImpostaCheck();
+			}
+		});
 
 		TextView t=(TextView) findViewById(R.id.txtNotifica);
 		t.setText(u.ControllaLingua(context, R.string.tNotificaIT, R.string.tNotificaEN));
@@ -135,7 +152,13 @@ public class Opzioni extends Activity{
 				s.SuonaAudio(1, soundPool);
 
 				SharedObjects.getInstance().setTipoCambio("RANDOM");
-				
+
+				SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.VISIBLE);
+
 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);
 				
@@ -152,8 +175,14 @@ public class Opzioni extends Activity{
 				s.SuonaAudio(1, soundPool);
 
 				SharedObjects.getInstance().setTipoCambio("SEQUENZIALE");
-				
-				DBLocale dbl=new DBLocale();
+
+				SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.VISIBLE);
+
+ 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);
 				
 				ImpostaCheck();
@@ -169,6 +198,12 @@ public class Opzioni extends Activity{
 				s.SuonaAudio(1, soundPool);
 
 				SharedObjects.getInstance().setTipoCambio("SINCRONIZZATA");
+
+				SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.GONE);
+				SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.GONE);
 
 				DBLocale dbl=new DBLocale();
 				dbl.ScriveOpzioni(context);

@@ -105,15 +105,20 @@ public class Notifiche {
         Utility u=new Utility();
         if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
             String Immagine="";
-            GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-            try {
-                Immagine=gfc.PrendeNomeFile(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
-                int pos=Immagine.indexOf(".");
-                if (pos>-1) {
-                    Immagine=Immagine.substring(0, pos);
-                }
-            } catch (Exception ignored) {
 
+            if (!SharedObjects.getInstance().getTipoCambio().equals("SINCRONIZZATA")) {
+                GestioneFilesCartelle gfc = new GestioneFilesCartelle();
+                try {
+                    Immagine = gfc.PrendeNomeFile(SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato()));
+                    int pos = Immagine.indexOf(".");
+                    if (pos > -1) {
+                        Immagine = Immagine.substring(0, pos);
+                    }
+                } catch (Exception ignored) {
+
+                }
+            } else {
+                Immagine = SharedObjects.getInstance().getPathUltimaImaggineDL();
             }
             if (!Immagine.equals("")) {
                 view.setTextViewText(R.id.txtImmagine, Immagine);
@@ -123,7 +128,11 @@ public class Notifiche {
             view.setTextViewText(R.id.TextView01, u.ControllaLingua(VariabiliGlobali.getInstance().getContext(),
                     R.string.app_name, R.string.app_nameEN));
 
-            Immagine=SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato());
+            if (!SharedObjects.getInstance().getTipoCambio().equals("SINCRONIZZATA")) {
+                Immagine = SharedObjects.getInstance().getListaImmagini().get(SharedObjects.getInstance().getQualeImmagineHaVisualizzato());
+            } else {
+                Immagine = SharedObjects.getInstance().getPercorsoDIR() + "/Download.jpg";
+            }
             Bitmap Immagin=null;
 
             view.setViewVisibility(R.id.imgCopertinaM, LinearLayout.VISIBLE);

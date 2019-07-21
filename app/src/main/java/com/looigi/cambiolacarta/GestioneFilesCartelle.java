@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -186,6 +187,50 @@ public class GestioneFilesCartelle {
 			
 		}
 	}
+
+    private void generateNoteOnSD(String Percorso, String sFileName, String sBody) {
+        try {
+            File gpxfile = new File(Percorso, sFileName);
+            FileWriter writer = new FileWriter(gpxfile);
+            writer.append(sBody);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            // e.printStackTrace();
+            // VariabiliStaticheGlobali.getInstance().getLog().ScriveLog(new Object(){}.getClass().getEnclosingMethod().getName(), "Generazione file di testo. Errore: "+e.getMessage());
+        }
+    }
+
+    public boolean fileExistsInSD(String sFileName, String Percorso){
+        // VariabiliStaticheGlobali.getInstance().getLog().ScriveLog(new Object(){}.getClass().getEnclosingMethod().getName(), "Controllo esistenza file: "+Percorso+"/"+sFileName);
+        String sFile=Percorso+"/"+sFileName;
+        File file = new File(sFile);
+
+        return file.exists();
+    }
+
+    public void CreaCartelle(final String Percorso) {
+        // hCreaCartelle = new Handler();
+        // hCreaCartelle.postDelayed(runCreaCartelle = new Runnable() {
+        //    @Override
+        //     public void run() {
+        // VariabiliStaticheGlobali.getInstance().getLog().ScriveLog(new Object(){}.getClass().getEnclosingMethod().getName(), "Creazione cartelle "+Percorso);
+        String Campi[]=(Percorso+"/").split("/",-1);
+        String ss="";
+
+        for (String s : Campi) {
+            if (!s.isEmpty()) {
+                ss += "/" + s;
+                CreaCartella(ss);
+                if (!fileExistsInSD(".noMedia",ss )) {
+                    // Crea file per nascondere alla galleria i files immagine della cartella
+                    generateNoteOnSD(ss, ".noMedia","");
+                }
+            }
+        }
+        //  }
+        // }, 50);
+    }
 
 	private void displayDirectoryContents(File dir) {
 		try {
