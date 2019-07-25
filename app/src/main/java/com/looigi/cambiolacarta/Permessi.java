@@ -7,13 +7,13 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 
 public class Permessi {
-    public void ControllaPermessi(Activity context) {
+    public boolean ControllaPermessi(Activity context) {
         int permissionRequestCode1 = 1193;
 
         String[] PERMISSIONS = new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_WIFI_STATE,
+                // Manifest.permission.ACCESS_WIFI_STATE,
                 Manifest.permission.SET_WALLPAPER,
                 Manifest.permission.SET_WALLPAPER_HINTS,
                 Manifest.permission.INTERNET,
@@ -24,6 +24,9 @@ public class Permessi {
 
         if(!hasPermissions(context, PERMISSIONS)) {
             ActivityCompat.requestPermissions(context, PERMISSIONS, permissionRequestCode1);
+            return false;
+        } else {
+            return true;
         }
     }
 

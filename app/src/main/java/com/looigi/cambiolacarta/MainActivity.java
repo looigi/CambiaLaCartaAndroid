@@ -37,10 +37,13 @@ import com.looigi.cambiolacarta.Soap.DBRemoto;
 import org.kobjects.util.Util;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 
 public class MainActivity extends Activity {
+	private boolean CiSonoPermessi;
+
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
 	// private AdView mAdView;
@@ -85,8 +88,29 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		Permessi pp = new Permessi();
-		pp.ControllaPermessi(this);
+		CiSonoPermessi = pp.ControllaPermessi(this);
+		if (CiSonoPermessi) {
+			EsegueEntrata();
+		}
 
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode,
+										   String permissions[], int[] grantResults) {
+		if (!CiSonoPermessi) {
+			int index = 0;
+			Map<String, Integer> PermissionsMap = new HashMap<String, Integer>();
+			for (String permission : permissions) {
+				PermissionsMap.put(permission, grantResults[index]);
+				index++;
+			}
+
+			EsegueEntrata();
+		}
+	}
+
+	private void EsegueEntrata() {
 		String AutomaticReload = getIntent().getStringExtra("AUTOMATIC RELOAD");
 		// if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
 		// }
