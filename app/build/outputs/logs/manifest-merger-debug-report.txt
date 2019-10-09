@@ -1,206 +1,206 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:10:6-44:12
-MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\255ded0865724f7d8e357c27a5c70a6d\AndroidManifest.xml:17:1-27:12
-MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\4b8b47eefd02c0a4e3128d9a7820c539\AndroidManifest.xml:17:1-27:12
-MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\af2701286f80275c25a183450dd62277\AndroidManifest.xml:17:1-27:12
-MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\926dac8250f21e1adc1f1f80485f9371\AndroidManifest.xml:17:1-27:12
-MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\723c139a8ca3eebdf5432952676d3efb\AndroidManifest.xml:17:1-27:12
-MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\23300326fe4d87f4a6657a6b372e613a\AndroidManifest.xml:17:1-27:12
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
+MERGED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:10:6-44:12
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\6399b95fafdee2fe4970f39fb40cf72c\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\65c3580b451f1563062d843ce801289a\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\e04ada5d5ba82b79e7e6a8e6f251640c\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\96fe9c033a84a746ae5ac4c9bd1cc2cd\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\55cf3e5cc2ac9144f82c037ee56d6467\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\80fb42e8ccd7a9697d9231eb97058a94\AndroidManifest.xml:17:1-27:12
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:1-74:12
 	package
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:3:5-39
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:3:5-39
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:5:5-30
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:4:5-29
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:4:5-29
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.SET_WALLPAPER
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:5-71
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:5-71
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:22-69
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:7:22-69
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:3-79
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:3-79
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:20-76
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:8:20-76
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:5-80
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:5-80
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:22-77
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:9:22-77
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:5-81
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:5-81
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:22-78
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:10:22-78
 uses-permission#android.permission.INTERNET
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:3-64
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:3-64
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:20-62
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:11:20-62
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:5-78
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:5-78
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:22-76
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:12:22-76
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:2-71
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:2-71
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:19-69
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:13:19-69
 uses-permission#android.permission.SET_WALLPAPER_HINTS
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:3-75
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:3-75
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:20-73
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:14:20-73
 application
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:16:5-72:19
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:39:5-43:19
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:39:5-43:19
-MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\255ded0865724f7d8e357c27a5c70a6d\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\255ded0865724f7d8e357c27a5c70a6d\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\4b8b47eefd02c0a4e3128d9a7820c539\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\4b8b47eefd02c0a4e3128d9a7820c539\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\af2701286f80275c25a183450dd62277\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\af2701286f80275c25a183450dd62277\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\926dac8250f21e1adc1f1f80485f9371\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\926dac8250f21e1adc1f1f80485f9371\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\723c139a8ca3eebdf5432952676d3efb\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\723c139a8ca3eebdf5432952676d3efb\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\23300326fe4d87f4a6657a6b372e613a\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\23300326fe4d87f4a6657a6b372e613a\AndroidManifest.xml:25:5-20
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:16:5-72:19
+MERGED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:39:5-43:19
+MERGED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:39:5-43:19
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\6399b95fafdee2fe4970f39fb40cf72c\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\6399b95fafdee2fe4970f39fb40cf72c\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\65c3580b451f1563062d843ce801289a\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\65c3580b451f1563062d843ce801289a\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\e04ada5d5ba82b79e7e6a8e6f251640c\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\e04ada5d5ba82b79e7e6a8e6f251640c\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\96fe9c033a84a746ae5ac4c9bd1cc2cd\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\96fe9c033a84a746ae5ac4c9bd1cc2cd\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\55cf3e5cc2ac9144f82c037ee56d6467\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\55cf3e5cc2ac9144f82c037ee56d6467\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\80fb42e8ccd7a9697d9231eb97058a94\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\80fb42e8ccd7a9697d9231eb97058a94\AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:20:9-41
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:20:9-41
 	android:largeHeap
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:21:6-30
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:21:6-30
 	android:icon
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:19:9-45
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:19:9-45
 	android:allowBackup
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:18:9-35
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:18:9-35
 	android:theme
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:22:9-40
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:22:9-40
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:17:9-34
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:17:9-34
 activity#com.looigi.cambiolacarta.MainActivity
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:23:9-31:20
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:23:9-31:20
 	android:label
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:25:13-45
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:25:13-45
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:24:13-65
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:24:13-65
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:26:13-30:29
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:26:13-30:29
 action#android.intent.action.MAIN
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:27:17-69
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:27:17-69
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:27:25-66
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:27:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:29:17-77
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:29:27-74
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:29:27-74
 activity#com.looigi.cambiolacarta.SceltaCartella
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:33:3-36:14
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:33:3-36:14
 	android:screenOrientation
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:34:13-49
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:34:13-49
 	android:label
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:35:13-45
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:35:13-45
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:33:13-67
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:33:13-67
 activity#com.looigi.cambiolacarta.PassaggioNotifica
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:38:3-41:14
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:38:3-41:14
 	android:screenOrientation
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:39:13-49
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:39:13-49
 	android:label
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:40:13-45
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:40:13-45
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:38:13-70
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:38:13-70
 service#com.looigi.cambiolacarta.bckService
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:43:9-47:19
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:43:9-47:19
 	android:label
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:46:13-45
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:46:13-45
 	android:icon
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:45:13-49
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:45:13-49
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:44:13-38
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:44:13-38
 activity#com.looigi.cambiolacarta.Opzioni
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:49:3-52:14
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:49:3-52:14
 	android:screenOrientation
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:50:13-49
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:50:13-49
 	android:label
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:51:13-45
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:51:13-45
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:49:13-60
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:49:13-60
 service#com.looigi.cambiolacarta.AutoStart.service
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:54:9-56:19
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:54:9-56:19
 	android:label
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:55:19-51
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:55:19-51
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:54:18-51
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:54:18-51
 receiver#com.looigi.cambiolacarta.AutoStart.autostart
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:57:9-61:20
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:57:9-61:20
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:57:19-54
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:57:19-54
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:58:13-60:29
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:58:13-60:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:59:17-79
+ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:59:17-79
 	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:59:25-76
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:59:25-76
 uses-sdk
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:37:5-42
-MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:37:5-42
-MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\255ded0865724f7d8e357c27a5c70a6d\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\255ded0865724f7d8e357c27a5c70a6d\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\4b8b47eefd02c0a4e3128d9a7820c539\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\4b8b47eefd02c0a4e3128d9a7820c539\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\af2701286f80275c25a183450dd62277\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\af2701286f80275c25a183450dd62277\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\926dac8250f21e1adc1f1f80485f9371\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\926dac8250f21e1adc1f1f80485f9371\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\723c139a8ca3eebdf5432952676d3efb\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\723c139a8ca3eebdf5432952676d3efb\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\23300326fe4d87f4a6657a6b372e613a\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\23300326fe4d87f4a6657a6b372e613a\AndroidManifest.xml:21:5-23:58
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+MERGED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:37:5-42
+MERGED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:37:5-42
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\6399b95fafdee2fe4970f39fb40cf72c\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\6399b95fafdee2fe4970f39fb40cf72c\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\65c3580b451f1563062d843ce801289a\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\65c3580b451f1563062d843ce801289a\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\e04ada5d5ba82b79e7e6a8e6f251640c\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\e04ada5d5ba82b79e7e6a8e6f251640c\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\96fe9c033a84a746ae5ac4c9bd1cc2cd\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\96fe9c033a84a746ae5ac4c9bd1cc2cd\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\55cf3e5cc2ac9144f82c037ee56d6467\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\55cf3e5cc2ac9144f82c037ee56d6467\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\80fb42e8ccd7a9697d9231eb97058a94\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\80fb42e8ccd7a9697d9231eb97058a94\AndroidManifest.xml:21:5-23:58
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.android.support:support-v4:24.2.1] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\255ded0865724f7d8e357c27a5c70a6d\AndroidManifest.xml:23:9-51
+		ADDED from [com.android.support:support-v4:24.2.1] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\6399b95fafdee2fe4970f39fb40cf72c\AndroidManifest.xml:23:9-51
 	android:targetSdkVersion
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
-		INJECTED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		ADDED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml
 activity#org.acra.dialog.CrashReportDialog
-ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:40:9-241
+ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:40:9-241
 	android:process
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:40:172-195
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:40:172-195
 	android:excludeFromRecents
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:40:19-52
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:40:19-52
 	android:launchMode
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:40:87-122
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:40:87-122
 	android:theme
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:40:196-239
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:40:196-239
 	android:finishOnTaskLaunch
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:40:53-86
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:40:53-86
 	android:name
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:40:123-171
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:40:123-171
 service#org.acra.sender.SenderService
-ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:42:9-113
+ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:42:9-113
 	android:process
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:42:88-111
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:42:88-111
 	android:exported
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:42:18-42
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:42:18-42
 	android:name
-		ADDED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\66e6c01ca3e7671a2398ea6c3d578e35\AndroidManifest.xml:42:43-87
+		ADDED from [ch.acra:acra:4.9.2] C:\Users\looigi\.gradle\caches\transforms-2\files-2.1\5e761e87b65e537fbd4d0eeb0a4938b1\AndroidManifest.xml:42:43-87

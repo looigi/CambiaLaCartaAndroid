@@ -43,6 +43,7 @@ import java.util.Timer;
 
 public class MainActivity extends Activity {
 	private boolean CiSonoPermessi;
+	private MemoryBoss mMemoryBoss;
 
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
@@ -91,6 +92,11 @@ public class MainActivity extends Activity {
 		CiSonoPermessi = pp.ControllaPermessi(this);
 		if (CiSonoPermessi) {
 			EsegueEntrata();
+
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+				mMemoryBoss = new MemoryBoss();
+				registerComponentCallbacks(mMemoryBoss);
+			}
 		}
 
 	}
