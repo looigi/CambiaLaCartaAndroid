@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
@@ -28,6 +29,24 @@ public class VariabiliGlobali {
     private Boolean ScreenON = true;
     private boolean CambiataImmagine=false;
     private Intent iServizio;
+    private Handler handler = null;
+    private Runnable r;
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    public Runnable getR() {
+        return r;
+    }
+
+    public void setR(Runnable r) {
+        this.r = r;
+    }
 
     public Activity getActivityPrincipale() {
         return activityPrincipale;

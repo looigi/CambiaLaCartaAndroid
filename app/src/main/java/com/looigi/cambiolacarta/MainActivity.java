@@ -216,14 +216,30 @@ public class MainActivity extends Activity {
         	
 			CreaNotifica();
 			AggiornaNotifica(); */
-        	moveTaskToBack(true);          	
+        	// moveTaskToBack(true);
+            Intent setIntent = new Intent(Intent.ACTION_MAIN);
+            setIntent.addCategory(Intent.CATEGORY_HOME);
+            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(setIntent);
 
         	return false;    
 		}
 		
 		return super.onKeyDown(keyCode, event);
 	}
-	
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+
+		unregisterComponentCallbacks(mMemoryBoss);
+
+		// DialogMessaggio.getInstance().show(VariabiliStaticheGlobali.getInstance().getContext(),
+		//         "Richiamata funzione onStop",
+		//         true,
+		//         VariabiliStaticheGlobali.NomeApplicazione);
+	}
+
 	// BANNER
 	// private void removeBanner(){
 	// 	if(mAdView!=null){

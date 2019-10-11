@@ -42,10 +42,8 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class Utility {
 	private int BordoX=5;
 	private int BordoY=5;
-	private Timer timer;
+	// private Timer timer;
 	private int MinutiPassati;
-	private Handler handler;
-	private Runnable r;
 
 	public String ControllaLingua(Context context, int CosaIT, int CosaEN) {
 		String Ritorno="";
@@ -609,7 +607,7 @@ public class Utility {
 		}
 	}
 
-	public void FaiPartireTimer() {
+	/* public void FaiPartireTimer() {
 		if (SharedObjects.getInstance().getListaImmagini().size()>0) {
 			SharedObjects.getInstance().setTimerPartito(true);
 
@@ -642,21 +640,42 @@ public class Utility {
 					}
 				}}, 0, 60000 );
 		}
-	}
+	} */
 
-	private void FaiRipartireTimer() {
-		handler = new Handler();
-		r = new Runnable() {
-			public void run() {
-				FaiPartireTimer();
+	public void FaiPartireTimer() {
+		if (VariabiliGlobali.getInstance().getHandler() == null) {
+			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
 
-				handler.removeCallbacks(r);
+			VariabiliGlobali.getInstance().setHandler(new Handler());
+			VariabiliGlobali.getInstance().setR(new Runnable() {
+				public void run() {
+					// FaiPartireTimer();
 
-				handler=null;
-				r=null;
-			}
-		};
-		handler.postDelayed(r, 1000);
+					MinutiPassati++;
+					if (MinutiPassati >= TotMinuti) {
+						MinutiPassati = 0;
+
+						// Looper.prepare();
+
+						// Utility u = new Utility();
+						Boolean Ritorno = CambiaImmagine(true, 0);
+						// if (!Ritorno) {
+						// Toast.makeText(VariabiliGlobali.getInstance().getContext(),
+						// 		u.ControllaLingua(VariabiliGlobali.getInstance().getContext(),
+						// 				R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
+						// }
+					}
+
+					/* handler.removeCallbacks(r);
+
+					handler=null;
+					r=null; */
+
+					VariabiliGlobali.getInstance().getHandler().postDelayed(VariabiliGlobali.getInstance().getR(), 60000);
+				}
+			});
+			VariabiliGlobali.getInstance().getHandler().postDelayed(VariabiliGlobali.getInstance().getR(), 60000);
+		}
 	}
 
 	public void FermaTimer() {
@@ -664,20 +683,20 @@ public class Utility {
 
 		if (SharedObjects.getInstance().getListaImmagini()!=null) {
 			if (SharedObjects.getInstance().getListaImmagini().size()>0) {
-				if (handler!=null) {
+				if (VariabiliGlobali.getInstance().getHandler()!=null) {
 					try {
-						handler.removeCallbacks(r);
+						VariabiliGlobali.getInstance().getHandler().removeCallbacks(VariabiliGlobali.getInstance().getR());
 					} catch (Exception ignored) {
 
 					}
-					handler = null;
-					r = null;
+					VariabiliGlobali.getInstance().setHandler(null);
+					VariabiliGlobali.getInstance().setR(null);
 				}
 
-				if (timer != null) {
+				/* if (timer != null) {
 					timer.cancel();
 					timer = null;
-				}
+				} */
 			}
 		}
 	}

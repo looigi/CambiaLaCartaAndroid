@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values-sw720dp-land-v13_values-sw720dp-land-v13.arsc.flat",
+            "outputFile": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values-sw720dp-land-v13_values-sw720dp-land-v13.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values-sw720dp-land\\dimens.xml",
+                    "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values-sw720dp-land\\dimens.xml",
                     "from": {
                         "startLines": "6",
                         "startColumns": "4",
@@ -23,34 +23,10 @@
             ]
         },
         {
-            "outputFile": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values-v14_values-v14.arsc.flat",
+            "outputFile": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values-v11_values-v11.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values-v14\\styles.xml",
-                    "from": {
-                        "startLines": "7",
-                        "startColumns": "4",
-                        "startOffsets": "225",
-                        "endLines": "9",
-                        "endColumns": "12",
-                        "endOffsets": "373"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "201"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values-v11_values-v11.arsc.flat",
-            "map": [
-                {
-                    "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values-v11\\styles.xml",
+                    "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values-v11\\styles.xml",
                     "from": {
                         "startLines": "6",
                         "startColumns": "4",
@@ -71,10 +47,34 @@
             ]
         },
         {
-            "outputFile": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "outputFile": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values-v14_values-v14.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "225",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "373"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "58,57,5,3,4,48,47,44,43,56,55,12,11,14,13,52,51,18,17,6,16,15,42,41,50,49,46,45,22,21,36,35,40,39,20,19,10,9,26,25,28,27,24,23,8,7,38,37,54,53,60,59,32,31,30,29,34,33,2",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -91,26 +91,24 @@
                     }
                 },
                 {
-                    "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\dimens.xml",
                     "from": {
-                        "startLines": "6,15",
+                        "startLines": "3,4",
                         "startColumns": "4,4",
-                        "startOffsets": "191,522",
-                        "endLines": "12,17",
-                        "endColumns": "12,12",
-                        "endOffsets": "481,679"
+                        "startOffsets": "92,151",
+                        "endColumns": "57,55",
+                        "endOffsets": "145,202"
                     },
                     "to": {
-                        "startLines": "69,76",
+                        "startLines": "7,8",
                         "startColumns": "4,4",
-                        "startOffsets": "3819,4110",
-                        "endLines": "75,78",
-                        "endColumns": "12,12",
-                        "endOffsets": "4105,4265"
+                        "startOffsets": "279,337",
+                        "endColumns": "57,55",
+                        "endOffsets": "332,388"
                     }
                 },
                 {
-                    "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\colors.xml",
+                    "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
                         "startLines": "6,5,4,2,3",
                         "startColumns": "4,4,4,4,4",
@@ -127,7 +125,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Luigi Pecce\\.gradle\\caches\\transforms-2\\files-2.1\\66e6c01ca3e7671a2398ea6c3d578e35\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\looigi\\.gradle\\caches\\transforms-2\\files-2.1\\5e761e87b65e537fbd4d0eeb0a4938b1\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "6",
                         "startColumns": "4",
@@ -144,20 +142,22 @@
                     }
                 },
                 {
-                    "source": "D:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\dimens.xml",
+                    "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "3,4",
+                        "startLines": "6,15",
                         "startColumns": "4,4",
-                        "startOffsets": "92,151",
-                        "endColumns": "57,55",
-                        "endOffsets": "145,202"
+                        "startOffsets": "191,522",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "481,679"
                     },
                     "to": {
-                        "startLines": "7,8",
+                        "startLines": "69,76",
                         "startColumns": "4,4",
-                        "startOffsets": "279,337",
-                        "endColumns": "57,55",
-                        "endOffsets": "332,388"
+                        "startOffsets": "3819,4110",
+                        "endLines": "75,78",
+                        "endColumns": "12,12",
+                        "endOffsets": "4105,4265"
                     }
                 }
             ]
