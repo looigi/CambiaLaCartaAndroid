@@ -255,7 +255,9 @@ public class GestioneWEBServiceSOAP {
                 soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
     			soapEnvelope.dotNet = true;
                 soapEnvelope.setOutputSoapObject(Request);
+                // conn.setRequestProperty("connection", "close");
                 aht = new HttpTransportSE(Urletto, Timeout);
+				aht.reset();
                 aht.call(SOAP_ACTION, soapEnvelope);
 
 				if(isCancelled()){

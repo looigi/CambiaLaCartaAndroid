@@ -25,7 +25,7 @@ public class DBRemoto {
 				"TornaNumeroImmaginePerSfondo",
 				NS,
 				SA,
-				1420000,
+				5000,
 				false);
 		g.Esegue();
 	}
