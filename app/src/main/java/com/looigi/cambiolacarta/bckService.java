@@ -48,9 +48,9 @@ public class bckService extends Service {
                     }.getClass().getEnclosingMethod().getName(),
                     "Contex vuoto, Ricarico dal servizio");
 
-            RefreshActivity.getInstance().RilanciaActivity();
-            v = RefreshActivity.getAct();
-            context = RefreshActivity.getContext();
+            // RefreshActivity.getInstance().RilanciaActivity();
+            // v = RefreshActivity.getAct();
+            // context = RefreshActivity.getContext();
             VariabiliGlobali.getInstance().setContext(context);
         }
 
@@ -436,7 +436,7 @@ public class bckService extends Service {
             SharedObjects.getInstance().setStaPartendo(false);
         }
 
-        return Service.START_NOT_STICKY;
+        return Service.START_STICKY;
     }
 
     private void ImpostaDimensioni() {
@@ -477,7 +477,7 @@ public class bckService extends Service {
         layIndietro.setLayoutParams(new LinearLayout.LayoutParams(SchermoX2, SchermoY2));
         layOpzioni.setLayoutParams(new LinearLayout.LayoutParams(SchermoX2, SchermoY2));
 
-        RefreshActivity.getInstance().RilanciaServizio(context, v);
+        // RefreshActivity.getInstance().RilanciaServizio(context, v);
     }
 
 
