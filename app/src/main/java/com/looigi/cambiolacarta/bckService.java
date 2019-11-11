@@ -436,7 +436,7 @@ public class bckService extends Service {
             SharedObjects.getInstance().setStaPartendo(false);
         }
 
-        return Service.START_STICKY;
+        return Service.START_NOT_STICKY;
     }
 
     private void ImpostaDimensioni() {
