@@ -63,6 +63,8 @@ public class PassaggioNotifica extends Activity {
 		} else {
 			service.ChiudiMaschera = false;
 
+			SharedObjects.getInstance().setGiaEntrato(false);
+
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 		}

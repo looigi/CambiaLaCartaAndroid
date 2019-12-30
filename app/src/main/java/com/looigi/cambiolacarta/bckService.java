@@ -37,6 +37,11 @@ public class bckService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        // if (SharedObjects.getInstance().getStaPartendo()) {
+        //     return START_NOT_STICKY;
+        // }
+        // SharedObjects.getInstance().setGiaEntrato(true);
+
         v = VariabiliGlobali.getInstance().getActivityPrincipale();
         context = this;
 
@@ -430,13 +435,13 @@ public class bckService extends Service {
                 u.ScriveInfo(l);
             }
 
-            Utility u = new Utility();
-            Boolean Ritorno=u.CambiaImmagine(true, 0);
+            // Utility u = new Utility();
+            // Boolean Ritorno=u.CambiaImmagine(true, 0);
 
             SharedObjects.getInstance().setStaPartendo(false);
         }
 
-        return Service.START_NOT_STICKY;
+        return Service.START_STICKY;
     }
 
     private void ImpostaDimensioni() {

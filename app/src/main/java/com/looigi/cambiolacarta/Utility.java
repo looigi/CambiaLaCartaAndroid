@@ -742,7 +742,7 @@ public class Utility {
 					"Schermo attivo, cambio immagine");
 
 			// Se per qualche motivo si è perso la lista delle immagini le ricarico
-			if (SharedObjects.getInstance().getListaImmagini().size() == 0) {
+			if (SharedObjects.getInstance().getListaImmagini() == null || SharedObjects.getInstance().getListaImmagini().size() == 0) {
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
 						"Lista immagini vuota. Ricarico");

@@ -70,6 +70,15 @@ public class SharedObjects {
     private LinearLayout imgCambia;
     private LinearLayout imgRefresh;
     private LinearLayout imgCambiaDir;
+    private boolean GiaEntrato = false;
+
+    public boolean isGiaEntrato() {
+        return GiaEntrato;
+    }
+
+    public void setGiaEntrato(boolean giaEntrato) {
+        GiaEntrato = giaEntrato;
+    }
 
     public LinearLayout getImgRefresh() {
         return imgRefresh;
