@@ -1,11 +1,11 @@
 [
     {
-        "merged": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_stile_sfondo.xml.flat",
-        "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\drawable-hdpi\\stile_sfondo.xml"
-    },
-    {
         "merged": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_salva.png.flat",
         "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\drawable-hdpi\\salva.png"
+    },
+    {
+        "merged": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_stile_sfondo.xml.flat",
+        "source": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\src\\main\\res\\drawable-hdpi\\stile_sfondo.xml"
     },
     {
         "merged": "E:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\res\\merged\\debug\\layout_barra_notifica.xml.flat",

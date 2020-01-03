@@ -30,7 +30,7 @@ import java.util.Random;
 
 public class bckService extends Service {
     protected Activity v;
-    protected static PhoneUnlockedReceiver receiver;
+    private PhoneUnlockedReceiver receiver;
     protected Context context;
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;

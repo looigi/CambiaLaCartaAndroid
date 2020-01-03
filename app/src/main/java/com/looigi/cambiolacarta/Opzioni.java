@@ -218,7 +218,9 @@ public class Opzioni extends Activity{
             public void onClick(View v) {
 				SuonAudio s=new SuonAudio();
 				s.SuonaAudio(1, soundPool);
-            	
+
+                SharedObjects.getInstance().setGiaEntrato(false);
+
 				Intent Folder= new Intent(Opzioni.this, MainActivity.class);
 		        startActivity(Folder);
 		        

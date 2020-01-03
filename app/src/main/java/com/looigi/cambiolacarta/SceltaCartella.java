@@ -114,6 +114,8 @@ public class SceltaCartella extends Activity {
 				SharedObjects.getInstance().setOrigine(Percorso);
 				SharedObjects.getInstance().setCaricaDati(true);
 
+				SharedObjects.getInstance().setGiaEntrato(false);
+
 				Intent Indietro= new Intent(SceltaCartella.this, MainActivity.class);
 				startActivity(Indietro);
 

@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 
-		this.onCreate(null);
+		// this.onCreate(null);
 	}
 
 	@Override
@@ -117,7 +117,11 @@ public class MainActivity extends Activity {
 	}
 
 	private void EsegueEntrata() {
-    	if (SharedObjects.getInstance().isGiaEntrato()) {
+        SharedObjects.getInstance().setContext(this);
+        VariabiliGlobali.getInstance().setContext(this);
+        VariabiliGlobali.getInstance().setActivityPrincipale(this);
+
+        if (SharedObjects.getInstance().isGiaEntrato()) {
     		return;
 		}
 
@@ -127,10 +131,6 @@ public class MainActivity extends Activity {
 		// if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
 		// }
 		// context=this;
-
-		SharedObjects.getInstance().setContext(this);
-		VariabiliGlobali.getInstance().setContext(this);
-		VariabiliGlobali.getInstance().setActivityPrincipale(this);
 
 		VariabiliGlobali.getInstance().setiServizio(new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), bckService.class));
 		VariabiliGlobali.getInstance().getActivityPrincipale().startService(
