@@ -48,6 +48,11 @@ public class wsRitorno {
 
                     int numero = Integer.parseInt(r[0]);
 
+                    l.ScriveLog(new Object() {
+                            }.getClass().getEnclosingMethod().getName(),
+                            "Nuovo numero immagine ritornato: " + Integer.toString(numero) +
+                            ". Vecchia: " + Integer.toString(VariabiliGlobali.getInstance().getVecchiaImmagine()));
+
                     /* String i = r[1].replace("\\", "/").toUpperCase().trim();
                     int conta = 0;
                     for (String s : SharedObjects.getInstance().getListaImmagini()){

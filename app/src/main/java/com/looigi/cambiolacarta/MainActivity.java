@@ -213,24 +213,24 @@ public class MainActivity extends Activity {
 	    	mUserLeaveHint=true;
 	    }
 	} */
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {    
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			/* SuonAudio s=new SuonAudio();
 			s.SuonaAudio(1, soundPool);
-        	
+
 			CreaNotifica();
 			AggiornaNotifica(); */
-        	// moveTaskToBack(true);
-            Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        	moveTaskToBack(true);
+            /* Intent setIntent = new Intent(Intent.ACTION_MAIN);
             setIntent.addCategory(Intent.CATEGORY_HOME);
             setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(setIntent);
+            startActivity(setIntent); */
 
-        	return false;    
+        	return false;
 		}
-		
+
 		return super.onKeyDown(keyCode, event);
 	}
 
@@ -238,7 +238,7 @@ public class MainActivity extends Activity {
 	protected void onStop() {
 		super.onStop();
 
-		unregisterComponentCallbacks(mMemoryBoss);
+		// unregisterComponentCallbacks(mMemoryBoss);
 
 		// DialogMessaggio.getInstance().show(VariabiliStaticheGlobali.getInstance().getContext(),
 		//         "Richiamata funzione onStop",

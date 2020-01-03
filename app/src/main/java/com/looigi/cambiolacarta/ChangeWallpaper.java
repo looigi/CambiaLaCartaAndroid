@@ -45,6 +45,10 @@ public class ChangeWallpaper {
 
 				wallpaperManager.setBitmap(setWallToDevice);
 
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine: Settata bitmap.");
+
 				if (SharedObjects.getInstance().isSettaLockScreen()) {
                     // set wallpaper lock screen
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();

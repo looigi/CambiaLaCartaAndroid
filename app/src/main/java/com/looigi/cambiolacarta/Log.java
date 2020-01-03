@@ -158,7 +158,7 @@ public class Log {
 			if (SharedObjects.getInstance().getLogAttivo()) {
 				String m = MessaggioLog;
 				String o = PrendeOraAttuale();
-				String c[] = m.split(";",-1);
+				String[] c = m.split(";",-1);
 				Date date1 = null;
 				Date date2 = null;
 				try {
