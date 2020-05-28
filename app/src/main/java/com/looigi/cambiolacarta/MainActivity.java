@@ -19,7 +19,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import android.support.v4.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
@@ -80,6 +79,8 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 
+		Log l = new Log();
+		l.ScriveLog("MainActivity", "onResume");
 		// this.onCreate(null);
 	}
 
@@ -88,17 +89,44 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		final Log l = new Log();
+		if (!SharedObjects.getInstance().isGiaEntrato()) {
+			l.ScriveLog("MainActivity", "onCreate");
+			View decorView = getWindow().getDecorView();
+			decorView.setOnSystemUiVisibilityChangeListener
+					(new View.OnSystemUiVisibilityChangeListener() {
+						@Override
+						public void onSystemUiVisibilityChange(int visibility) {
+							l.ScriveLog("MainActivity", "Cambiata visibilità app");
+							l.ScriveLog("MainActivity", "Visibilità:" + visibility);
+							// Note that system bars will only be "visible" if none of the
+							// LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
+							if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+								// TODO: The system bars are visible. Make any desired
+								// adjustments to your UI, such as showing the action bar or
+								// other navigational controls.
+							} else {
+								// TODO: The system bars are NOT visible. Make any desired
+								// adjustments to your UI, such as hiding the action bar or
+								// other navigational controls.
+							}
+						}
+					});
+		}
+
 		Permessi pp = new Permessi();
+		l.ScriveLog("MainActivity", "Controllo permessi");
 		CiSonoPermessi = pp.ControllaPermessi(this);
 		if (CiSonoPermessi) {
+			l.ScriveLog("MainActivity", "Permessi ok");
 			EsegueEntrata();
 
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+				l.ScriveLog("MainActivity", "Attivo memory boss");
 				mMemoryBoss = new MemoryBoss();
 				registerComponentCallbacks(mMemoryBoss);
 			}
 		}
-
 	}
 
 	@Override
@@ -117,13 +145,13 @@ public class MainActivity extends Activity {
 	}
 
 	private void EsegueEntrata() {
+		if (SharedObjects.getInstance().isGiaEntrato()) {
+			return;
+		}
+
         SharedObjects.getInstance().setContext(this);
         VariabiliGlobali.getInstance().setContext(this);
         VariabiliGlobali.getInstance().setActivityPrincipale(this);
-
-        if (SharedObjects.getInstance().isGiaEntrato()) {
-    		return;
-		}
 
     	SharedObjects.getInstance().setGiaEntrato(true);
 

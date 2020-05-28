@@ -1,6 +1,8 @@
 package com.looigi.cambiolacarta;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.app.WallpaperManager;
 import android.content.Context;
@@ -51,12 +53,19 @@ public class bckService extends Service {
         if (v == null || VariabiliGlobali.getInstance().getContext()==null || context==null) {
             l.ScriveLog(new Object() {
                     }.getClass().getEnclosingMethod().getName(),
-                    "Contex vuoto, Ricarico dal servizio");
+                    "Contex vuoto, riavvio applicazione");
+            Context context = SharedObjects.getInstance().getContext();
+            Intent mStartActivity = new Intent(context, MainActivity.class);
+            int mPendingIntentId = 123456;
+            PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager mgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+            System.exit(0);
 
             // RefreshActivity.getInstance().RilanciaActivity();
             // v = RefreshActivity.getAct();
             // context = RefreshActivity.getContext();
-            VariabiliGlobali.getInstance().setContext(context);
+            // VariabiliGlobali.getInstance().setContext(context);
         }
 
         try {
