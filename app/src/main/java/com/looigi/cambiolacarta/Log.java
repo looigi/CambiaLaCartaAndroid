@@ -15,7 +15,7 @@ import java.util.List;
 public class Log {
 	private String NomeFile="log.csv";
 	private Thread tScoda=null;
-	private boolean FaiLog = false;
+	private boolean FaiLog = true;
 	private final List<String> listaCompleta = Collections.synchronizedList(new ArrayList<String>());
 
 	public void PulisceFileDiLog() {

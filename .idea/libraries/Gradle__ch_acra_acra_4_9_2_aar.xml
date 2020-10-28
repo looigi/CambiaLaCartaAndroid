@@ -3,6 +3,9 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e761e87b65e537fbd4d0eeb0a4938b1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e761e87b65e537fbd4d0eeb0a4938b1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/98af1a6160306aeb7af00d5f3622c575/acra-4.9.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/98af1a6160306aeb7af00d5f3622c575/acra-4.9.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/98af1a6160306aeb7af00d5f3622c575/acra-4.9.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.acra/acra/4.9.2/63b9daba4655364c41416fff7952def16994b782/acra-4.9.2-javadoc.jar!/" />

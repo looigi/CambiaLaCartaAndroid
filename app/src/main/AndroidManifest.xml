@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
  	<uses-permission android:name="android.permission.SET_WALLPAPER_HINTS"/>
-		
+
     <application
         android:name=".acra.Acra"
         android:allowBackup="true"
@@ -20,6 +20,7 @@
         android:label="@string/app_name"
     	android:largeHeap="true"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name="com.looigi.cambiolacarta.MainActivity"
             android:label="@string/app_name" >
@@ -70,5 +71,5 @@
         -->
 
     </application>
-    
+
 </manifest>

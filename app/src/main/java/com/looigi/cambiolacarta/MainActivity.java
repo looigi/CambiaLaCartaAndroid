@@ -44,6 +44,7 @@ import java.util.Timer;
 public class MainActivity extends Activity {
 	private boolean CiSonoPermessi;
 	private MemoryBoss mMemoryBoss;
+	public static Context ctxPrincipale;
 
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
@@ -87,6 +88,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		ctxPrincipale = this;
 
 		Permessi pp = new Permessi();
 		CiSonoPermessi = pp.ControllaPermessi(this);

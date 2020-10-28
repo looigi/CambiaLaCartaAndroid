@@ -1,6 +1,7 @@
 package com.looigi.cambiolacarta;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.app.WallpaperManager;
 import android.content.Context;
@@ -44,14 +45,31 @@ public class bckService extends Service {
         Log l = new Log();
 
         if (v == null || VariabiliGlobali.getInstance().getContext()==null || context==null) {
-            l.ScriveLog(new Object() {
-                    }.getClass().getEnclosingMethod().getName(),
-                    "Contex vuoto, Ricarico dal servizio");
+            if (MainActivity.ctxPrincipale == null) {
+                l.ScriveLog(new Object() {
+                        }.getClass().getEnclosingMethod().getName(),
+                        "Context vuoto, Ricarico dal servizio");
 
-            RefreshActivity.getInstance().RilanciaActivity();
-            v = RefreshActivity.getAct();
-            context = RefreshActivity.getContext();
-            VariabiliGlobali.getInstance().setContext(context);
+                RefreshActivity.getInstance().RilanciaActivity();
+                v = RefreshActivity.getAct();
+                context = RefreshActivity.getContext();
+                VariabiliGlobali.getInstance().setContext(context);
+            } else {
+                l.ScriveLog(new Object() {
+                        }.getClass().getEnclosingMethod().getName(),
+                        "Context vuoto ma non quello del main, Ricarico dal main");
+
+                context = MainActivity.ctxPrincipale;
+                VariabiliGlobali.getInstance().setContext(context);
+            }
+            if (context == null) {
+                l.ScriveLog(new Object() {
+                        }.getClass().getEnclosingMethod().getName(),
+                        "Context continua a essere vuoto. Rilancio l'applicazione");
+                Intent intentR = new Intent(this, MainActivity.class);
+                this.startActivity(intentR);
+                System.exit(0);
+            }
         }
 
         try {
