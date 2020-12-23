@@ -544,7 +544,7 @@ public class ServizioInterno extends Service {
         layIndietro.setLayoutParams(new LinearLayout.LayoutParams(SchermoX2, SchermoY2));
         layOpzioni.setLayoutParams(new LinearLayout.LayoutParams(SchermoX2, SchermoY2));
 
-        RefreshActivity.getInstance().RilanciaServizio(context, v);
+        // RefreshActivity.getInstance().RilanciaServizio(context, v);
     }
 
     private void LeggeImmagini(DBLocale dbl) {

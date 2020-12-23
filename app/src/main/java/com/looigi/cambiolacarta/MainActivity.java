@@ -42,8 +42,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 
-import static com.looigi.cambiolacarta.RefreshActivity.context;
-
 public class MainActivity extends Activity {
 	private boolean CiSonoPermessi;
 	// private MemoryBoss mMemoryBoss;
