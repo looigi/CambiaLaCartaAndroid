@@ -28,7 +28,7 @@ public class VariabiliGlobali {
     private int VecchiaImmagine = -1;
     private Boolean ScreenON = true;
     private boolean CambiataImmagine=false;
-    private Intent iServizio;
+    // private Intent iServizio;
     private Handler handler = null;
     private Runnable r;
 
@@ -64,13 +64,14 @@ public class VariabiliGlobali {
         this.context = context;
     }
 
-    public Intent getiServizio() {
+    /* public Intent getiServizio() {
         return iServizio;
     }
 
     public void setiServizio(Intent iServizio) {
         this.iServizio = iServizio;
     }
+    */
 
     public boolean isCambiataImmagine() {
         return CambiataImmagine;

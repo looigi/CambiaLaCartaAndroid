@@ -12,22 +12,22 @@ public class PhoneUnlockedReceiver extends BroadcastReceiver {
         if (intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
             VariabiliGlobali.getInstance().setScreenON(true);
 
-            l.ScriveLog(new Object() {
-                    }.getClass().getEnclosingMethod().getName(),
-                    "Schermo attivo. Cambiata immagine: " + VariabiliGlobali.getInstance().isCambiataImmagine());
-
             if (VariabiliGlobali.getInstance().isCambiataImmagine()) {
                 VariabiliGlobali.getInstance().setCambiataImmagine(false);
 
                 l.ScriveLog(new Object() {
                         }.getClass().getEnclosingMethod().getName(),
-                        "Schermo attivo. Cambio immagine");
+                        "Schermo attivo. Cambiato flag immagine: " + VariabiliGlobali.getInstance().isCambiataImmagine());
 
                 Utility u = new Utility();
                 u.CambiaImmagine(true, 0);
             }
-        }else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
+        } else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
             VariabiliGlobali.getInstance().setScreenON(false);
+
+            l.ScriveLog(new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Schermo NON attivo");
         }
     }
 }

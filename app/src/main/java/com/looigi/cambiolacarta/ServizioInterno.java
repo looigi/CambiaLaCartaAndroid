@@ -1,35 +1,35 @@
-/* package com.looigi.cambiolacarta;
+package com.looigi.cambiolacarta;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
-import android.os.Binder;
-import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.app.Notification;
 import android.os.IBinder;
-import android.os.Looper;
+import android.os.Build;
+import android.app.NotificationChannel;
+import android.support.v7.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.looigi.cambiolacarta.AutoStart.service;
 
 import java.util.HashMap;
-import java.util.Random;
 
-public class bckService extends Service {
+public class ServizioInterno extends Service {
+    public static final String CHANNEL_ID = "ForegroundServiceChannel";
     protected Activity v;
     protected static PhoneUnlockedReceiver receiver;
     protected Context context;
@@ -37,14 +37,65 @@ public class bckService extends Service {
     private HashMap<Integer, Integer> soundPoolMap;
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        String input = intent.getStringExtra("inputExtra");
+        createNotificationChannel();
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,
+                0, notificationIntent, 0);
+        Notification notification = new NotificationCompat.Builder(this)
+                .setContentTitle("Cambia la carta")
+                .setContentText(input)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentIntent(pendingIntent)
+                .build();
+        startForeground(1, notification);
+
+        creaStrutturaInizio();
+
+        return START_NOT_STICKY;
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "Cambia la carta",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(serviceChannel);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        Log l = new Log();
+        l.ScriveLog(new Object() {
+        }.getClass().getEnclosingMethod().getName(),"Destroy service");
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    private void creaStrutturaInizio() {
         v = VariabiliGlobali.getInstance().getActivityPrincipale();
         context = this;
 
         // DBLocale dbl=new DBLocale();
         Log l = new Log();
 
-        if (v == null || VariabiliGlobali.getInstance().getContext()==null || context==null) {
+        /* if (v == null || VariabiliGlobali.getInstance().getContext()==null || context==null) {
             if (MainActivity.ctxPrincipale == null) {
                 l.ScriveLog(new Object() {
                         }.getClass().getEnclosingMethod().getName(),
@@ -70,7 +121,7 @@ public class bckService extends Service {
                 this.startActivity(intentR);
                 System.exit(0);
             }
-        }
+        } */
 
         try {
             unregisterReceiver(receiver);
@@ -163,7 +214,7 @@ public class bckService extends Service {
             //pEN=R.string.percorsoEN;
             //nIT=R.string.numimmIT;
             //nEN=R.string.numimmEN;
-    //
+            //
             // CreaBannerPubb();
 
             DisplayMetrics metrics = new DisplayMetrics();
@@ -235,6 +286,9 @@ public class bckService extends Service {
 
                     // CreaBannerPubb();
                     // MinutiPassati=0;
+                    /* if (MinutiPassati<1) {
+                        MinutiPassati=1;
+                    } */
 
                     if (SharedObjects.getInstance().getQuanteImm()>0) {
                         Boolean Ritorno=u.CambiaImmagine(false,0);
@@ -450,8 +504,6 @@ public class bckService extends Service {
 
             SharedObjects.getInstance().setStaPartendo(false);
         }
-
-        return Service.START_STICKY;
     }
 
     private void ImpostaDimensioni() {
@@ -495,25 +547,6 @@ public class bckService extends Service {
         RefreshActivity.getInstance().RilanciaServizio(context, v);
     }
 
-
-    @Override
-    public IBinder onBind(Intent intent) {
-
-        return null;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        Log l = new Log();
-        l.ScriveLog(new Object() {
-        }.getClass().getEnclosingMethod().getName(),"Destroy service");
-        // Intent dialogIntent = new Intent(this, MainActivity.class);
-        // dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // startActivity(dialogIntent);
-    }
-
     private void LeggeImmagini(DBLocale dbl) {
         SharedObjects.getInstance().setListaImmagini(dbl.RitornaImmagini(VariabiliGlobali.getInstance().getContext()));
         if (SharedObjects.getInstance().getListaImmagini()==null) {
@@ -523,4 +556,3 @@ public class bckService extends Service {
         }
     }
 }
-*/

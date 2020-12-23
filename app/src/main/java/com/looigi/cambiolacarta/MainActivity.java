@@ -19,7 +19,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
@@ -41,9 +42,11 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 
+import static com.looigi.cambiolacarta.RefreshActivity.context;
+
 public class MainActivity extends Activity {
 	private boolean CiSonoPermessi;
-	private MemoryBoss mMemoryBoss;
+	// private MemoryBoss mMemoryBoss;
 	public static Context ctxPrincipale;
 
 	// Banner di pubblicit�
@@ -75,13 +78,26 @@ public class MainActivity extends Activity {
         } else {
             return this;
         }
-    } */
+    }
 
     @Override
 	protected void onResume() {
 		super.onResume();
 
 		this.onCreate(null);
+	} */
+
+	@Override
+	protected void onDestroy() {
+    	Log l = new Log();
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Attività distrutta");
+
+		this.recreate();
+
+		super.onDestroy();
 	}
 
 	@Override
@@ -96,10 +112,10 @@ public class MainActivity extends Activity {
 		if (CiSonoPermessi) {
 			EsegueEntrata();
 
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-				mMemoryBoss = new MemoryBoss();
-				registerComponentCallbacks(mMemoryBoss);
-			}
+			// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+			// 	mMemoryBoss = new MemoryBoss();
+			// 	registerComponentCallbacks(mMemoryBoss);
+			// }
 		}
 
 	}
@@ -129,13 +145,46 @@ public class MainActivity extends Activity {
 		VariabiliGlobali.getInstance().setContext(this);
 		VariabiliGlobali.getInstance().setActivityPrincipale(this);
 
-		VariabiliGlobali.getInstance().setiServizio(new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), bckService.class));
-		VariabiliGlobali.getInstance().getActivityPrincipale().startService(
-				VariabiliGlobali.getInstance().getiServizio());
+		// VariabiliGlobali.getInstance().setiServizio(new Intent(VariabiliGlobali.getInstance().getActivityPrincipale(), bckService.class));
+		// VariabiliGlobali.getInstance().getActivityPrincipale().startService(
+		// 		VariabiliGlobali.getInstance().getiServizio());
+		startService();
 
 		if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
 			moveTaskToBack(true);
 		}
+	}
+
+	public void startService() {
+		Log l = new Log();
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Attivo servizio");
+
+		Intent serviceIntent = new Intent(this, ServizioInterno.class);
+		serviceIntent.putExtra("inputExtra", "Cambia la carta foreground");
+		// ContextCompat.startForegroundService(this, serviceIntent);
+		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			startForegroundService(serviceIntent);
+		} else {
+
+		}
+		// } else {
+		// 	VariabiliGlobali.getInstance().getActivityPrincipale().startService(serviceIntent);
+		// }
+	}
+
+	public void stopService() {
+		Log l = new Log();
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Stoppo servizio");
+
+		Intent serviceIntent = new Intent(this, ServizioInterno.class);
+		stopService(serviceIntent);
 	}
 
 	// private void CreaBannerPubb() {
@@ -233,9 +282,19 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onStop() {
-		super.onStop();
+		// Log l = new Log();
 
-		unregisterComponentCallbacks(mMemoryBoss);
+		// l.ScriveLog(new Object() {
+		// 		}.getClass().getEnclosingMethod().getName(),
+		// 		"Attività stoppata");
+
+		// this.recreate();
+
+		// unregisterComponentCallbacks(mMemoryBoss);
+
+		// stopService();
+
+		super.onStop();
 
 		// DialogMessaggio.getInstance().show(VariabiliStaticheGlobali.getInstance().getContext(),
 		//         "Richiamata funzione onStop",

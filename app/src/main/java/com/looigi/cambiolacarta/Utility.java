@@ -736,6 +736,10 @@ public class Utility {
 		Boolean Ritorno = false;
 		Log l = new Log();
 
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Cambia immagine. Schermo attivo: " + VariabiliGlobali.getInstance().getScreenON());
+
 		if (VariabiliGlobali.getInstance().getScreenON()) {
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
