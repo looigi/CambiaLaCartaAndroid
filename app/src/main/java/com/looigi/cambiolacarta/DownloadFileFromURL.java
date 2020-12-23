@@ -70,7 +70,7 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
             OutputStream output = new FileOutputStream(NomeFileAppoggio);
 
-            byte data[] = new byte[1024];
+            byte[] data = new byte[1024];
 
             long total = 0;
 

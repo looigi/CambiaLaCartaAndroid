@@ -1,4 +1,4 @@
-package com.looigi.cambiolacarta;
+/* package com.looigi.cambiolacarta;
 
 import android.app.Activity;
 import android.content.Context;
@@ -99,3 +99,4 @@ public class RefreshActivity {
         }
     }
 }
+*/

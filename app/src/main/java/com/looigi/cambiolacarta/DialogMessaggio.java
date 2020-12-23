@@ -67,9 +67,9 @@ public class DialogMessaggio
             builder.setPositiveButton("Ok", onClickOK);
         }
 
-        if (VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
-            RefreshActivity.getInstance().RilanciaActivity();
-        }
+        // if (VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
+        //     RefreshActivity.getInstance().RilanciaActivity();
+        // }
 
         if (VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
             if (VariabiliGlobali.getInstance().getContext()!=null) {

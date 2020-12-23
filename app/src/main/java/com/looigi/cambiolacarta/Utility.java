@@ -35,6 +35,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Random;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -44,6 +45,8 @@ public class Utility {
 	private int BordoY=5;
 	// private Timer timer;
 	private int MinutiPassati;
+	Timer t = null;
+	TimerTask tt = null;
 
 	public String ControllaLingua(Context context, int CosaIT, int CosaEN) {
 		String Ritorno="";
@@ -646,35 +649,38 @@ public class Utility {
 		if (VariabiliGlobali.getInstance().getHandler() == null) {
 			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
 
-			VariabiliGlobali.getInstance().setHandler(new Handler());
-			VariabiliGlobali.getInstance().setR(new Runnable() {
+			// final Handler handler = new Handler();
+			t = new Timer();
+			tt = new TimerTask() {
+				@Override
 				public void run() {
-					// FaiPartireTimer();
-
+					// Looper.prepare();
 					MinutiPassati++;
+
+					Log l = new Log();
+					l.ScriveLog(new Object() {
+							}.getClass().getEnclosingMethod().getName(),
+							"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+
 					if (MinutiPassati >= TotMinuti) {
 						MinutiPassati = 0;
 
-						// Looper.prepare();
-
-						// Utility u = new Utility();
 						Boolean Ritorno = CambiaImmagine(true, 0);
-						// if (!Ritorno) {
-						// Toast.makeText(VariabiliGlobali.getInstance().getContext(),
-						// 		u.ControllaLingua(VariabiliGlobali.getInstance().getContext(),
-						// 				R.string.errimmimpIT, R.string.errimmimpEN), Toast.LENGTH_SHORT).show();
-						// }
 					}
+					// Looper.loop();
+				}
+			};
 
-					/* handler.removeCallbacks(r);
+			t.scheduleAtFixedRate(tt ,0,60000);
 
-					handler=null;
-					r=null; */
-
+			/* VariabiliGlobali.getInstance().setHandler(new Handler());
+			VariabiliGlobali.getInstance().setR(new Runnable() {
+				public void run() {
+					// FaiPartireTimer();
 					VariabiliGlobali.getInstance().getHandler().postDelayed(VariabiliGlobali.getInstance().getR(), 60000);
 				}
 			});
-			VariabiliGlobali.getInstance().getHandler().postDelayed(VariabiliGlobali.getInstance().getR(), 60000);
+			VariabiliGlobali.getInstance().getHandler().postDelayed(VariabiliGlobali.getInstance().getR(), 60000); */
 		}
 	}
 
@@ -684,13 +690,16 @@ public class Utility {
 		if (SharedObjects.getInstance().getListaImmagini()!=null) {
 			if (SharedObjects.getInstance().getListaImmagini().size()>0) {
 				if (VariabiliGlobali.getInstance().getHandler()!=null) {
-					try {
+					/* try {
 						VariabiliGlobali.getInstance().getHandler().removeCallbacks(VariabiliGlobali.getInstance().getR());
 					} catch (Exception ignored) {
 
 					}
 					VariabiliGlobali.getInstance().setHandler(null);
-					VariabiliGlobali.getInstance().setR(null);
+					VariabiliGlobali.getInstance().setR(null); */
+					t.cancel();
+					t.purge();
+					t = null;
 				}
 
 				/* if (timer != null) {
@@ -746,7 +755,7 @@ public class Utility {
 					"Schermo attivo, cambio immagine");
 
 			// Se per qualche motivo si è perso la lista delle immagini le ricarico
-			if (SharedObjects.getInstance().getListaImmagini().size() == 0) {
+			if (SharedObjects.getInstance().getListaImmagini() == null || SharedObjects.getInstance().getListaImmagini().size() == 0) {
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
 						"Lista immagini vuota. Ricarico");
@@ -844,8 +853,8 @@ public class Utility {
 			}
 		} else {
 			l.ScriveLog(new Object() {
-					}.getClass().getEnclosingMethod().getName(),
-					"Cambio immagine: Setto flag cambiata immagine = true.");
+				}.getClass().getEnclosingMethod().getName(),
+				"Cambio immagine: Setto flag cambiata immagine = true.");
 //
 			VariabiliGlobali.getInstance().setCambiataImmagine(true);
 //

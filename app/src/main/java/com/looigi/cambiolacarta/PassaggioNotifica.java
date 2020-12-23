@@ -16,7 +16,7 @@ public class PassaggioNotifica extends Activity {
 	
 		context=this;
 		String action="";
-		Boolean Apre=false;
+		boolean Apre=false;
 		Log l = new Log();
 		
 		try {
@@ -37,6 +37,11 @@ public class PassaggioNotifica extends Activity {
 		if (action.equals("apre")) {
 			u.ScriveInfo(l);
 			String Nome="";
+
+			if (SharedObjects.getInstance().getTipoCambio() == null) {
+				DBLocale dbl = new DBLocale();
+				dbl.LeggeOpzioni(context);
+			}
 
 			if (!SharedObjects.getInstance().getTipoCambio().equals("SINCRONIZZATA")) {
 				try {
@@ -62,6 +67,8 @@ public class PassaggioNotifica extends Activity {
 			}
 		} else {
 			service.ChiudiMaschera = false;
+
+			SharedObjects.getInstance().setGiaEntrato(false);
 
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);

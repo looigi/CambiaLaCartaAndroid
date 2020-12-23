@@ -350,9 +350,9 @@ public class GestioneWEBServiceSOAP {
 					if (!Errore) {
 						while (Ancora) {
 							if (tOperazione.equals("TornaNumeroImmaginePerSfondo")) {
-									rRit.TornaNumeroImmaginePerSfondo(Ritorno, l);
-									Ancora = false;
-									break;
+								rRit.TornaNumeroImmaginePerSfondo(Ritorno, l);
+								Ancora = false;
+								break;
 							}
 						}
 					} else {
@@ -378,8 +378,9 @@ public class GestioneWEBServiceSOAP {
 						// 	hAttesaNuovoTentativo.postDelayed(rAttesaNuovoTentativo, 1000);
 						// 	// Errore... Riprovo ad eseguire la funzione
 					// }
-						DialogMessaggio.getInstance().show(VariabiliGlobali.getInstance().getContext(),
-								messErrore, true, "looVF", false);
+
+						// DialogMessaggio.getInstance().show(VariabiliGlobali.getInstance().getContext(),
+						// 		messErrore, true, "looVF", false);
 				}
 			}
 			bckAsyncTask = null;
