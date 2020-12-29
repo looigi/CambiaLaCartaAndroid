@@ -8,6 +8,7 @@ import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
@@ -16,12 +17,13 @@ import android.app.Notification;
 import android.os.IBinder;
 import android.os.Build;
 import android.app.NotificationChannel;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import com.looigi.cambiolacarta.AutoStart.service;
@@ -29,9 +31,7 @@ import com.looigi.cambiolacarta.AutoStart.service;
 import java.util.HashMap;
 
 public class ServizioInterno extends Service {
-    public static final String CHANNEL_ID = "ForegroundServiceChannel";
     protected Activity v;
-    protected static PhoneUnlockedReceiver receiver;
     protected Context context;
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
@@ -44,33 +44,21 @@ public class ServizioInterno extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         String input = intent.getStringExtra("inputExtra");
-        createNotificationChannel();
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,
-                0, notificationIntent, 0);
-        Notification notification = new NotificationCompat.Builder(this)
-                .setContentTitle("Cambia la carta")
-                .setContentText(input)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentIntent(pendingIntent)
-                .build();
-        startForeground(1, notification);
 
         creaStrutturaInizio();
 
-        return START_NOT_STICKY;
-    }
+        Notifiche.getInstance().createNotificationChannel();
+        Notification notification = Notifiche.getInstance().CreaNotifichella();
 
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel serviceChannel = new NotificationChannel(
-                    CHANNEL_ID,
-                    "Cambia la carta",
-                    NotificationManager.IMPORTANCE_DEFAULT
-            );
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(serviceChannel);
+        startForeground(1, notification);
+
+        if (!VariabiliGlobali.getInstance().isPartito()) {
+            VariabiliGlobali.getInstance().getActivityPrincipale().moveTaskToBack(true);
         }
+
+        VariabiliGlobali.getInstance().setPartito(true);
+
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -121,19 +109,23 @@ public class ServizioInterno extends Service {
                 this.startActivity(intentR);
                 System.exit(0);
             }
-        } */
+        }
 
+        receiver = new PhoneUnlockedReceiver();
         try {
             unregisterReceiver(receiver);
             receiver = null;
         } catch (Exception ignored) {
 
         }
-        receiver = new PhoneUnlockedReceiver();
         IntentFilter fRecv = new IntentFilter();
         fRecv.addAction(Intent.ACTION_USER_PRESENT);
         fRecv.addAction(Intent.ACTION_SCREEN_OFF);
-        registerReceiver(receiver, fRecv);
+        try {
+            registerReceiver(receiver, fRecv);
+        } catch (Exception ignored) {
+
+        } */
 
         SharedObjects.getInstance().setAudioManager((AudioManager)getSystemService(context.AUDIO_SERVICE));
 
@@ -471,8 +463,8 @@ public class ServizioInterno extends Service {
 
             ImpostaDimensioni();
 
-            Notifiche.getInstance().CreaNotifica();
-            Notifiche.getInstance().AggiornaNotifica();
+            // Notifiche.getInstance().CreaNotifica();
+            // Notifiche.getInstance().AggiornaNotifica();
 
             if (service.ChiudiMaschera==null) {
                 service.ChiudiMaschera=false;

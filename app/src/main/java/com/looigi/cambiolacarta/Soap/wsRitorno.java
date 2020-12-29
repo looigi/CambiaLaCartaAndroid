@@ -7,7 +7,7 @@ import com.looigi.cambiolacarta.DBLocale;
 import com.looigi.cambiolacarta.DialogMessaggio;
 import com.looigi.cambiolacarta.DownloadFileFromURL;
 import com.looigi.cambiolacarta.Log;
-import com.looigi.cambiolacarta.Notifiche;
+// import com.looigi.cambiolacarta.Notifiche;
 import com.looigi.cambiolacarta.SharedObjects;
 import com.looigi.cambiolacarta.Utility;
 import com.looigi.cambiolacarta.VariabiliGlobali;

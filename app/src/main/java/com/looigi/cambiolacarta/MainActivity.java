@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
 	private boolean CiSonoPermessi;
 	// private MemoryBoss mMemoryBoss;
 	public static Context ctxPrincipale;
+	private PhoneUnlockedReceiver receiver;
 
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
@@ -129,6 +130,22 @@ public class MainActivity extends Activity {
 				index++;
 			}
 
+			receiver = new PhoneUnlockedReceiver();
+			try {
+				unregisterReceiver(receiver);
+				receiver = null;
+			} catch (Exception ignored) {
+
+			}
+			IntentFilter fRecv = new IntentFilter();
+			fRecv.addAction(Intent.ACTION_USER_PRESENT);
+			fRecv.addAction(Intent.ACTION_SCREEN_OFF);
+			try {
+				registerReceiver(receiver, fRecv);
+			} catch (Exception ignored) {
+
+			}
+
 			EsegueEntrata();
 		}
 	}
@@ -161,7 +178,7 @@ public class MainActivity extends Activity {
 				"Attivo servizio");
 
 		Intent serviceIntent = new Intent(this, ServizioInterno.class);
-		serviceIntent.putExtra("inputExtra", "Cambia la carta foreground");
+		serviceIntent.putExtra("inputExtra", "Cambia la carta");
 		// ContextCompat.startForegroundService(this, serviceIntent);
 		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -169,6 +186,13 @@ public class MainActivity extends Activity {
 		} else {
 
 		}
+
+		// if (SharedObjects.getInstance().getStaPartendo()) {
+		// 	moveTaskToBack(true);
+		// }
+		// CreaNotifica();
+		// AggiornaNotifica();
+
 		// } else {
 		// 	VariabiliGlobali.getInstance().getActivityPrincipale().startService(serviceIntent);
 		// }

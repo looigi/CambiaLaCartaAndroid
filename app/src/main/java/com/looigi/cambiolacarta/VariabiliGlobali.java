@@ -22,15 +22,33 @@ public class VariabiliGlobali {
     public String PercorsoDIR= Environment.getExternalStorageDirectory().getPath()+"/LooigiSoft/CambiaLaCarta";
     protected Context context;
     protected Activity activityPrincipale;
-    private NotificationManager notificationManager;
-    private NotificationCompat.Builder notificationBuilder;
-    private RemoteViews contentView;
+    // private NotificationManager notificationManager;
+    // private NotificationCompat.Builder notificationBuilder;
+    // private RemoteViews contentView;
     private int VecchiaImmagine = -1;
     private Boolean ScreenON = true;
     private boolean CambiataImmagine=false;
     // private Intent iServizio;
     private Handler handler = null;
     private Runnable r;
+    private String CHANNEL_ID = "ForegroundServiceChannel";
+    private boolean Partito = false;
+
+    public boolean isPartito() {
+        return Partito;
+    }
+
+    public void setPartito(boolean partito) {
+        Partito = partito;
+    }
+
+    public String getCHANNEL_ID() {
+        return CHANNEL_ID;
+    }
+
+    public void setCHANNEL_ID(String CHANNEL_ID) {
+        this.CHANNEL_ID = CHANNEL_ID;
+    }
 
     public Handler getHandler() {
         return handler;
@@ -97,7 +115,7 @@ public class VariabiliGlobali {
         VecchiaImmagine = vecchiaImmagine;
     }
 
-    public NotificationManager getNotificationManager() {
+    /* public NotificationManager getNotificationManager() {
         return notificationManager;
     }
 
@@ -120,4 +138,5 @@ public class VariabiliGlobali {
     public void setContentView(RemoteViews contentView) {
         this.contentView = contentView;
     }
+    */
 }

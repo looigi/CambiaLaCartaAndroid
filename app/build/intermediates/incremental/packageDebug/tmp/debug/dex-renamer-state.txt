@@ -1,4 +1,4 @@
-#Wed Dec 23 14:50:06 CET 2020
+#Tue Dec 29 08:07:42 CET 2020
 base.0=D\:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

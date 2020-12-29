@@ -212,11 +212,15 @@ public class DBLocale extends Activity {
 			SharedObjects.getInstance().setQualeImmagineHaVisualizzato(0);
 			SharedObjects.getInstance().setAttivo("S");
 
-			SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.VISIBLE);
-			SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.VISIBLE);
-			SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.VISIBLE);
-			SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.VISIBLE);
-			SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.VISIBLE);
+			try {
+				SharedObjects.getInstance().getImgCambia().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgPrec().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgSucc().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgRefresh().setVisibility(LinearLayout.VISIBLE);
+				SharedObjects.getInstance().getImgCambiaDir().setVisibility(LinearLayout.VISIBLE);
+			} catch (Exception Ignored) {
+
+			}
 		}
 		c.close();
 

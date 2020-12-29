@@ -120,16 +120,16 @@
                     android:orientation="vertical"
                     android:padding="4dp" >
 
-                    <ImageView
-                        android:id="@+id/imgCopertinaM"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/refresh" />
-
                 </LinearLayout>
 
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgCopertinaM"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/refresh" />
 
         </LinearLayout>
     </LinearLayout>

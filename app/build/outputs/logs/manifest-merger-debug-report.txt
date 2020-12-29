@@ -69,7 +69,7 @@ ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\Andr
 	android:name
 		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:15:22-74
 application
-ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:17:5-80:19
+ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:18:5-80:19
 MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\1d71dc6429cfbf4cb6eca0985f8f00c4\acra-4.9.2\AndroidManifest.xml:39:5-43:19
 MERGED from [ch.acra:acra:4.9.2] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\1d71dc6429cfbf4cb6eca0985f8f00c4\acra-4.9.2\AndroidManifest.xml:39:5-43:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Luigi Pecce\.gradle\caches\transforms-2\files-2.1\3c25d949127361693c3996e6817a65c8\appcompat-v7-26.1.0\AndroidManifest.xml:25:5-29:19
@@ -102,8 +102,6 @@ MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Luigi Pecce\.gradle\
 		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:19:9-35
 	android:theme
 		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:23:9-40
-	android:name
-		ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:18:9-34
 activity#com.looigi.cambiolacarta.MainActivity
 ADDED from D:\Sorgenti\Android\Sviluppo\Miei\Cambio La Carta 2\app\src\main\AndroidManifest.xml:25:9-33:20
 	android:label
