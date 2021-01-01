@@ -19,6 +19,7 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
     private ProgressDialog progressDialog;
     private String NomeFileAppoggio;
     private Log l;
+    private long ultimoPassaggioCambio = 0;
 
     public DownloadFileFromURL(Log l) {
         this.l = l;
@@ -121,8 +122,13 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
         // u.CambiaImmagine(true, 9999);
         u.ScriveInfo(l);
 
-        ChangeWallpaper cw = new ChangeWallpaper();
-        boolean Ritorno = cw.setWallpaper(NomeFileAppoggio, l);
+        long adesso = System.currentTimeMillis() / 1000L;
+        if (adesso - ultimoPassaggioCambio > 10) {
+            ultimoPassaggioCambio = adesso;
+
+            ChangeWallpaper cw = new ChangeWallpaper();
+            boolean Ritorno = cw.setWallpaper(NomeFileAppoggio, l);
+        }
 
         Bitmap myBitmap = u.getPreview(NomeFileAppoggio);
         myBitmap = u.ConverteDimensioniInterne(myBitmap, l);

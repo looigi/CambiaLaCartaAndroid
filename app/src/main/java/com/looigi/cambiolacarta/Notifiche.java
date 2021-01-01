@@ -105,21 +105,25 @@ public class Notifiche {
     }
 
     public Notification CreaNotifichella() {
-        Intent notificationIntent = new Intent(VariabiliGlobali.getInstance().getContext(), MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(VariabiliGlobali.getInstance().getContext(),
-                0, notificationIntent, 0);
-        RemoteViews contentView = (new RemoteViews(VariabiliGlobali.getInstance().getActivityPrincipale().getPackageName(), //
-                R.layout.barra_notifica)); //
-        setListenersTasti(contentView); //
-        impostaOggettiDescrittivi(contentView);
-        return new NotificationCompat.Builder(VariabiliGlobali.getInstance().getContext(), VariabiliGlobali.getInstance().getCHANNEL_ID())
-                .setContentTitle("Cambia la carta")
-                .setContentText("")
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentIntent(pendingIntent)
-                .setContent(contentView) //
-                .setAutoCancel(false) //
-                .build();
+        if (VariabiliGlobali.getInstance().getActivityPrincipale() != null) {
+            Intent notificationIntent = new Intent(VariabiliGlobali.getInstance().getContext(), MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(VariabiliGlobali.getInstance().getContext(),
+                    0, notificationIntent, 0);
+            RemoteViews contentView = (new RemoteViews(VariabiliGlobali.getInstance().getActivityPrincipale().getPackageName(), //
+                    R.layout.barra_notifica)); //
+            setListenersTasti(contentView); //
+            impostaOggettiDescrittivi(contentView);
+            return new NotificationCompat.Builder(VariabiliGlobali.getInstance().getContext(), VariabiliGlobali.getInstance().getCHANNEL_ID())
+                    .setContentTitle("Cambia la carta")
+                    .setContentText("")
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentIntent(pendingIntent)
+                    .setContent(contentView) //
+                    .setAutoCancel(false) //
+                    .build();
+        } else {
+            return null;
+        }
     }
 
     private void setListenersTasti(RemoteViews view){

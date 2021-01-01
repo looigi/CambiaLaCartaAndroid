@@ -47,6 +47,9 @@ public class Utility {
 	private int MinutiPassati;
 	Timer t = null;
 	TimerTask tt = null;
+	private long ultimoPassaggio = 0;
+	private long ultimoPassaggioBordo = 0;
+	private long ultimoPassaggioReale = 0;
 
 	public String ControllaLingua(Context context, int CosaIT, int CosaEN) {
 		String Ritorno="";
@@ -71,167 +74,181 @@ public class Utility {
 	}
 	
 	public Bitmap PrendeImmagineReale(String FileName, Log l) {
-		Bitmap myBitmap=null;
-		
-		GestioneFilesCartelle gfc=new GestioneFilesCartelle();
-		if (gfc.EsisteFile(gfc.PrendeNomeFile(FileName), gfc.PrendeNomeCartella(FileName))) {
-			l.ScriveLog(new Object() {
-					}.getClass().getEnclosingMethod().getName(),
-					"Cambio immagine. File esistente: " + gfc.PrendeNomeCartella(FileName) + "/" + gfc.PrendeNomeFile(FileName));
+		long adesso = System.currentTimeMillis() / 1000L;
+		if (adesso - ultimoPassaggioReale > 10) {
+			ultimoPassaggioReale = adesso;
 
-			DisplayMetrics metrics = new DisplayMetrics();
-			SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
+			Bitmap myBitmap = null;
 
-			SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
-			SharedObjects.getInstance().setSchermoY(metrics.heightPixels);
+			GestioneFilesCartelle gfc = new GestioneFilesCartelle();
+			if (gfc.EsisteFile(gfc.PrendeNomeFile(FileName), gfc.PrendeNomeCartella(FileName))) {
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine. File esistente: " + gfc.PrendeNomeCartella(FileName) + "/" + gfc.PrendeNomeFile(FileName));
 
-			l.ScriveLog(new Object() {
-					}.getClass().getEnclosingMethod().getName(),
-					"Cambio immagine. Dimensioni schermo: " + SharedObjects.getInstance().getSchermoX()+"x"+SharedObjects.getInstance().getSchermoY());
+				DisplayMetrics metrics = new DisplayMetrics();
+				SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
 
-			myBitmap = getPreview(FileName);
+				SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
+				SharedObjects.getInstance().setSchermoY(metrics.heightPixels);
 
-			l.ScriveLog(new Object() {
-					}.getClass().getEnclosingMethod().getName(),
-					"Cambio immagine. Impostata preview");
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine. Dimensioni schermo: " + SharedObjects.getInstance().getSchermoX() + "x" + SharedObjects.getInstance().getSchermoY());
 
-			if (myBitmap!=null) {
-				if (SharedObjects.getInstance().getStretch().equals("S")) {
-					l.ScriveLog(new Object() {
-							}.getClass().getEnclosingMethod().getName(),
-							"Cambio immagine. Stretch = S");
+				myBitmap = getPreview(FileName);
 
-					if (SharedObjects.getInstance().getModalitaVisua().equals("N")) {
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine. Impostata preview");
+
+				if (myBitmap != null) {
+					if (SharedObjects.getInstance().getStretch().equals("S")) {
 						l.ScriveLog(new Object() {
 								}.getClass().getEnclosingMethod().getName(),
-								"Cambio immagine. Converte dimensioni");
+								"Cambio immagine. Stretch = S");
 
-						myBitmap=ConverteDimensioni(myBitmap, l);
-						if (myBitmap!=null) {
-							try {
-								// Bitmap Immaginona = Bitmap.createBitmap(SharedObjects.getInstance().getSchermoX(), SharedObjects.getInstance().getSchermoY(), Bitmap.Config.ARGB_8888);
-								// Canvas comboImage = new Canvas(Immaginona);
-								// float Altezza=(((float) (SharedObjects.getInstance().getSchermoY()))/2)-(myBitmap.getHeight()/2);
-								// float Larghezza=(((float) (SharedObjects.getInstance().getSchermoX()))/2)-(myBitmap.getWidth()/2);
-								// comboImage.drawBitmap(myBitmap, Larghezza, Altezza, null);
+						if (SharedObjects.getInstance().getModalitaVisua().equals("N")) {
+							l.ScriveLog(new Object() {
+									}.getClass().getEnclosingMethod().getName(),
+									"Cambio immagine. Converte dimensioni");
+
+							myBitmap = ConverteDimensioni(myBitmap, l);
+							if (myBitmap != null) {
+								try {
+									// Bitmap Immaginona = Bitmap.createBitmap(SharedObjects.getInstance().getSchermoX(), SharedObjects.getInstance().getSchermoY(), Bitmap.Config.ARGB_8888);
+									// Canvas comboImage = new Canvas(Immaginona);
+									// float Altezza=(((float) (SharedObjects.getInstance().getSchermoY()))/2)-(myBitmap.getHeight()/2);
+									// float Larghezza=(((float) (SharedObjects.getInstance().getSchermoX()))/2)-(myBitmap.getWidth()/2);
+									// comboImage.drawBitmap(myBitmap, Larghezza, Altezza, null);
+									l.ScriveLog(new Object() {
+											}.getClass().getEnclosingMethod().getName(),
+											"Cambio immagine. Mette bordo a immagine");
+
+									myBitmap = MetteBordoAImmagine(myBitmap, l);
+								} catch (Exception ignored) {
+									Utility u = new Utility();
+									l.ScriveLog(new Object() {
+											}.getClass().getEnclosingMethod().getName(),
+											"Cambio immagine. Mette bordo a immagine. Errore:\n" + u.PrendeErroreDaException(ignored));
+									myBitmap = null;
+								}
+							} else {
 								l.ScriveLog(new Object() {
 										}.getClass().getEnclosingMethod().getName(),
-										"Cambio immagine. Mette bordo a immagine");
+										"Cambio immagine. Converte dimensioni ha ritornato null");
 
-								myBitmap=MetteBordoAImmagine(myBitmap, l);
-							} catch (Exception ignored) {
-								Utility u = new Utility();
-								l.ScriveLog(new Object() {
-										}.getClass().getEnclosingMethod().getName(),
-										"Cambio immagine. Mette bordo a immagine. Errore:\n" + u.PrendeErroreDaException(ignored));
-								myBitmap=null;
+								myBitmap = null;
 							}
 						} else {
 							l.ScriveLog(new Object() {
 									}.getClass().getEnclosingMethod().getName(),
-									"Cambio immagine. Converte dimensioni ha ritornato null");
+									"Cambio immagine. Create scaled bitmap");
 
-							myBitmap=null;
+							myBitmap = Bitmap.createScaledBitmap(myBitmap, (int) SharedObjects.getInstance().getSchermoX() - BordoX,
+									(int) SharedObjects.getInstance().getSchermoY() - BordoY, true);
 						}
-					} else {
-						l.ScriveLog(new Object() {
-								}.getClass().getEnclosingMethod().getName(),
-								"Cambio immagine. Create scaled bitmap");
-
-						myBitmap = Bitmap.createScaledBitmap(myBitmap, (int) SharedObjects.getInstance().getSchermoX()-BordoX,
-								(int) SharedObjects.getInstance().getSchermoY()-BordoY, true);
 					}
+					// SalvaImmagine(myBitmap);
 				}
-				// SalvaImmagine(myBitmap);
-			}
-		} else {
-			l.ScriveLog(new Object() {
-					}.getClass().getEnclosingMethod().getName(),
-					"Cambio immagine. Svuoto bitmap. File inesistente.");
+			} else {
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine. Svuoto bitmap. File inesistente.");
 
-			myBitmap=null;
+				myBitmap = null;
+			}
+
+			return myBitmap;
+		} else {
+			return null;
 		}
-		
-		return myBitmap;
 	}
 
 	private Bitmap MetteBordoAImmagine(Bitmap myBitmap, Log l) {
-		int SchermoX = SharedObjects.getInstance().getSchermoX();
-		int SchermoY = SharedObjects.getInstance().getSchermoY();
+		long adesso = System.currentTimeMillis() / 1000L;
+		if (adesso - ultimoPassaggioBordo > 10) {
+			ultimoPassaggioBordo = adesso;
 
-		int ImmagineX = myBitmap.getWidth();
-		int ImmagineY = (SchermoY-myBitmap.getHeight())/2;
+			int SchermoX = SharedObjects.getInstance().getSchermoX();
+			int SchermoY = SharedObjects.getInstance().getSchermoY();
 
-		l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Mette bordo 1");
+			int ImmagineX = myBitmap.getWidth();
+			int ImmagineY = (SchermoY - myBitmap.getHeight()) / 2;
 
-		// ImmagineX = SchermoX-ImmagineX;
-		// ImmagineX = SchermoX;
-        // ImmagineY = (SchermoY-ImmagineY)/2;
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Mette bordo 1");
 
-        // ImmagineX = 500;
-		// ImmagineY = 100;
+			// ImmagineX = SchermoX-ImmagineX;
+			// ImmagineX = SchermoX;
+			// ImmagineY = (SchermoY-ImmagineY)/2;
 
-		Bitmap myOutputBitmap = myBitmap.copy(myBitmap.getConfig(), true);
-		try {
+			// ImmagineX = 500;
+			// ImmagineY = 100;
+
+			Bitmap myOutputBitmap = myBitmap.copy(myBitmap.getConfig(), true);
+			try {
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Mette bordo 2");
+
+				RenderScript renderScript = RenderScript.create(SharedObjects.getInstance().getContext());
+				Allocation blurInput = Allocation.createFromBitmap(renderScript, myBitmap, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
+				Allocation blurOutput = Allocation.createFromBitmap(renderScript, myOutputBitmap);
+				ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(renderScript,
+						Element.U8_4(renderScript));
+				blur.setInput(blurInput);
+				blur.setRadius(25); // radius must be 0 < r <= 25
+				blur.forEach(blurOutput);
+				blurOutput.copyTo(myOutputBitmap);
+				renderScript.destroy();
+			} catch (Exception ignored) {
+				Utility u = new Utility();
+
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Mette bordo: " + u.PrendeErroreDaException(ignored));
+				int a = 0;
+			}
+
+			int offset = 50;
+			int divisore = 2;
+
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
 					"Mette bordo 2");
 
-			RenderScript renderScript = RenderScript.create(SharedObjects.getInstance().getContext());
-			Allocation blurInput = Allocation.createFromBitmap(renderScript, myBitmap, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
-			Allocation blurOutput = Allocation.createFromBitmap(renderScript, myOutputBitmap);
-			ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(renderScript,
-					Element.U8_4(renderScript));
-			blur.setInput(blurInput);
-			blur.setRadius(25); // radius must be 0 < r <= 25
-			blur.forEach(blurOutput);
-			blurOutput.copyTo(myOutputBitmap);
-			renderScript.destroy();
-		} catch (Exception ignored) {
-			Utility u = new Utility();
+			Bitmap Immaginona = Bitmap.createBitmap((SharedObjects.getInstance().getSchermoX()) + offset * 2,
+					SharedObjects.getInstance().getSchermoY() + offset * 2, Bitmap.Config.ARGB_8888);
 
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
-					"Mette bordo: " + u.PrendeErroreDaException(ignored));
-			int a=0;
+					"Mette bordo 3");
+
+			Bitmap croppedSuperiore = Bitmap.createBitmap(myOutputBitmap, 0, 0, SchermoX, (ImmagineY / divisore));
+			Bitmap resizedBitmap = Bitmap.createScaledBitmap(croppedSuperiore, SchermoX, ImmagineY, false);
+			Canvas canvas1 = new Canvas(Immaginona);
+			canvas1.drawBitmap(resizedBitmap, 0, 0, null);
+
+			canvas1.drawBitmap(myBitmap, 0, ImmagineY + 1, null);
+
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Mette bordo 4");
+
+			Bitmap croppedInferiore = Bitmap.createBitmap(myOutputBitmap, 0, myBitmap.getHeight() - (ImmagineY / divisore), SchermoX, ImmagineY / divisore);
+			resizedBitmap = Bitmap.createScaledBitmap(croppedInferiore, SchermoX, ImmagineY, false);
+			canvas1.drawBitmap(resizedBitmap, 0, myBitmap.getHeight() + ImmagineY + 1, null);
+
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Mette bordo uscita");
+
+			return Immaginona;
+		} else {
+			return null;
 		}
-
-		int offset = 50;
-		int divisore = 2;
-
-		l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Mette bordo 2");
-
-		Bitmap Immaginona = Bitmap.createBitmap((SharedObjects.getInstance().getSchermoX()) + offset * 2,
-				SharedObjects.getInstance().getSchermoY() + offset * 2, Bitmap.Config.ARGB_8888);
-
-		l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Mette bordo 3");
-
-		Bitmap croppedSuperiore = Bitmap.createBitmap(myOutputBitmap, 0,0, SchermoX, (ImmagineY/divisore));
-		Bitmap resizedBitmap = Bitmap.createScaledBitmap(croppedSuperiore, SchermoX, ImmagineY, false);
-		Canvas canvas1 = new Canvas(Immaginona);
-		canvas1.drawBitmap(resizedBitmap, 0, 0, null);
-
-		canvas1.drawBitmap(myBitmap, 0, ImmagineY+1, null);
-
-		l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Mette bordo 4");
-
-		Bitmap croppedInferiore = Bitmap.createBitmap(myOutputBitmap, 0,myBitmap.getHeight()-(ImmagineY/divisore), SchermoX, ImmagineY/divisore);
-		resizedBitmap = Bitmap.createScaledBitmap(croppedInferiore, SchermoX, ImmagineY, false);
-		canvas1.drawBitmap(resizedBitmap, 0, myBitmap.getHeight()+ImmagineY+1, null);
-
-		l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Mette bordo uscita");
-
-		return Immaginona;
 	}
 
 	private void SalvaBitmap(Bitmap b, String NomeFile) {
@@ -645,16 +662,43 @@ public class Utility {
 		}
 	} */
 
+	private Handler handlerAgg;
+	private Runnable rAgg;
+
 	public void FaiPartireTimer() {
 		if (VariabiliGlobali.getInstance().getHandler() == null) {
 			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
 
+			handlerAgg = new Handler();
+			    rAgg = new Runnable() {
+			        public void run() {
+						MinutiPassati++;
+
+						Log l = new Log();
+						l.ScriveLog(new Object() {
+								}.getClass().getEnclosingMethod().getName(),
+								"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+
+						if (MinutiPassati >= TotMinuti) {
+							// if (!SharedObjects.getInstance().getStaPartendo()) {
+							MinutiPassati = 0;
+
+							Boolean Ritorno = CambiaImmagine(true, 0);
+							// }
+						}
+
+			            handlerAgg.postDelayed(rAgg, 60000);
+			        }
+			    };
+			handlerAgg.postDelayed(rAgg, 60000);
+
 			// final Handler handler = new Handler();
-			t = new Timer();
+			/* t = new Timer();
 			tt = new TimerTask() {
 				@Override
 				public void run() {
 					// Looper.prepare();
+
 					MinutiPassati++;
 
 					Log l = new Log();
@@ -663,15 +707,19 @@ public class Utility {
 							"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
 
 					if (MinutiPassati >= TotMinuti) {
+						// if (!SharedObjects.getInstance().getStaPartendo()) {
 						MinutiPassati = 0;
 
 						Boolean Ritorno = CambiaImmagine(true, 0);
+						// }
 					}
+
 					// Looper.loop();
 				}
 			};
 
-			t.scheduleAtFixedRate(tt ,0,60000);
+			t.scheduleAtFixedRate(tt ,0,60000); */
+
 
 			/* VariabiliGlobali.getInstance().setHandler(new Handler());
 			VariabiliGlobali.getInstance().setR(new Runnable() {
@@ -736,132 +784,139 @@ public class Utility {
 	}
 
 	public Boolean CambiaImmagine(Boolean Cambia, int NumeroDarete) {
-		/* if (VariabiliGlobali.getInstance().getContext()==null ||
-				VariabiliGlobali.getInstance().getActivityPrincipale()==null ||
-				SharedObjects.getInstance().getListaImmagini() == null) {
-			RefreshActivity.getInstance().RilanciaActivity();
-		} */
+		long adesso = System.currentTimeMillis() / 1000L;
+		if (adesso - ultimoPassaggio > 10) {
+			ultimoPassaggio = adesso;
+			/* if (VariabiliGlobali.getInstance().getContext()==null ||
+					VariabiliGlobali.getInstance().getActivityPrincipale()==null ||
+					SharedObjects.getInstance().getListaImmagini() == null) {
+				RefreshActivity.getInstance().RilanciaActivity();
+			} */
 
-		Boolean Ritorno = false;
-		Log l = new Log();
+			Boolean Ritorno = false;
+			Log l = new Log();
 
-		l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Cambia immagine. Schermo attivo: " + VariabiliGlobali.getInstance().getScreenON());
-
-		if (VariabiliGlobali.getInstance().getScreenON()) {
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
-					"Schermo attivo, cambio immagine");
+					"Cambia immagine. Schermo attivo: " + VariabiliGlobali.getInstance().getScreenON());
 
-			// Se per qualche motivo si è perso la lista delle immagini le ricarico
-			if (SharedObjects.getInstance().getListaImmagini() == null || SharedObjects.getInstance().getListaImmagini().size() == 0) {
+			if (VariabiliGlobali.getInstance().getScreenON()) {
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
-						"Lista immagini vuota. Ricarico");
+						"Schermo attivo, cambio immagine");
 
-				if (VariabiliGlobali.getInstance().getContext()==null) {
+				// Se per qualche motivo si è perso la lista delle immagini le ricarico
+				if (SharedObjects.getInstance().getListaImmagini() == null || SharedObjects.getInstance().getListaImmagini().size() == 0) {
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),
-							"Contex vuoto, Ricarico dal main");
+							"Lista immagini vuota. Ricarico");
 
-					// MainActivity m = new MainActivity();
-					// VariabiliGlobali.getInstance().setContext(m.getContext());
+					if (VariabiliGlobali.getInstance().getContext() == null) {
+						l.ScriveLog(new Object() {
+								}.getClass().getEnclosingMethod().getName(),
+								"Contex vuoto, Ricarico dal main");
+
+						// MainActivity m = new MainActivity();
+						// VariabiliGlobali.getInstance().setContext(m.getContext());
+					}
+
+					DBLocale d = new DBLocale();
+					d.LeggeOpzioni(VariabiliGlobali.getInstance().getContext());
+					GestioneFilesCartelle gf = new GestioneFilesCartelle();
+					gf.LeggeImmagini(VariabiliGlobali.getInstance().getContext(), SharedObjects.getInstance().getOrigine());
+					service.ChiudiMaschera = true;
+
+					l.ScriveLog(new Object() {
+							}.getClass().getEnclosingMethod().getName(),
+							"Immagini lette: " + Integer.toString(SharedObjects.getInstance().getListaImmagini().size()));
 				}
+				// Se per qualche motivo si è perso la lista delle immagini le ricarico
 
-				DBLocale d = new DBLocale();
-				d.LeggeOpzioni(VariabiliGlobali.getInstance().getContext());
-				GestioneFilesCartelle gf = new GestioneFilesCartelle();
-				gf.LeggeImmagini(VariabiliGlobali.getInstance().getContext(), SharedObjects.getInstance().getOrigine());
-				service.ChiudiMaschera = true;
-
-				l.ScriveLog(new Object() {
-						}.getClass().getEnclosingMethod().getName(),
-						"Immagini lette: "  + Integer.toString(SharedObjects.getInstance().getListaImmagini().size()));
-			}
-			// Se per qualche motivo si è perso la lista delle immagini le ricarico
-
-			if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
-				l.ScriveLog(new Object() {
-						}.getClass().getEnclosingMethod().getName(),
-						"Immagini piene, effetuo cambio");
-
-				int NuovoNumero;
-
-				if (Cambia) {
+				if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),
-							"Cambio immagine: " + Integer.toString(NumeroDarete));
+							"Immagini piene, effetuo cambio");
 
-					if (NumeroDarete == 0) {
-						NuovoNumero = PrendeNuovoNumero("Avanti", l);
+					int NuovoNumero;
 
-						if (NuovoNumero > -1) {
+					if (Cambia) {
+						l.ScriveLog(new Object() {
+								}.getClass().getEnclosingMethod().getName(),
+								"Cambio immagine: " + Integer.toString(NumeroDarete));
+
+						if (NumeroDarete == 0) {
+							NuovoNumero = PrendeNuovoNumero("Avanti", l);
+
+							if (NuovoNumero > -1) {
+								l.ScriveLog(new Object() {
+										}.getClass().getEnclosingMethod().getName(),
+										"Cambio immagine: Modalità Synchro Lettura.");
+
+
+								DBLocale dbl = new DBLocale();
+								dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
+							}
+
+							Ritorno = true;
+						} else {
 							l.ScriveLog(new Object() {
 									}.getClass().getEnclosingMethod().getName(),
-									"Cambio immagine: Modalità Synchro Lettura.");
+									"Cambio immagine: Modalità Synchro Ritorno: " + Integer.toString(NumeroDarete));
+
+							NuovoNumero = NumeroDarete;
 
 							DBLocale dbl = new DBLocale();
 							dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
-						}
 
-						Ritorno = true;
+							Ritorno = true;
+						}
 					} else {
 						l.ScriveLog(new Object() {
 								}.getClass().getEnclosingMethod().getName(),
-								"Cambio immagine: Modalità Synchro Ritorno: " + Integer.toString(NumeroDarete));
+								"Cambio immagine: Else 1.");
 
-						NuovoNumero = NumeroDarete;
-
-						DBLocale dbl = new DBLocale();
-						dbl.ScriveOpzioni(VariabiliGlobali.getInstance().getContext());
+						NuovoNumero = SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
 
 						Ritorno = true;
 					}
-				} else {
-					l.ScriveLog(new Object() {
-							}.getClass().getEnclosingMethod().getName(),
-							"Cambio immagine: Else 1.");
 
-					NuovoNumero = SharedObjects.getInstance().getQualeImmagineHaVisualizzato();
+					if (NuovoNumero >= 0) {
+						String NomeFile = SharedObjects.getInstance().getListaImmagini().get(NuovoNumero);
 
-					Ritorno = true;
-				}
+						l.ScriveLog(new Object() {
+								}.getClass().getEnclosingMethod().getName(),
+								"Cambio immagine. Nome immagine: " + NomeFile);
 
-				if (NuovoNumero >= 0) {
-					String NomeFile = SharedObjects.getInstance().getListaImmagini().get(NuovoNumero);
+						ChangeWallpaper cw = new ChangeWallpaper();
+						Ritorno = cw.setWallpaper(NomeFile, l);
 
-					l.ScriveLog(new Object() {
-							}.getClass().getEnclosingMethod().getName(),
-							"Cambio immagine. Nome immagine: " + NomeFile);
+						l.ScriveLog(new Object() {
+								}.getClass().getEnclosingMethod().getName(),
+								"Cambio immagine. Ritorno: " + Ritorno);
 
-					ChangeWallpaper cw = new ChangeWallpaper();
-					Ritorno = cw.setWallpaper(NomeFile, l);
+						if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
+							Notifiche.getInstance().AggiornaNotifica();
+						}
 
-					l.ScriveLog(new Object() {
-							}.getClass().getEnclosingMethod().getName(),
-							"Cambio immagine. Ritorno: " + Ritorno);
-
-					if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
-						Notifiche.getInstance().AggiornaNotifica();
+						MinutiPassati = 0;
 					}
-
-					MinutiPassati = 0;
+				} else {
+					Ritorno = false;
 				}
 			} else {
-				Ritorno = false;
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine: Setto flag cambiata immagine = true.");
+				//
+				VariabiliGlobali.getInstance().setCambiataImmagine(true);
+				//
+				Ritorno = true;
 			}
-		} else {
-			l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Cambio immagine: Setto flag cambiata immagine = true.");
-//
-			VariabiliGlobali.getInstance().setCambiataImmagine(true);
-//
-			Ritorno = true;
-		}
 
-		return Ritorno;
+			return Ritorno;
+		} else {
+			return false;
+		}
 	}
 
 }

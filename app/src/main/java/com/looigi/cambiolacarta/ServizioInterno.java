@@ -12,6 +12,9 @@ import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.app.Notification;
 import android.os.IBinder;
@@ -35,6 +38,7 @@ public class ServizioInterno extends Service {
     protected Context context;
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
+    private Handler mHandler;
 
     @Override
     public void onCreate() {
@@ -491,8 +495,8 @@ public class ServizioInterno extends Service {
                 u.ScriveInfo(l);
             }
 
-            Utility u = new Utility();
-            Boolean Ritorno=u.CambiaImmagine(true, 0);
+            // Utility u = new Utility();
+            // Boolean Ritorno=u.CambiaImmagine(true, 0);
 
             SharedObjects.getInstance().setStaPartendo(false);
         }
