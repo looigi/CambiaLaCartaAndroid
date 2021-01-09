@@ -1,7 +1,7 @@
 package com.looigi.cambiolacarta.Soap;
 
 public class DBRemoto {
-	private String RadiceWS = "http://looigi.no-ip.biz:12345/looVF/";
+	private String RadiceWS = "http://looigi.no-ip.biz/looVF/";
 	private String ws = "looVF.asmx/";
 	private String NS="http://looVF.org/";
 	private String SA="http://looVF.org/";

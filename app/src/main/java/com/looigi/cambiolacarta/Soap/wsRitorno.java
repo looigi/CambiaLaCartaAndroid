@@ -44,7 +44,7 @@ public class wsRitorno {
 
                     SharedObjects.getInstance().setPathUltimaImaggineDL(PathImm);
 
-                    PathImm = "http://looigi.no-ip.biz:12345/looVF/SfondiDir/" + PathImm;
+                    PathImm = "http://looigi.no-ip.biz/looVF/SfondiDir/" + PathImm;
 
                     int numero = Integer.parseInt(r[0]);
 
