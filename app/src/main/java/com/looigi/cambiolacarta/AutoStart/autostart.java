@@ -1,4 +1,4 @@
-package com.looigi.cambiolacarta.AutoStart;
+/* package com.looigi.cambiolacarta.AutoStart;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,4 +11,4 @@ public class autostart extends BroadcastReceiver {
         Intent serviceIntent = new Intent(context, service.class);
         context.startService(serviceIntent);
     }
-}
+} */

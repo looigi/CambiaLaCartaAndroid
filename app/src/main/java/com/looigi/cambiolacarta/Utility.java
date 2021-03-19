@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.looigi.cambiolacarta.AutoStart.service;
 import com.looigi.cambiolacarta.Soap.DBRemoto;
 
 import java.io.ByteArrayOutputStream;
@@ -44,10 +43,10 @@ public class Utility {
 	private int BordoX=5;
 	private int BordoY=5;
 	// private Timer timer;
-	private int MinutiPassati;
+	private static int MinutiPassati;
 	Timer t = null;
 	TimerTask tt = null;
-	private long ultimoPassaggio = 0;
+	private static long ultimoPassaggio = 0;
 	private long ultimoPassaggioBordo = 0;
 	private long ultimoPassaggioReale = 0;
 
@@ -320,6 +319,7 @@ public class Utility {
 						}.getClass().getEnclosingMethod().getName(),
 						"Converte dimensioni 1");
 
+
 				Bitmap bb=b;
 			    int width = bb.getWidth();
 			    int height = bb.getHeight();
@@ -495,7 +495,7 @@ public class Utility {
         return null;
     }
 
-	public int PrendeNuovoNumero(String Come, Log l) {
+	public static int PrendeNuovoNumero(String Come, Log l) {
 		int Ritorno=0;
 
 		if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
@@ -783,7 +783,7 @@ public class Utility {
 		}
 	}
 
-	public Boolean CambiaImmagine(Boolean Cambia, int NumeroDarete) {
+	public static Boolean CambiaImmagine(Boolean Cambia, int NumeroDarete) {
 		long adesso = System.currentTimeMillis() / 1000L;
 		if (adesso - ultimoPassaggio > 10) {
 			ultimoPassaggio = adesso;
@@ -824,7 +824,7 @@ public class Utility {
 					d.LeggeOpzioni(VariabiliGlobali.getInstance().getContext());
 					GestioneFilesCartelle gf = new GestioneFilesCartelle();
 					gf.LeggeImmagini(VariabiliGlobali.getInstance().getContext(), SharedObjects.getInstance().getOrigine());
-					service.ChiudiMaschera = true;
+					// service.ChiudiMaschera = true;
 
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),

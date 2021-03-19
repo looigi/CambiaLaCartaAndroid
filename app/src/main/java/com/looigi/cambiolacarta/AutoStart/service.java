@@ -1,4 +1,4 @@
-package com.looigi.cambiolacarta.AutoStart;
+/* package com.looigi.cambiolacarta.AutoStart;
 
 import android.app.Service;
 import android.content.Intent;
@@ -38,4 +38,4 @@ public class service extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
   
-}
+} */

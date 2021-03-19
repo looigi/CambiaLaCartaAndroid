@@ -20,7 +20,7 @@ import android.app.Notification;
 import android.os.IBinder;
 import android.os.Build;
 import android.app.NotificationChannel;
-import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.CheckBox;
@@ -29,49 +29,121 @@ import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
-import com.looigi.cambiolacarta.AutoStart.service;
-
 import java.util.HashMap;
 
 public class ServizioInterno extends Service {
+    public static final String CHANNEL_ID = "ForegroundServiceChannelS2";
     protected Activity v;
     protected Context context;
     private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
     private Handler mHandler;
+    private PhoneUnlockedReceiver receiver;
+    private Intent inte;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Log l = new Log();
+
+        receiver = new PhoneUnlockedReceiver();
+        IntentFilter fRecv = new IntentFilter();
+        fRecv.addAction(Intent.ACTION_USER_PRESENT);
+        fRecv.addAction(Intent.ACTION_SCREEN_OFF);
+
+        l.ScriveLog(new Object() {
+                }.getClass().getEnclosingMethod().getName(),
+                "Registro il receiver");
+        // try {
+        registerReceiver(receiver, fRecv);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        String input = intent.getStringExtra("inputExtra");
-
-        creaStrutturaInizio();
-
-        Notifiche.getInstance().createNotificationChannel();
-        Notification notification = Notifiche.getInstance().CreaNotifichella();
-
-        startForeground(1, notification);
-
-        if (!VariabiliGlobali.getInstance().isPartito()) {
-            VariabiliGlobali.getInstance().getActivityPrincipale().moveTaskToBack(true);
-        }
-
-        VariabiliGlobali.getInstance().setPartito(true);
+        inte = intent;
+        partenza();
+        // return START_NOT_STICKY;
 
         return START_NOT_STICKY;
     }
 
+    private void partenza() {
+        String input = inte.getStringExtra("inputExtra2");
+
+        /* creaStrutturaInizio(); */
+
+        Notifiche.getInstance().createNotificationChannel();
+        Notification notification = Notifiche.getInstance().CreaNotifichella();
+        startForeground(1, notification);
+
+        /* if (!VariabiliGlobali.getInstance().isPartito()) {
+            // // // VariabiliGlobali.getInstance().getActivityPrincipale().moveTaskToBack(true);
+        }
+
+        VariabiliGlobali.getInstance().setPartito(true);
+
+        // String input = intent.getStringExtra("inputExtra");
+        createNotificationChannel();
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,
+                0, notificationIntent, 0);
+        Notification notification = new NotificationCompat.Builder(this)
+                .setContentTitle("CambiaLaCarta")
+                .setContentText(input)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentIntent(pendingIntent)
+                .build();
+        startForeground(1, notification); */
+
+        creaStrutturaInizio();
+
+        VariabiliGlobali.getInstance().setPartito(true);
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "CambiaLaCarta",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(serviceChannel);
+        }
+    }
+
+    private Handler handlerAgg;
+    private Runnable rAgg;
+
     @Override
     public void onDestroy() {
+        Log l = new Log();
+        if (receiver != null) {
+            l.ScriveLog(new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Unregistro il receiver");
+
+            unregisterReceiver(receiver);
+            receiver = null;
+        }
+
+        // partenza();
+        // startService(inte);
+
         super.onDestroy();
 
-        Log l = new Log();
-        l.ScriveLog(new Object() {
-        }.getClass().getEnclosingMethod().getName(),"Destroy service");
+        // l.ScriveLog(new Object() {
+        // }.getClass().getEnclosingMethod().getName(),"Destroy service");
+
+        /* handlerAgg = new Handler();
+        rAgg = new Runnable() {
+            public void run() {
+                stopService(inte);
+                startService(inte);
+            }
+        };
+        handlerAgg.postDelayed(rAgg, 1000); */
     }
 
     @Nullable
@@ -80,7 +152,7 @@ public class ServizioInterno extends Service {
         return null;
     }
 
-    private void creaStrutturaInizio() {
+    public void creaStrutturaInizio() {
         v = VariabiliGlobali.getInstance().getActivityPrincipale();
         context = this;
 
@@ -470,7 +542,7 @@ public class ServizioInterno extends Service {
             // Notifiche.getInstance().CreaNotifica();
             // Notifiche.getInstance().AggiornaNotifica();
 
-            if (service.ChiudiMaschera==null) {
+            /* if (service.ChiudiMaschera==null) {
                 service.ChiudiMaschera=false;
             }
             if (service.ChiudiMaschera) {
@@ -478,7 +550,7 @@ public class ServizioInterno extends Service {
                     v.moveTaskToBack(true);
                 }
                 service.ChiudiMaschera=false;
-            }
+            } */
 
             SharedObjects.getInstance().setStaPartendo(true);
             if (SharedObjects.getInstance().getCaricaDati()==null) {
@@ -497,6 +569,10 @@ public class ServizioInterno extends Service {
 
             // Utility u = new Utility();
             // Boolean Ritorno=u.CambiaImmagine(true, 0);
+
+            // } catch (Exception ignored) {
+
+            // }
 
             SharedObjects.getInstance().setStaPartendo(false);
         }

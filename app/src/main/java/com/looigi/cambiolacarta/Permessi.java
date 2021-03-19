@@ -18,7 +18,7 @@ public class Permessi {
                 Manifest.permission.SET_WALLPAPER_HINTS,
                 Manifest.permission.INTERNET,
                 Manifest.permission.RECEIVE_BOOT_COMPLETED,
-                Manifest.permission.INSTANT_APP_FOREGROUND_SERVICE
+                // Manifest.permission.INSTANT_APP_FOREGROUND_SERVICE
                 // android.Manifest.permission.BLUETOOTH,
                 // android.Manifest.permission.BLUETOOTH_ADMIN
         };

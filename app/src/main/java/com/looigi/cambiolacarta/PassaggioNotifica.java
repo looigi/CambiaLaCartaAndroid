@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.looigi.cambiolacarta.AutoStart.service;
-
 public class PassaggioNotifica extends Activity {
     Context context;
    
@@ -66,7 +64,7 @@ public class PassaggioNotifica extends Activity {
 				
 			}
 		} else {
-			service.ChiudiMaschera = false;
+			// service.ChiudiMaschera = false;
 
 			SharedObjects.getInstance().setGiaEntrato(false);
 

@@ -32,12 +32,12 @@ public class SharedObjects {
     private int DimeWallHeightOriginale;
     private String Origine;
     private String Lingua;
-    private String TipoCambio;
+    private String TipoCambio = "SINCRONIZZATA";
     private int MinutiPerCambio;
     private String Attivo;
     private int QualeImmagineHaVisualizzato;
     private String ModalitaVisua;
-    private String NotificaSiNo;
+    private String NotificaSiNo = "S";
     protected List<String> ListaImmagini;
     private int QuanteImm;
     private Boolean LogAttivo=true;
@@ -71,6 +71,15 @@ public class SharedObjects {
     private LinearLayout imgRefresh;
     private LinearLayout imgCambiaDir;
     private boolean GiaEntrato = false;
+    private String vecchioValoreCambio = "";
+
+    public String getVecchioValoreCambio() {
+        return vecchioValoreCambio;
+    }
+
+    public void setVecchioValoreCambio(String vecchioValoreCambio) {
+        this.vecchioValoreCambio = vecchioValoreCambio;
+    }
 
     public boolean isGiaEntrato() {
         return GiaEntrato;

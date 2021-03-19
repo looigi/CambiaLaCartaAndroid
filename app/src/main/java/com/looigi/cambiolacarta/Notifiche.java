@@ -190,6 +190,11 @@ public class Notifiche {
     }
 
     public void AggiornaNotifica() {
+        if (SharedObjects.getInstance().getVecchioValoreCambio() != "") {
+            SharedObjects.getInstance().setTipoCambio(SharedObjects.getInstance().getVecchioValoreCambio());
+            SharedObjects.getInstance().setVecchioValoreCambio("");
+        }
+
         // try {
             // setListeners(contentView);
             // RemoteViews contentView = (new RemoteViews(VariabiliGlobali.getInstance().getActivityPrincipale().getPackageName(), //

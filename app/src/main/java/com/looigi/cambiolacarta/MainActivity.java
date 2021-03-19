@@ -31,7 +31,6 @@ import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.looigi.cambiolacarta.AutoStart.service;
 import com.looigi.cambiolacarta.R.string;
 import com.looigi.cambiolacarta.Soap.DBRemoto;
 
@@ -44,9 +43,24 @@ import java.util.Timer;
 
 public class MainActivity extends Activity {
 	private boolean CiSonoPermessi;
-	// private MemoryBoss mMemoryBoss;
-	public static Context ctxPrincipale;
-	private PhoneUnlockedReceiver receiver;
+	private MemoryBoss mMemoryBoss;
+	// public static Context ctxPrincipale;
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+
+		unregisterComponentCallbacks(mMemoryBoss);
+
+		Log l = new Log();
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"On Stop");
+
+		// MediaPlayer mp = MediaPlayer.create(VariabiliStatiche.getInstance().getContext(), R.raw.schui);
+		// mp.start();
+	}
 
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
@@ -88,15 +102,16 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		super.onDestroy();
+
     	Log l = new Log();
 
 		l.ScriveLog(new Object() {
 				}.getClass().getEnclosingMethod().getName(),
 				"Attività distrutta");
 
-		this.recreate();
+		// this.recreate();
 
-		super.onDestroy();
 	}
 
 	@Override
@@ -104,17 +119,16 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		ctxPrincipale = this;
-
 		Permessi pp = new Permessi();
 		CiSonoPermessi = pp.ControllaPermessi(this);
+
 		if (CiSonoPermessi) {
 			EsegueEntrata();
 
-			// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-			// 	mMemoryBoss = new MemoryBoss();
-			// 	registerComponentCallbacks(mMemoryBoss);
-			// }
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+				mMemoryBoss = new MemoryBoss();
+				registerComponentCallbacks(mMemoryBoss);
+			}
 		}
 
 	}
@@ -130,28 +144,12 @@ public class MainActivity extends Activity {
 				index++;
 			}
 
-			receiver = new PhoneUnlockedReceiver();
-			try {
-				unregisterReceiver(receiver);
-				receiver = null;
-			} catch (Exception ignored) {
-
-			}
-			IntentFilter fRecv = new IntentFilter();
-			fRecv.addAction(Intent.ACTION_USER_PRESENT);
-			fRecv.addAction(Intent.ACTION_SCREEN_OFF);
-			try {
-				registerReceiver(receiver, fRecv);
-			} catch (Exception ignored) {
-
-			}
-
 			EsegueEntrata();
 		}
 	}
 
 	private void EsegueEntrata() {
-		String AutomaticReload = getIntent().getStringExtra("AUTOMATIC RELOAD");
+		// String AutomaticReload = getIntent().getStringExtra("AUTOMATIC RELOAD");
 		// if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
 		// }
 		// context=this;
@@ -165,9 +163,9 @@ public class MainActivity extends Activity {
 		// 		VariabiliGlobali.getInstance().getiServizio());
 		startService();
 
-		if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
-			moveTaskToBack(true);
-		}
+		// if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
+			// // // moveTaskToBack(true);
+		// }
 	}
 
 	public void startService() {
@@ -178,7 +176,7 @@ public class MainActivity extends Activity {
 				"Attivo servizio");
 
 		Intent serviceIntent = new Intent(this, ServizioInterno.class);
-		serviceIntent.putExtra("inputExtra", "Cambia la carta");
+		serviceIntent.putExtra("inputExtra2", "Cambia la carta");
 		// ContextCompat.startForegroundService(this, serviceIntent);
 		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -186,6 +184,8 @@ public class MainActivity extends Activity {
 		} else {
 
 		}
+		// ServizioInterno s = new ServizioInterno();
+		// s.creaStrutturaInizio();
 
 		// if (SharedObjects.getInstance().getStaPartendo()) {
 		// 	moveTaskToBack(true);
@@ -267,42 +267,40 @@ public class MainActivity extends Activity {
 	protected void onUserLeaveHint() {
 	    super.onUserLeaveHint();
 	    
-	}
+	} */
 	
-	@Override
-	protected void onPause() {
-	    super.onPause();
-	    if (!mKeyPress && mUserLeaveHint) {
+	// @Override
+	// protected void onPause() {
+	    // super.onPause();
+	    /* if (!mKeyPress && mUserLeaveHint) {
 			CreaNotifica();
 			AggiornaNotifica();
         	moveTaskToBack(true);          	
 	    }
 	    if (mUserLeaveHint==false) {
 	    	mUserLeaveHint=true;
-	    }
-	} */
+	    } */
+	// }
 	
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {    
+	/* @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		super.onKeyDown(keyCode, event);
+
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			/* SuonAudio s=new SuonAudio();
-			s.SuonaAudio(1, soundPool);
-        	
-			CreaNotifica();
-			AggiornaNotifica(); */
-        	// moveTaskToBack(true);
+			moveTaskToBack(true); */
+        	/* //
             Intent setIntent = new Intent(Intent.ACTION_MAIN);
             setIntent.addCategory(Intent.CATEGORY_HOME);
             setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(setIntent);
+            startActivity(setIntent); */
 
-        	return false;    
+        	/* return false;
+		} else {
+			return true;
 		}
-		
-		return super.onKeyDown(keyCode, event);
-	}
+	} */
 
-	@Override
+	/* @Override
 	protected void onStop() {
 		// Log l = new Log();
 
@@ -315,14 +313,13 @@ public class MainActivity extends Activity {
 		// unregisterComponentCallbacks(mMemoryBoss);
 
 		// stopService();
-
 		super.onStop();
 
 		// DialogMessaggio.getInstance().show(VariabiliStaticheGlobali.getInstance().getContext(),
 		//         "Richiamata funzione onStop",
 		//         true,
 		//         VariabiliStaticheGlobali.NomeApplicazione);
-	}
+	} */
 
 	// BANNER
 	// private void removeBanner(){
