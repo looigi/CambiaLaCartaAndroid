@@ -27,6 +27,7 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import com.looigi.cambiolacarta.Log;
+import com.looigi.cambiolacarta.MainActivity;
 import com.looigi.cambiolacarta.R;
 import com.looigi.cambiolacarta.SharedObjects;
 import com.looigi.cambiolacarta.Utility;
@@ -41,7 +42,7 @@ public class Photo extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.widget);
 
-		Toast.makeText(VariabiliGlobali.getInstance().getActivityPrincipale(), "Cambio Immagine",
+		Toast.makeText(MainActivity.activity, "Cambio Immagine",
 		        Toast.LENGTH_SHORT).show();
 
 		// UsaQuestoPerScattare uq = new UsaQuestoPerScattare();

@@ -122,8 +122,8 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
         // u.CambiaImmagine(true, 9999);
         u.ScriveInfo(l);
 
-        long adesso = System.currentTimeMillis() / 1000L;
-        if (adesso - ultimoPassaggioCambio > 10) {
+        long adesso = System.currentTimeMillis();
+        if (adesso - ultimoPassaggioCambio > 1000) {
             ultimoPassaggioCambio = adesso;
 
             ChangeWallpaper cw = new ChangeWallpaper();
@@ -136,6 +136,6 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
         // String NomeFile = SharedObjects.getInstance().getListaImmagini().get(numero);
         u.ImpostaImmagineDiSfondo(NomeFileAppoggio, l);
-        Notifiche.getInstance().AggiornaNotifica();
+        // Notifiche.getInstance().AggiornaNotifica();
     }
 }

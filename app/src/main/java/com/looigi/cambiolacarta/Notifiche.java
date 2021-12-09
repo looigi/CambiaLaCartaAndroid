@@ -1,6 +1,6 @@
 package com.looigi.cambiolacarta;
 
-import android.app.Notification;
+/* import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -11,8 +11,10 @@ import android.os.Build;
 import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 import android.support.v4.app.NotificationCompat;
-
+*/
 public class Notifiche {
+}
+/*
     private int id = 11;
     // private NotificationManager notificationManager;
     // private NotificationCompat.Builder notificationBuilder;
@@ -146,7 +148,7 @@ public class Notifiche {
         apre.putExtra("DO", "apre");
         PendingIntent pApre= PendingIntent.getActivity(VariabiliGlobali.getInstance().getContext(), 2, apre, 0);
         view.setOnClickPendingIntent(R.id.ImgApreNB, pApre);
-    }
+    } */
 
     /* private void setListenersTasti(RemoteViews view){
         Utility u=new Utility();
@@ -185,7 +187,7 @@ public class Notifiche {
         notificationManager.notify(1, notificationBuilder.build());
     } */
 
-    public void CreaNotifica() {
+    /* public void CreaNotifica() {
         // notificationManager.notify(1, notificationBuilder.build());
     }
 
@@ -210,16 +212,17 @@ public class Notifiche {
         // } catch (Exception ignored) {
 
         // }
-    }
+    } */
 
+    /*
     public void RimuoviNotifica() {
-        /* try {
+        try {
             notificationManager.cancel(1);
             notificationManager = null;
         } catch (Exception ignored) {
 
-        } */
-    }
+        }
+    } */
 
     /* public void AggiornaNotifica() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -368,5 +371,5 @@ public class Notifiche {
             }
         }
     }
-    */
-}
+ }
+*/

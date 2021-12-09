@@ -105,7 +105,7 @@ public class Opzioni extends Activity{
 					// m.CreaNotifica();
 				} else {
 					SharedObjects.getInstance().setNotificaSiNo("N");
-					Notifiche.getInstance().RimuoviNotifica();
+					// Notifiche.getInstance().RimuoviNotifica();
 				}
 				
 				DBLocale dbl=new DBLocale();
