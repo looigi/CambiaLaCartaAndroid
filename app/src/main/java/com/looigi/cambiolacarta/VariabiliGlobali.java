@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
@@ -33,6 +34,16 @@ public class VariabiliGlobali {
     private Runnable r;
     private String CHANNEL_ID = "ForegroundServiceChannel";
     private boolean Partito = false;
+
+    public Bitmap getBitmapOriginale() {
+        return bitmapOriginale;
+    }
+
+    public void setBitmapOriginale(Bitmap bitmapOriginale) {
+        this.bitmapOriginale = bitmapOriginale;
+    }
+
+    private Bitmap bitmapOriginale;
 
     public boolean isPartito() {
         return Partito;

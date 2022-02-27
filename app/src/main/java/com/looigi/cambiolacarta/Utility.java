@@ -91,6 +91,9 @@ public class Utility {
 						"Cambio immagine. File esistente: " + gfc.PrendeNomeCartella(FileName) + "/" + gfc.PrendeNomeFile(FileName));
 
 				DisplayMetrics metrics = new DisplayMetrics();
+				if (SharedObjects.getInstance().getA1() == null) {
+					SharedObjects.getInstance().setA1(MainActivity.activity.getWindowManager());
+				}
 				SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
 
 				SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
@@ -124,7 +127,9 @@ public class Utility {
 									"Cambio immagine. Converte dimensioni");
 
 							myBitmap = ConverteDimensioni(myBitmap, l);
+
 							if (myBitmap != null) {
+								VariabiliGlobali.getInstance().setBitmapOriginale(myBitmap);
 								try {
 									// Bitmap Immaginona = Bitmap.createBitmap(SharedObjects.getInstance().getSchermoX(), SharedObjects.getInstance().getSchermoY(), Bitmap.Config.ARGB_8888);
 									// Canvas comboImage = new Canvas(Immaginona);
@@ -545,13 +550,17 @@ public class Utility {
 
 			Random r;
 			r=new Random();
-			int i1=r.nextInt(SharedObjects.getInstance().getListaImmagini().size());
-			i1--;
-			if (i1<0) {
-				i1=0;
+			if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
+				int i1 = r.nextInt(SharedObjects.getInstance().getListaImmagini().size());
+				i1--;
+				if (i1 < 0) {
+					i1 = 0;
+				}
+				Ritorno = i1;
+				SharedObjects.getInstance().setQualeImmagineHaVisualizzato(i1);
+			} else {
+				Ritorno = -1;
 			}
-			Ritorno=i1;
-			SharedObjects.getInstance().setQualeImmagineHaVisualizzato(i1);
 		} else {
 			if (SharedObjects.getInstance().getTipoCambio().equals("SEQUENZIALE")) {
 				l.ScriveLog(new Object() {
@@ -718,7 +727,7 @@ public class Utility {
 				"Fai partire Timer");
 		// if (VariabiliGlobali.getInstance().getHandler() == null) {
 			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
-			int Tempo = 10000;
+			int Tempo = 60000;
 			// final Utility u = new Utility();
 
 		try {
@@ -730,6 +739,7 @@ public class Utility {
 		MainActivity.ct = new CountDownTimer( (Tempo * TotMinuti), Tempo) {
 				public void onTick(long millisUntilFinished) {
 					MinutiPassati++;
+					SharedObjects.getInstance().getTxtTempoPassato().setText(" Min: " + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
 
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),
@@ -899,7 +909,7 @@ public class Utility {
 					}.getClass().getEnclosingMethod().getName(),
 					"Cambia immagine. Schermo attivo: " + VariabiliGlobali.getInstance().getScreenON());
 
-			// if (VariabiliGlobali.getInstance().getScreenON()) {
+			if (VariabiliGlobali.getInstance().getScreenON()) {
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
 						"Schermo attivo, cambio immagine");
@@ -979,7 +989,7 @@ public class Utility {
 						Ritorno = true;
 					}
 
-					if (NuovoNumero >= 0) {
+					if (NuovoNumero >= 0 && SharedObjects.getInstance().getListaImmagini().size() > 0) {
 						String NomeFile = SharedObjects.getInstance().getListaImmagini().get(NuovoNumero);
 
 						l.ScriveLog(new Object() {
@@ -1003,7 +1013,7 @@ public class Utility {
 				// } else {
 				// 	Ritorno = false;
 				// }
-			/* } else {
+			} else {
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
 						"Cambio immagine: Setto flag cambiata immagine = true.");
@@ -1011,7 +1021,7 @@ public class Utility {
 				VariabiliGlobali.getInstance().setCambiataImmagine(true);
 				//
 				Ritorno = true;
-			} */
+			}
 
 			return Ritorno;
 		} else {

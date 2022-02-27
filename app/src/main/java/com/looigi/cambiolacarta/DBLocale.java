@@ -304,7 +304,10 @@ public class DBLocale extends Activity {
         String LockScreen=SharedObjects.getInstance().isSettaLockScreen() ? "S": "N";
 
 		SQLiteDatabase myDB= ApreDB(context, "DatiLocali");
-	   	
+		if (myDB == null) {
+			return;
+		}
+
 	   	String Sql="Update Opzioni Set "+
 	   			"Lingua='"+Lingua+"', "+
 	   			"TipoCambio='"+Tipo+"', "+

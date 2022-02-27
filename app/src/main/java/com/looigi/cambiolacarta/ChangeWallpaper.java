@@ -74,15 +74,22 @@ public class ChangeWallpaper {
 					}
 
 					if (SharedObjects.getInstance().isSettaLockScreen()) {
+						Bitmap b = VariabiliGlobali.getInstance().getBitmapOriginale();
+						if (b == null) {
+							b = setWallToDevice;
+						}
+
 						// set wallpaper lock screen
 						ByteArrayOutputStream bos = new ByteArrayOutputStream();
-						setWallToDevice.compress(Bitmap.CompressFormat.PNG, 0, bos);
+						b.compress(Bitmap.CompressFormat.PNG, 0, bos);
 						byte[] bitmapdata = bos.toByteArray();
 						ByteArrayInputStream bs = new ByteArrayInputStream(bitmapdata);
 
 						WallpaperManager.getInstance(VariabiliGlobali.getInstance().getContext())
 								.setStream(bs, null, true, WallpaperManager.FLAG_LOCK);
 						// set wallpaper lock screen
+
+						VariabiliGlobali.getInstance().setBitmapOriginale(null);
 					}
 				} catch (Exception e) {
 					// l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));

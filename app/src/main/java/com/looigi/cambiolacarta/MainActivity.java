@@ -130,7 +130,7 @@ public class MainActivity extends Activity {
 		// pressedTime = System.currentTimeMillis();
 	}
 
-	/* @Override
+	@Override
 	protected void onDestroy() {
     	Log l = new Log();
 
@@ -140,12 +140,24 @@ public class MainActivity extends Activity {
 		// this.recreate();
 
 		MainActivity.ct = null;
-		Utility u = new Utility();
-		u.FaiPartireTimer();
+
+        /* Commento per receiver blocco schermo
+        l.ScriveLog(new Object() {
+                }.getClass().getEnclosingMethod().getName(),
+                "On Destroy servizio");
+
+        if (receiver != null) {
+            l.ScriveLog(new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Unregistro il receiver");
+
+            unregisterReceiver(receiver);
+            receiver = null;
+        } */
 		// EsegueEntrata();
 
 		super.onDestroy();
-	} */
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -184,6 +196,8 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	private PhoneUnlockedReceiver receiver; // Commento per receiver blocco schermo
+
 	private void EsegueEntrata() {
 		Log l = new Log();
 
@@ -196,6 +210,20 @@ public class MainActivity extends Activity {
 		// if (AutomaticReload !=null && AutomaticReload.equals("YES")) {
 		// }
 		// context=this;
+
+        /* Commento per receiver blocco schermo
+        if (receiver == null) {
+            receiver = new PhoneUnlockedReceiver();
+            IntentFilter fRecv = new IntentFilter();
+            fRecv.addAction(Intent.ACTION_USER_PRESENT);
+            fRecv.addAction(Intent.ACTION_SCREEN_OFF);
+
+            l.ScriveLog(new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Registro il receiver");
+            // try {
+            MainActivity.activity.registerReceiver(receiver, fRecv);
+        } */
 
 		SharedObjects.getInstance().setContext(this);
 		VariabiliGlobali.getInstance().setContext(this);
@@ -524,6 +552,8 @@ public class MainActivity extends Activity {
 			SharedObjects.getInstance().setTxtPrecedente((TextView) MainActivity.activity.findViewById(R.id.txtPrecedente));
 			SharedObjects.getInstance().setTxtTempo((TextView) MainActivity.activity.findViewById(R.id.txtTempo));
 			SharedObjects.getInstance().setTxtCaffe((TextView) MainActivity.activity.findViewById(R.id.txtCaffe));
+			SharedObjects.getInstance().setTxtTempoPassato((TextView) MainActivity.activity.findViewById(R.id.txtTempoPassato));
+			SharedObjects.getInstance().getTxtTempoPassato().setText("");
 
 			// txtTempo2=(TextView) findViewById(R.v.idv..txtTempo2);
 			SharedObjects.getInstance().setChkAttivo((CheckBox) MainActivity.activity.findViewById(R.id.chkAttivo));

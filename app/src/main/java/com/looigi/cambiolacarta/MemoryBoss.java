@@ -1,5 +1,5 @@
 package com.looigi.cambiolacarta;
-/*
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentCallbacks2;
@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 
 public class MemoryBoss implements ComponentCallbacks2 {
-     Log l = new Log();
+    Log l = new Log();
 
     @Override
     public void onConfigurationChanged(final Configuration newConfig) {
@@ -78,4 +78,4 @@ public class MemoryBoss implements ComponentCallbacks2 {
         }
 
     }
-} */
+}

@@ -35,27 +35,12 @@ public class ServizioInterno extends Service {
     public static final String CHANNEL_ID = "ForegroundServiceChannelS2";
     protected Activity v;
     private Handler mHandler;
-    private PhoneUnlockedReceiver receiver; // Commento per receiver blocco schermo
     private Intent inte;
+    private Utility u = new Utility();
 
     @Override
     public void onCreate() {
         super.onCreate();
-
-        /* Commento per receiver blocco schermo
-        if (receiver == null) {
-            Log l = new Log();
-            receiver = new PhoneUnlockedReceiver();
-            IntentFilter fRecv = new IntentFilter();
-            fRecv.addAction(Intent.ACTION_USER_PRESENT);
-            fRecv.addAction(Intent.ACTION_SCREEN_OFF);
-
-            l.ScriveLog(new Object() {
-                    }.getClass().getEnclosingMethod().getName(),
-                    "Registro il receiver");
-            // try {
-            MainActivity.activity.registerReceiver(receiver, fRecv);
-        } */
 
         partenza();
     }
@@ -106,7 +91,6 @@ public class ServizioInterno extends Service {
 
         // creaStrutturaInizio();
 
-        Utility u = new Utility();
         u.FaiPartireTimer();
     }
 
@@ -127,21 +111,6 @@ public class ServizioInterno extends Service {
 
     @Override
     public void onDestroy() {
-        /* Commento per receiver blocco schermo
-        Log l = new Log();
-        l.ScriveLog(new Object() {
-                }.getClass().getEnclosingMethod().getName(),
-                "On Destroy servizio");
-
-        if (receiver != null) {
-            l.ScriveLog(new Object() {
-                    }.getClass().getEnclosingMethod().getName(),
-                    "Unregistro il receiver");
-
-            unregisterReceiver(receiver);
-            receiver = null;
-        } */
-
         // partenza();
         // startService(inte);
 
