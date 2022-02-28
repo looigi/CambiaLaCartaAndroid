@@ -122,11 +122,13 @@ public class DBLocale extends Activity {
 			context=SharedObjects.getInstance().getContext();
 			if (context == null) {
 				// MainActivity m = new MainActivity();
-				// context = m.getContext();
+				// context = MainActivity.activity.getBaseContext();
 			}
 		}
-		mDB = context.openOrCreateDatabase(DB, MODE_PRIVATE, null);
-		
+		if (context != null) {
+			mDB = context.openOrCreateDatabase(DB, MODE_PRIVATE, null);
+		}
+
 		return mDB;
 	}
 		
@@ -302,7 +304,10 @@ public class DBLocale extends Activity {
         String LockScreen=SharedObjects.getInstance().isSettaLockScreen() ? "S": "N";
 
 		SQLiteDatabase myDB= ApreDB(context, "DatiLocali");
-	   	
+		if (myDB == null) {
+			return;
+		}
+
 	   	String Sql="Update Opzioni Set "+
 	   			"Lingua='"+Lingua+"', "+
 	   			"TipoCambio='"+Tipo+"', "+

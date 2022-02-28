@@ -267,6 +267,12 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/italiano" />
+
+                    <TextView
+                        android:id="@+id/txtTempoPassato"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -324,6 +330,7 @@
                         android:src="@drawable/inglese" />
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

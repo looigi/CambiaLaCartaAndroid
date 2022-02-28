@@ -61,6 +61,7 @@ public class SharedObjects {
     private TextView txtPrecedente;
     private TextView txtTempo;
     private TextView txtCaffe;
+    private TextView txtTempoPassato;
     private CheckBox chkAttivo;
     private Boolean TimerPartito;
     private Boolean StaPartendo;
@@ -72,6 +73,14 @@ public class SharedObjects {
     private LinearLayout imgCambiaDir;
     private boolean GiaEntrato = false;
     private String vecchioValoreCambio = "";
+
+    public TextView getTxtTempoPassato() {
+        return txtTempoPassato;
+    }
+
+    public void setTxtTempoPassato(TextView txtTempoPassato) {
+        this.txtTempoPassato = txtTempoPassato;
+    }
 
     public String getVecchioValoreCambio() {
         return vecchioValoreCambio;

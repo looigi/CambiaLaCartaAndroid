@@ -97,7 +97,9 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
     }
 
     protected void onProgressUpdate(String... progress) {
-        progressDialog.setProgress(Integer.parseInt(progress[0]));
+        if (progressDialog != null) {
+            progressDialog.setProgress(Integer.parseInt(progress[0]));
+        }
     }
 
     @Override
@@ -122,8 +124,8 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
         // u.CambiaImmagine(true, 9999);
         u.ScriveInfo(l);
 
-        long adesso = System.currentTimeMillis() / 1000L;
-        if (adesso - ultimoPassaggioCambio > 10) {
+        long adesso = System.currentTimeMillis();
+        if (adesso - ultimoPassaggioCambio > 1000) {
             ultimoPassaggioCambio = adesso;
 
             ChangeWallpaper cw = new ChangeWallpaper();
@@ -132,10 +134,12 @@ public class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
         Bitmap myBitmap = u.getPreview(NomeFileAppoggio);
         myBitmap = u.ConverteDimensioniInterne(myBitmap, l);
-        SharedObjects.getInstance().getImm().setImageBitmap(myBitmap);
+        if (SharedObjects.getInstance().getImm() != null) {
+            SharedObjects.getInstance().getImm().setImageBitmap(myBitmap);
 
-        // String NomeFile = SharedObjects.getInstance().getListaImmagini().get(numero);
-        u.ImpostaImmagineDiSfondo(NomeFileAppoggio, l);
-        Notifiche.getInstance().AggiornaNotifica();
+            // String NomeFile = SharedObjects.getInstance().getListaImmagini().get(numero);
+            u.ImpostaImmagineDiSfondo(NomeFileAppoggio, l);
+        }
+        // Notifiche.getInstance().AggiornaNotifica();
     }
 }

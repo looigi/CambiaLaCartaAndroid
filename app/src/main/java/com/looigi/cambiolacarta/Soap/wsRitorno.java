@@ -105,6 +105,9 @@ public class wsRitorno {
                         Notifiche.getInstance().AggiornaNotifica(); */
                         new DownloadFileFromURL(l).execute(PathImm);
                     }
+
+                    Utility u = new Utility();
+                    u.faiRipartireTimer();
                 }
             },50);
         }

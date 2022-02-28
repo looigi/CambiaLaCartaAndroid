@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
@@ -73,9 +74,13 @@ public class Utility {
 	}
 	
 	public Bitmap PrendeImmagineReale(String FileName, Log l) {
-		long adesso = System.currentTimeMillis() / 1000L;
+		long adesso = System.currentTimeMillis();
 		if (adesso - ultimoPassaggioReale > 10) {
 			ultimoPassaggioReale = adesso;
+
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Prende immagine reale");
 
 			Bitmap myBitmap = null;
 
@@ -86,6 +91,9 @@ public class Utility {
 						"Cambio immagine. File esistente: " + gfc.PrendeNomeCartella(FileName) + "/" + gfc.PrendeNomeFile(FileName));
 
 				DisplayMetrics metrics = new DisplayMetrics();
+				if (SharedObjects.getInstance().getA1() == null) {
+					SharedObjects.getInstance().setA1(MainActivity.activity.getWindowManager());
+				}
 				SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
 
 				SharedObjects.getInstance().setSchermoX(metrics.widthPixels);
@@ -95,7 +103,13 @@ public class Utility {
 						}.getClass().getEnclosingMethod().getName(),
 						"Cambio immagine. Dimensioni schermo: " + SharedObjects.getInstance().getSchermoX() + "x" + SharedObjects.getInstance().getSchermoY());
 
-				myBitmap = getPreview(FileName);
+				try {
+					myBitmap = getPreview(FileName);
+				} catch (Exception e) {
+					l.ScriveLog(new Object() {
+							}.getClass().getEnclosingMethod().getName(),
+							"Cambio immagine. Errore preview");
+				}
 
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
@@ -113,7 +127,9 @@ public class Utility {
 									"Cambio immagine. Converte dimensioni");
 
 							myBitmap = ConverteDimensioni(myBitmap, l);
+
 							if (myBitmap != null) {
+								VariabiliGlobali.getInstance().setBitmapOriginale(myBitmap);
 								try {
 									// Bitmap Immaginona = Bitmap.createBitmap(SharedObjects.getInstance().getSchermoX(), SharedObjects.getInstance().getSchermoY(), Bitmap.Config.ARGB_8888);
 									// Canvas comboImage = new Canvas(Immaginona);
@@ -125,11 +141,11 @@ public class Utility {
 											"Cambio immagine. Mette bordo a immagine");
 
 									myBitmap = MetteBordoAImmagine(myBitmap, l);
-								} catch (Exception ignored) {
+								} catch (Exception e) {
 									Utility u = new Utility();
 									l.ScriveLog(new Object() {
 											}.getClass().getEnclosingMethod().getName(),
-											"Cambio immagine. Mette bordo a immagine. Errore:\n" + u.PrendeErroreDaException(ignored));
+											"Cambio immagine. Mette bordo a immagine. Errore:\n" + u.PrendeErroreDaException(e));
 									myBitmap = null;
 								}
 							} else {
@@ -165,15 +181,22 @@ public class Utility {
 	}
 
 	private Bitmap MetteBordoAImmagine(Bitmap myBitmap, Log l) {
-		long adesso = System.currentTimeMillis() / 1000L;
-		if (adesso - ultimoPassaggioBordo > 10) {
+		long adesso = System.currentTimeMillis();
+		if (adesso - ultimoPassaggioBordo > 1000) {
 			ultimoPassaggioBordo = adesso;
+
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Mette bordo a immagine");
 
 			int SchermoX = SharedObjects.getInstance().getSchermoX();
 			int SchermoY = SharedObjects.getInstance().getSchermoY();
 
-			int ImmagineX = myBitmap.getWidth();
-			int ImmagineY = (SchermoY - myBitmap.getHeight()) / 2;
+			int dimeImmX = myBitmap.getWidth();
+			int dimeImmY = myBitmap.getHeight();
+
+			int posX = (SchermoX / 2) - (dimeImmX / 2);
+			int posY = (SchermoY / 2) - (dimeImmY / 2);
 
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
@@ -202,12 +225,12 @@ public class Utility {
 				blur.forEach(blurOutput);
 				blurOutput.copyTo(myOutputBitmap);
 				renderScript.destroy();
-			} catch (Exception ignored) {
+			} catch (Exception e) {
 				Utility u = new Utility();
 
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
-						"Mette bordo: " + u.PrendeErroreDaException(ignored));
+						"Mette bordo: " + u.PrendeErroreDaException(e));
 				int a = 0;
 			}
 
@@ -218,27 +241,32 @@ public class Utility {
 					}.getClass().getEnclosingMethod().getName(),
 					"Mette bordo 2");
 
-			Bitmap Immaginona = Bitmap.createBitmap((SharedObjects.getInstance().getSchermoX()) + offset * 2,
-					SharedObjects.getInstance().getSchermoY() + offset * 2, Bitmap.Config.ARGB_8888);
+			// Bitmap Immaginona = Bitmap.createBitmap((SharedObjects.getInstance().getSchermoX()) + offset * 2,
+// 					SharedObjects.getInstance().getSchermoY() + offset * 2, Bitmap.Config.ARGB_8888);
+			Bitmap Immaginona = Bitmap.createBitmap(SchermoX, SchermoY, Bitmap.Config.ARGB_8888);
 
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
 					"Mette bordo 3");
 
-			Bitmap croppedSuperiore = Bitmap.createBitmap(myOutputBitmap, 0, 0, SchermoX, (ImmagineY / divisore));
-			Bitmap resizedBitmap = Bitmap.createScaledBitmap(croppedSuperiore, SchermoX, ImmagineY, false);
 			Canvas canvas1 = new Canvas(Immaginona);
-			canvas1.drawBitmap(resizedBitmap, 0, 0, null);
+			if (posY > 0) {
+				Bitmap croppedSuperiore = Bitmap.createBitmap(myOutputBitmap, 0, 0, SchermoX, (posY / divisore));
+				Bitmap resizedBitmap = Bitmap.createScaledBitmap(croppedSuperiore, SchermoX, posY, false);
+				canvas1.drawBitmap(resizedBitmap, 0, 0, null);
+			}
 
-			canvas1.drawBitmap(myBitmap, 0, ImmagineY + 1, null);
+			canvas1.drawBitmap(myBitmap, posX, posY, null);
 
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
 					"Mette bordo 4");
 
-			Bitmap croppedInferiore = Bitmap.createBitmap(myOutputBitmap, 0, myBitmap.getHeight() - (ImmagineY / divisore), SchermoX, ImmagineY / divisore);
-			resizedBitmap = Bitmap.createScaledBitmap(croppedInferiore, SchermoX, ImmagineY, false);
-			canvas1.drawBitmap(resizedBitmap, 0, myBitmap.getHeight() + ImmagineY + 1, null);
+			if (posY > 0) {
+				Bitmap croppedInferiore = Bitmap.createBitmap(myOutputBitmap, 0, myBitmap.getHeight() - (posY / divisore), SchermoX, posY / divisore);
+				Bitmap resizedBitmap = Bitmap.createScaledBitmap(croppedInferiore, SchermoX, posY, false);
+				canvas1.drawBitmap(resizedBitmap, 0, myBitmap.getHeight() + posY + 1, null);
+			}
 
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
@@ -250,7 +278,7 @@ public class Utility {
 		}
 	}
 
-	private void SalvaBitmap(Bitmap b, String NomeFile) {
+	/* private void SalvaBitmap(Bitmap b, String NomeFile) {
 		String PercorsoDIR = Environment.getExternalStorageDirectory().getPath() + "/LooigiSoft/CambiaLaCarta";
 
 		File dir = new File(PercorsoDIR + "/");
@@ -269,9 +297,15 @@ public class Utility {
 		} catch (IOException ignored) {
 
 		}
-	}
+	} */
 
 	public Bitmap getPreview(String uri) {
+		Log l = new Log();
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Get preview");
+
 		try {
 		    File image = new File(uri);
 	
@@ -288,8 +322,15 @@ public class Utility {
 		    opts.inSampleSize = originalSize/(((SharedObjects.getInstance().getSchermoY()-BordoY)+
 					(SharedObjects.getInstance().getSchermoX()-BordoX))/2);
 
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Get preview fatto");
+
 		    return BitmapFactory.decodeFile(image.getPath(), opts);     
 		} catch (Exception ignored) {
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Prende Preview errore ");
 			return null;
 		}
 	}
@@ -415,7 +456,7 @@ public class Utility {
 		}
 	}
 	
-	public Bitmap PrendeImmagineCompressa(String uri, Log l) {
+	/* public Bitmap PrendeImmagineCompressa(String uri, Log l) {
 		l.ScriveLog(new Object() {
 				}.getClass().getEnclosingMethod().getName(),
 				"Prende immagine compressa 1");
@@ -493,10 +534,14 @@ public class Utility {
 	        }
     	}
         return null;
-    }
+    } */
 
 	public static int PrendeNuovoNumero(String Come, Log l) {
 		int Ritorno=0;
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Prende nuovo numero");
 
 		if (SharedObjects.getInstance().getTipoCambio().equals("RANDOM")) {
 			l.ScriveLog(new Object() {
@@ -505,13 +550,17 @@ public class Utility {
 
 			Random r;
 			r=new Random();
-			int i1=r.nextInt(SharedObjects.getInstance().getListaImmagini().size());
-			i1--;
-			if (i1<0) {
-				i1=0;
+			if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
+				int i1 = r.nextInt(SharedObjects.getInstance().getListaImmagini().size());
+				i1--;
+				if (i1 < 0) {
+					i1 = 0;
+				}
+				Ritorno = i1;
+				SharedObjects.getInstance().setQualeImmagineHaVisualizzato(i1);
+			} else {
+				Ritorno = -1;
 			}
-			Ritorno=i1;
-			SharedObjects.getInstance().setQualeImmagineHaVisualizzato(i1);
 		} else {
 			if (SharedObjects.getInstance().getTipoCambio().equals("SEQUENZIALE")) {
 				l.ScriveLog(new Object() {
@@ -604,16 +653,16 @@ public class Utility {
 					if (SharedObjects.getInstance().getTimerPartito() == null) {
 						SharedObjects.getInstance().setTimerPartito(false);
 					}
-					if (!SharedObjects.getInstance().getTimerPartito()) {
+					/* if (!SharedObjects.getInstance().getTimerPartito()) {
 						FaiPartireTimer();
-					}
+					} */
 				}
 			} else {
 				SharedObjects.getInstance().getChkAttivo().setText(u.ControllaLingua(context, R.string.inattivoIT, R.string.inattivoEN));
 				SharedObjects.getInstance().getChkAttivo().setChecked(false);
-				if (SharedObjects.getInstance().getStaPartendo()) {
+				/* if (SharedObjects.getInstance().getStaPartendo()) {
 					FermaTimer();
-				}
+				} */
 			}
 			// txtTempo2.setText(u.ControllaLingua(context, R.string.tempo2IT, R.string.tempo2EN));
 			SharedObjects.getInstance().getTxtCaffe().setText(u.ControllaLingua(context, R.string.caffeIT, R.string.caffeEN));
@@ -621,7 +670,7 @@ public class Utility {
 
 			// ImpostaDimensioni();
 
-			VariabiliGlobali.getInstance().getActivityPrincipale().setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
+			MainActivity.activity.setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
 		} catch (Exception ignored) {
 
 		}
@@ -662,35 +711,86 @@ public class Utility {
 		}
 	} */
 
-	private Handler handlerAgg;
-	private Runnable rAgg;
-
+	// private Handler handlerAgg;
+	// private Runnable rAgg;
 	public void FaiPartireTimer() {
-		if (VariabiliGlobali.getInstance().getHandler() == null) {
-			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
+		final Log l = new Log();
+		/* if (MainActivity.ct != null) {
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Timer già partito. Esco");
+			return;
+		} */
 
-			handlerAgg = new Handler();
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Fai partire Timer");
+		// if (VariabiliGlobali.getInstance().getHandler() == null) {
+			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
+			int Tempo = 60000;
+			// final Utility u = new Utility();
+
+		try {
+			MainActivity.ct.cancel();
+		} catch (Exception ignored) {
+
+		}
+
+		MainActivity.ct = new CountDownTimer( (Tempo * TotMinuti), Tempo) {
+				public void onTick(long millisUntilFinished) {
+					MinutiPassati++;
+					SharedObjects.getInstance().getTxtTempoPassato().setText(" Min: " + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+
+					l.ScriveLog(new Object() {
+							}.getClass().getEnclosingMethod().getName(),
+							"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+				}
+
+				public void onFinish() {
+					l.ScriveLog(new Object() {
+							}.getClass().getEnclosingMethod().getName(),
+							"Cambio immagine in timer");
+
+					// MinutiPassati = 0;
+					Boolean Ritorno = CambiaImmagine(true, 0);
+				}
+			}.start();
+
+			/* handlerAgg = new Handler();
 			    rAgg = new Runnable() {
 			        public void run() {
-						MinutiPassati++;
+			        	try {
+							MinutiPassati++;
 
-						Log l = new Log();
-						l.ScriveLog(new Object() {
-								}.getClass().getEnclosingMethod().getName(),
-								"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+							l.ScriveLog(new Object() {
+									}.getClass().getEnclosingMethod().getName(),
+									"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
 
-						if (MinutiPassati >= TotMinuti) {
-							// if (!SharedObjects.getInstance().getStaPartendo()) {
-							MinutiPassati = 0;
+							if (MinutiPassati >= TotMinuti) {
+								// if (!SharedObjects.getInstance().getStaPartendo()) {
+								MinutiPassati = 0;
 
-							Boolean Ritorno = CambiaImmagine(true, 0);
-							// }
+								Boolean Ritorno = CambiaImmagine(true, 0);
+								// }
+							}
+
+							if (handlerAgg != null && rAgg != null) {
+								handlerAgg.postDelayed(rAgg, Tempo);
+							} else {
+								l.ScriveLog(new Object() {
+										}.getClass().getEnclosingMethod().getName(),
+										"Handler sbragato. Faccio ripartire il timer");
+								// VariabiliGlobali.getInstance().setHandler(null);
+								FaiPartireTimer();
+							}
+						} catch (Exception e) {
+							l.ScriveLog(new Object() {
+									}.getClass().getEnclosingMethod().getName(),
+									"Minuti passati. Errore:" +  u.PrendeErroreDaException(e));
 						}
-
-			            handlerAgg.postDelayed(rAgg, 60000);
 			        }
 			    };
-			handlerAgg.postDelayed(rAgg, 60000);
+			handlerAgg.postDelayed(rAgg, Tempo); */
 
 			// final Handler handler = new Handler();
 			/* t = new Timer();
@@ -729,11 +829,11 @@ public class Utility {
 				}
 			});
 			VariabiliGlobali.getInstance().getHandler().postDelayed(VariabiliGlobali.getInstance().getR(), 60000); */
-		}
+		// }
 	}
 
 	public void FermaTimer() {
-		SharedObjects.getInstance().setTimerPartito(false);
+		/* SharedObjects.getInstance().setTimerPartito(false);
 
 		if (SharedObjects.getInstance().getListaImmagini()!=null) {
 			if (SharedObjects.getInstance().getListaImmagini().size()>0) {
@@ -744,23 +844,23 @@ public class Utility {
 
 					}
 					VariabiliGlobali.getInstance().setHandler(null);
-					VariabiliGlobali.getInstance().setR(null); */
+					VariabiliGlobali.getInstance().setR(null); // /
 					t.cancel();
 					t.purge();
 					t = null;
 				}
 
-				/* if (timer != null) {
-					timer.cancel();
-					timer = null;
-				} */
 			}
-		}
+		} */
 	}
 
 	public void ImpostaImmagineDiSfondo(String NomeImm, Log l) {
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Imposta immagine di sfondo");
+
 		if (SharedObjects.getInstance().getImm()==null) {
-			Notifiche.getInstance().CreaNotifica();
+			// Notifiche.getInstance().CreaNotifica();
 		}
 
 		if (SharedObjects.getInstance().getImm()!=null) {
@@ -781,11 +881,21 @@ public class Utility {
 				}
 			}
 		}
+
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Imposta immagine di sfondo. Fine");
 	}
 
 	public static Boolean CambiaImmagine(Boolean Cambia, int NumeroDarete) {
-		long adesso = System.currentTimeMillis() / 1000L;
-		if (adesso - ultimoPassaggio > 10) {
+		final Log l = new Log();
+		l.ScriveLog(new Object() {
+				}.getClass().getEnclosingMethod().getName(),
+				"Cambia immagine");
+
+		long adesso = System.currentTimeMillis();
+		long q = adesso - ultimoPassaggio;
+		if (q > 1000) {
 			ultimoPassaggio = adesso;
 			/* if (VariabiliGlobali.getInstance().getContext()==null ||
 					VariabiliGlobali.getInstance().getActivityPrincipale()==null ||
@@ -794,7 +904,6 @@ public class Utility {
 			} */
 
 			Boolean Ritorno = false;
-			Log l = new Log();
 
 			l.ScriveLog(new Object() {
 					}.getClass().getEnclosingMethod().getName(),
@@ -806,7 +915,7 @@ public class Utility {
 						"Schermo attivo, cambio immagine");
 
 				// Se per qualche motivo si è perso la lista delle immagini le ricarico
-				if (SharedObjects.getInstance().getListaImmagini() == null || SharedObjects.getInstance().getListaImmagini().size() == 0) {
+				/* if (SharedObjects.getInstance().getListaImmagini() == null || SharedObjects.getInstance().getListaImmagini().size() == 0) {
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),
 							"Lista immagini vuota. Ricarico");
@@ -829,13 +938,13 @@ public class Utility {
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),
 							"Immagini lette: " + Integer.toString(SharedObjects.getInstance().getListaImmagini().size()));
-				}
+				} */
 				// Se per qualche motivo si è perso la lista delle immagini le ricarico
 
-				if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
+				// if (SharedObjects.getInstance().getListaImmagini().size() > 0) {
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),
-							"Immagini piene, effetuo cambio");
+							"Immagini piene, effettuo cambio");
 
 					int NuovoNumero;
 
@@ -880,7 +989,7 @@ public class Utility {
 						Ritorno = true;
 					}
 
-					if (NuovoNumero >= 0) {
+					if (NuovoNumero >= 0 && SharedObjects.getInstance().getListaImmagini().size() > 0) {
 						String NomeFile = SharedObjects.getInstance().getListaImmagini().get(NuovoNumero);
 
 						l.ScriveLog(new Object() {
@@ -895,14 +1004,15 @@ public class Utility {
 								"Cambio immagine. Ritorno: " + Ritorno);
 
 						if (SharedObjects.getInstance().getNotificaSiNo().equals("S")) {
-							Notifiche.getInstance().AggiornaNotifica();
+							// Notifiche.getInstance().AggiornaNotifica();
 						}
 
-						MinutiPassati = 0;
+						Utility u = new Utility();
+						u.faiRipartireTimer();
 					}
-				} else {
-					Ritorno = false;
-				}
+				// } else {
+				// 	Ritorno = false;
+				// }
 			} else {
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
@@ -919,4 +1029,26 @@ public class Utility {
 		}
 	}
 
+	public void faiRipartireTimer() {
+		new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					MainActivity.ct.cancel();
+				} catch (Exception ignored) {
+
+				}
+				MainActivity.ct = null;
+
+				Log l = new Log();
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Faccio ripartire timer");
+				Utility u = new Utility();
+				u.FaiPartireTimer();
+			}
+		}, 1/* delay for no time, just to next loop*/);
+
+		MinutiPassati = 0;
+	}
 }

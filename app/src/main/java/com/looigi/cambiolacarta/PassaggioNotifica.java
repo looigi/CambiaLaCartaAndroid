@@ -1,5 +1,5 @@
 package com.looigi.cambiolacarta;
-
+/*
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -75,3 +75,4 @@ public class PassaggioNotifica extends Activity {
     	finish();
     }
 }
+*/

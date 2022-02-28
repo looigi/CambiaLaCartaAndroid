@@ -71,14 +71,14 @@ public class DialogMessaggio
         //     RefreshActivity.getInstance().RilanciaActivity();
         // }
 
-        if (VariabiliGlobali.getInstance().getActivityPrincipale()==null) {
+        if (MainActivity.activity==null) {
             if (VariabiliGlobali.getInstance().getContext()!=null) {
                 // Toast.makeText(VariabiliGlobali.getInstance().getContext(),
                 //         Message,
                 //         Toast.LENGTH_SHORT).show();
             }
         } else {
-            VariabiliGlobali.getInstance().getActivityPrincipale().runOnUiThread(new Runnable() {
+            MainActivity.activity.runOnUiThread(new Runnable() {
                 public void run() {
                     try {
                         AlertDialog alert = builder.create();
