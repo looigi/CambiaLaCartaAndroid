@@ -160,13 +160,6 @@ public class MainActivity extends Activity {
 	}
 
 	@Override
-	public void onBackPressed() {
-		// super.onBackPressed();
-
-		this.moveTaskToBack(true);
-	}
-
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);

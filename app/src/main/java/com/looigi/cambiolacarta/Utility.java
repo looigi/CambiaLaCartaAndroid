@@ -729,32 +729,38 @@ public class Utility {
 			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
 			int Tempo = 60000;
 			// final Utility u = new Utility();
+		if (MainActivity.ct != null) {
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Esco per timer già attivo");
+			return;
+		}
 
-		try {
+		/* try {
 			MainActivity.ct.cancel();
 		} catch (Exception ignored) {
 
-		}
+		} */
 
 		MainActivity.ct = new CountDownTimer( (Tempo * TotMinuti), Tempo) {
-				public void onTick(long millisUntilFinished) {
-					MinutiPassati++;
-					SharedObjects.getInstance().getTxtTempoPassato().setText(" Min: " + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+			public void onTick(long millisUntilFinished) {
+				MinutiPassati++;
+				SharedObjects.getInstance().getTxtTempoPassato().setText(" Min: " + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
 
-					l.ScriveLog(new Object() {
-							}.getClass().getEnclosingMethod().getName(),
-							"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
-				}
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Minuti passati:" + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+			}
 
-				public void onFinish() {
-					l.ScriveLog(new Object() {
-							}.getClass().getEnclosingMethod().getName(),
-							"Cambio immagine in timer");
+			public void onFinish() {
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine in timer");
 
-					// MinutiPassati = 0;
-					Boolean Ritorno = CambiaImmagine(true, 0);
-				}
-			}.start();
+				// MinutiPassati = 0;
+				Boolean Ritorno = CambiaImmagine(true, 0);
+			}
+		}.start();
 
 			/* handlerAgg = new Handler();
 			    rAgg = new Runnable() {
@@ -1044,10 +1050,9 @@ public class Utility {
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
 						"Faccio ripartire timer");
-				Utility u = new Utility();
-				u.FaiPartireTimer();
+				FaiPartireTimer();
 			}
-		}, 1/* delay for no time, just to next loop*/);
+		}, 1000/* delay for no time, just to next loop*/);
 
 		MinutiPassati = 0;
 	}
