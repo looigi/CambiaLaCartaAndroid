@@ -22,7 +22,7 @@ public class VariabiliGlobali {
 
     public String PercorsoDIR= Environment.getExternalStorageDirectory().getPath()+"/LooigiSoft/CambiaLaCarta";
     protected Context context;
-    // protected Activity activityPrincipale;
+    protected Activity activityPrincipale;
     // private NotificationManager notificationManager;
     // private NotificationCompat.Builder notificationBuilder;
     // private RemoteViews contentView;
@@ -77,13 +77,13 @@ public class VariabiliGlobali {
         this.r = r;
     }
 
-    /* public Activity getActivityPrincipale() {
+    public Activity getActivityPrincipale() {
         return activityPrincipale;
     }
 
     public void setActivityPrincipale(Activity activityPrincipale) {
         this.activityPrincipale = activityPrincipale;
-    } */
+    }
 
     public Context getContext() {
         return context;

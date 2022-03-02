@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 26
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.looigi.cambiolacarta"
-        minSdkVersion 24
+        minSdkVersion 26
     }
 
     buildTypes {
@@ -21,5 +21,5 @@ dependencies {
     implementation 'ch.acra:acra:4.9.2'
     implementation 'com.sun.mail:android-mail:1.5.5'
     implementation files('libs/ksoap2-android-assembly-3.2.0-jar-with-dependencies.jar')
-    implementation 'com.android.support:appcompat-v7:24.2.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
 }

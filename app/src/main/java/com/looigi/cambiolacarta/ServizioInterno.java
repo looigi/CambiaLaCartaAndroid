@@ -1,6 +1,7 @@
 package com.looigi.cambiolacarta;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -20,7 +21,7 @@ import android.app.Notification;
 import android.os.IBinder;
 import android.os.Build;
 // import android.app.NotificationChannel;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.CheckBox;
@@ -70,15 +71,15 @@ public class ServizioInterno extends Service {
         Notification notification = Notifiche.getInstance().CreaNotifichella();
         startForeground(1, notification); */
 
-        /* if (!VariabiliGlobali.getInstance().isPartito()) {
+        // if (!VariabiliGlobali.getInstance().isPartito()) {
             // // // VariabiliGlobali.getInstance().getActivityPrincipale().moveTaskToBack(true);
-        }
+        // }
 
         VariabiliGlobali.getInstance().setPartito(true);
 
         // String input = intent.getStringExtra("inputExtra");
         createNotificationChannel();
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        /* Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, 0);
         Notification notification = new NotificationCompat.Builder(this)
@@ -95,7 +96,7 @@ public class ServizioInterno extends Service {
     }
 
     private void createNotificationChannel() {
-        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID,
                     "CambiaLaCarta",
@@ -103,7 +104,7 @@ public class ServizioInterno extends Service {
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(serviceChannel);
-        } */
+        }
     }
 
     private Handler handlerAgg;

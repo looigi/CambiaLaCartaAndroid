@@ -8,6 +8,7 @@ import com.looigi.cambiolacarta.DialogMessaggio;
 import com.looigi.cambiolacarta.DownloadFileFromURL;
 import com.looigi.cambiolacarta.Log;
 // import com.looigi.cambiolacarta.Notifiche;
+import com.looigi.cambiolacarta.MainActivity;
 import com.looigi.cambiolacarta.SharedObjects;
 import com.looigi.cambiolacarta.Utility;
 import com.looigi.cambiolacarta.VariabiliGlobali;
@@ -20,6 +21,10 @@ public class wsRitorno {
 
     public void TornaNumeroImmaginePerSfondo(final String Ritorno, final Log l) {
         if (Ritorno.toUpperCase().contains("ERROR:")) {
+            MainActivity.ct = null;
+            Utility u = new Utility();
+            u.faiRipartireTimer();
+
             DialogMessaggio.getInstance().show(VariabiliGlobali.getInstance().getContext(),
                     Ritorno,
                     true,
@@ -106,6 +111,7 @@ public class wsRitorno {
                         new DownloadFileFromURL(l).execute(PathImm);
                     }
 
+                    MainActivity.ct = null;
                     Utility u = new Utility();
                     u.faiRipartireTimer();
                 }

@@ -21,7 +21,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
@@ -44,14 +43,14 @@ import java.util.Timer;
 
 public class MainActivity extends Activity {
 	static public Activity activity;
-	static CountDownTimer ct = null;
+	public static CountDownTimer ct = null;
 	private boolean CiSonoPermessi;
 	private Context context;
 	private SoundPool soundPool;
 	private HashMap<Integer, Integer> soundPoolMap;
 	private DBLocale dbl;
 	// private MemoryBoss mMemoryBoss;
-	// public static Context ctxPrincipale;
+	public static Context ctxPrincipale;
 
 	/* @Override
 	protected void onStop() {
@@ -251,18 +250,18 @@ public class MainActivity extends Activity {
 				}.getClass().getEnclosingMethod().getName(),
 				"Attivo servizio");
 
-		Intent serviceIntent = new Intent(this, ServizioInterno.class);
-		// serviceIntent.putExtra("inputExtra2", "Cambia la carta");
-		// ContextCompat.startForegroundService(this, serviceIntent);
+		//Intent serviceIntent = new Intent(this, ServizioInterno.class);
+		//serviceIntent.putExtra("inputExtra2", "Cambia la carta");
+		//VariabiliGlobali.getInstance().getContext().startForegroundService(serviceIntent);
 		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-		/* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-			startForegroundService(serviceIntent);
-		} else {
+		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+		// 	startForegroundService(serviceIntent);
+		//} else {
 
-		} */
+		// }
 
 		// new ServizioInterno(this);
-		MainActivity.activity.startService(serviceIntent);
+		//MainActivity.activity.startService(serviceIntent);
 
 		// ServizioInterno s = new ServizioInterno();
 		// s.creaStrutturaInizio();
@@ -439,6 +438,7 @@ public class MainActivity extends Activity {
 	// BANNER
 
 	public void creaStrutturaInizio() {
+		Activity v = null;
 		SharedObjects.getInstance().setStaPartendo(false);
 		// context = this;
 
@@ -475,7 +475,7 @@ public class MainActivity extends Activity {
                 this.startActivity(intentR);
                 System.exit(0);
             }
-        }
+        } */
 
         receiver = new PhoneUnlockedReceiver();
         try {
@@ -491,7 +491,7 @@ public class MainActivity extends Activity {
             registerReceiver(receiver, fRecv);
         } catch (Exception ignored) {
 
-        } */
+        }
 
 		if (MainActivity.activity != null) {
 			SharedObjects.getInstance().setAudioManager((AudioManager) MainActivity.activity.getSystemService(context.AUDIO_SERVICE));
@@ -895,8 +895,9 @@ public class MainActivity extends Activity {
 
 			ImpostaDimensioni();
 
-			// Notifiche.getInstance().CreaNotifica();
-			// Notifiche.getInstance().AggiornaNotifica();
+			VariabiliGlobali.getInstance().setActivityPrincipale(this);
+			Notifiche.getInstance().createNotificationChannel();
+			Notifiche.getInstance().AggiornaNotifica();
 
             /* if (service.ChiudiMaschera==null) {
                 service.ChiudiMaschera=false;
@@ -907,6 +908,7 @@ public class MainActivity extends Activity {
                 }
                 service.ChiudiMaschera=false;
             } */
+
 			dbl.LeggeOpzioni(context);
 			dbl.LeggePercorsi(context);
 
@@ -946,6 +948,9 @@ public class MainActivity extends Activity {
 			VariabiliGlobali.getInstance().setPartito(true);
 
 			SharedObjects.getInstance().setStaPartendo(false);
+
+			Utility u = new Utility();
+			u.faiRipartireTimer();
 		}
 	}
 

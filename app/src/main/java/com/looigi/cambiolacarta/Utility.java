@@ -456,7 +456,7 @@ public class Utility {
 		}
 	}
 	
-	/* public Bitmap PrendeImmagineCompressa(String uri, Log l) {
+	public Bitmap PrendeImmagineCompressa(String uri, Log l) {
 		l.ScriveLog(new Object() {
 				}.getClass().getEnclosingMethod().getName(),
 				"Prende immagine compressa 1");
@@ -534,7 +534,7 @@ public class Utility {
 	        }
     	}
         return null;
-    } */
+    }
 
 	public static int PrendeNuovoNumero(String Come, Log l) {
 		int Ritorno=0;
