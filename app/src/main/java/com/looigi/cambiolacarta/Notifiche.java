@@ -1,7 +1,6 @@
 package com.looigi.cambiolacarta;
 
 import android.app.Notification;
-// import android.app.NotificationChannel;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -13,13 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 import android.support.v4.app.NotificationCompat;
 
-import static android.content.Context.NOTIFICATION_SERVICE;
-
 public class Notifiche {
     private int id = 11;
-    private NotificationManager notificationManager;
-    private NotificationCompat.Builder notificationBuilder;
-    private RemoteViews contentView;
+    // private NotificationManager notificationManager;
+    // private NotificationCompat.Builder notificationBuilder;
+    // private RemoteViews contentView;
 
     private static final Notifiche ourInstance = new Notifiche();
 
@@ -116,7 +113,7 @@ public class Notifiche {
                     R.layout.barra_notifica)); //
             setListenersTasti(contentView); //
             impostaOggettiDescrittivi(contentView);
-            return new NotificationCompat.Builder(VariabiliGlobali.getInstance().getContext())
+            return new NotificationCompat.Builder(VariabiliGlobali.getInstance().getContext(), VariabiliGlobali.getInstance().getCHANNEL_ID())
                     .setContentTitle("Cambia la carta")
                     .setContentText("")
                     .setSmallIcon(R.drawable.ic_launcher)
@@ -173,10 +170,10 @@ public class Notifiche {
         view.setOnClickPendingIntent(R.id.ImgApreNB, pApre);
     } */
 
-    public void CreaNotificaNuova() {
+    /* public void CreaNotificaNuova() {
         notificationManager = ((NotificationManager)
                 VariabiliGlobali.getInstance().getActivityPrincipale().getSystemService(NOTIFICATION_SERVICE));
-        notificationBuilder = (new NotificationCompat.Builder(VariabiliGlobali.getInstance().getContext()));
+        notificationBuilder = (new NotificationCompat.Builder(VariabiliGlobali.getInstance().getContext(), VariabiliGlobali.getInstance().getCHANNEL_ID()));
         notificationBuilder.setSmallIcon(R.drawable.ic_launcher);
         notificationBuilder.setOngoing(true);
         contentView = (new RemoteViews(VariabiliGlobali.getInstance().getActivityPrincipale().getPackageName(),
@@ -186,10 +183,10 @@ public class Notifiche {
         notificationBuilder.setAutoCancel(false);
         // impostaOggettiDescrittivi(contentView);
         notificationManager.notify(1, notificationBuilder.build());
-    }
+    } */
 
     public void CreaNotifica() {
-        notificationManager.notify(1, notificationBuilder.build());
+        // notificationManager.notify(1, notificationBuilder.build());
     }
 
     public void AggiornaNotifica() {
@@ -205,7 +202,7 @@ public class Notifiche {
             Notification notification = CreaNotifichella();
             // impostaOggettiDescrittivi(contentView);
             NotificationManager mNotificationManager=(NotificationManager) VariabiliGlobali.getInstance().getActivityPrincipale()
-                    .getSystemService(NOTIFICATION_SERVICE);
+                    .getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(1, notification);
             // notificationBuilder.setContent(contentView);
             // notificationBuilder.setOngoing(true);
@@ -215,15 +212,14 @@ public class Notifiche {
         // }
     }
 
-    /*
     public void RimuoviNotifica() {
-        try {
+        /* try {
             notificationManager.cancel(1);
             notificationManager = null;
         } catch (Exception ignored) {
 
-        }
-    } */
+        } */
+    }
 
     /* public void AggiornaNotifica() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -371,5 +367,6 @@ public class Notifiche {
 
             }
         }
-    }*/
- }
+    }
+    */
+}

@@ -6,7 +6,7 @@ import android.os.Handler;
 
 import com.looigi.cambiolacarta.DialogMessaggio;
 import com.looigi.cambiolacarta.Log;
-import com.looigi.cambiolacarta.MainActivity;
+import com.looigi.cambiolacarta.SharedObjects;
 import com.looigi.cambiolacarta.Utility;
 import com.looigi.cambiolacarta.VariabiliGlobali;
 
@@ -217,11 +217,11 @@ public class GestioneWEBServiceSOAP {
 			ApriDialog();
 			SplittaCampiUrletto(this.Urletto);
 		}
-		
+
 		@Override
 		protected void onPostExecute(String p) {
 			super.onPostExecute(p);
-			
+
 			ControllaFineCiclo();
 		}
 
@@ -265,10 +265,6 @@ public class GestioneWEBServiceSOAP {
 				} else {
 				}
             } catch (SocketTimeoutException e) {
-				MainActivity.ct = null;
-				Utility u1 = new Utility();
-				u1.faiRipartireTimer();
-
 				Errore=true;
 				messErrore = u.PrendeErroreDaException(e);
             	if (messErrore!=null) {
@@ -280,11 +276,7 @@ public class GestioneWEBServiceSOAP {
             	messErrore = result;
 				//Utility.getInstance().VisualizzaPOPUP(context, "Errore di socket sul DB:\n" + messErrore, false, 0, false);
 			} catch (IOException e) {
-				MainActivity.ct = null;
-				Utility u1 = new Utility();
-				u1.faiRipartireTimer();
-
-				Errore=true;
+            	Errore=true;
 				messErrore = u.PrendeErroreDaException(e);
             	if (messErrore!=null)
             		messErrore=messErrore.toUpperCase().replace("LOOIGI.NO-IP.BIZ","Web Service");
@@ -292,11 +284,7 @@ public class GestioneWEBServiceSOAP {
 				messErrore = result;
 				//Utility.getInstance().VisualizzaPOPUP(context, "Errore di I/O dal DB:\n" + messErrore, false, 0, false);
             } catch (XmlPullParserException e) {
-				MainActivity.ct = null;
-				Utility u1 = new Utility();
-				u1.faiRipartireTimer();
-
-				Errore=true;
+            	Errore=true;
 				messErrore = u.PrendeErroreDaException(e);
             	if (messErrore!=null) {
             		messErrore=messErrore.toUpperCase().replace("LOOIGI.NO-IP.BIZ","Web Service");
@@ -307,11 +295,7 @@ public class GestioneWEBServiceSOAP {
 				messErrore = result;
 				//Utility.getInstance().VisualizzaPOPUP(context, "Errore di parsing XML:\n" + messErrore, false, 0, false);
             } catch (Exception e) {
-				MainActivity.ct = null;
-				Utility u1 = new Utility();
-				u1.faiRipartireTimer();
-
-				Errore=true;
+            	Errore=true;
 				messErrore = u.PrendeErroreDaException(e);
             	if (messErrore!=null)
             		messErrore=messErrore.toUpperCase().replace("LOOIGI.NO-IP.BIZ","Web Service");
@@ -323,10 +307,6 @@ public class GestioneWEBServiceSOAP {
 	            try {
 	                result = ""+soapEnvelope.getResponse();
 	            } catch (SoapFault e) {
-					MainActivity.ct = null;
-					Utility u1 = new Utility();
-					u1.faiRipartireTimer();
-
 	            	Errore=true;
 					messErrore = u.PrendeErroreDaException(e);
 	            	if (messErrore!=null) {

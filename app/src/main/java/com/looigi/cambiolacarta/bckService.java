@@ -1,4 +1,4 @@
-package com.looigi.cambiolacarta;
+/* package com.looigi.cambiolacarta;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -23,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.looigi.cambiolacarta.AutoStart.service;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -418,7 +420,7 @@ public class bckService extends Service {
             Notifiche.getInstance().CreaNotifica();
             Notifiche.getInstance().AggiornaNotifica();
 
-            /* if (service.ChiudiMaschera==null) {
+            if (service.ChiudiMaschera==null) {
                 service.ChiudiMaschera=false;
             }
             if (service.ChiudiMaschera) {
@@ -426,7 +428,7 @@ public class bckService extends Service {
                     v.moveTaskToBack(true);
                 }
                 service.ChiudiMaschera=false;
-            } */
+            }
 
             SharedObjects.getInstance().setStaPartendo(true);
             if (SharedObjects.getInstance().getCaricaDati()==null) {
@@ -521,3 +523,4 @@ public class bckService extends Service {
         }
     }
 }
+*/

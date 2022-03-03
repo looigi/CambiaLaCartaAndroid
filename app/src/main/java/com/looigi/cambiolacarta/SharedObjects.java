@@ -73,6 +73,7 @@ public class SharedObjects {
     private LinearLayout imgCambiaDir;
     private boolean GiaEntrato = false;
     private String vecchioValoreCambio = "";
+    private TextView txtTempoPassato;
 
     public TextView getTxtTempoPassato() {
         return txtTempoPassato;

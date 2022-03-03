@@ -13,12 +13,8 @@ public class ChangeWallpaper {
 	long ultimoPassaggio = 0;
 
 	public Boolean setWallpaper(String src, Log l) {
-		l.ScriveLog(new Object() {
-				}.getClass().getEnclosingMethod().getName(),
-				"Set wallpaper");
-
-		long adesso = System.currentTimeMillis();
-		if (adesso - ultimoPassaggio > 1000) {
+		long adesso = System.currentTimeMillis() / 1000L;
+		if (adesso - ultimoPassaggio > 10) {
 			ultimoPassaggio = adesso;
 
 			Context context = SharedObjects.getInstance().getContext();
@@ -29,25 +25,15 @@ public class ChangeWallpaper {
 					"Cambio immagine: Caricamento bitmap.");
 
 			Utility u = new Utility();
-			Bitmap setWallToDevice = null;
-			try {
-				setWallToDevice = u.PrendeImmagineReale(src, l);
-				l.ScriveLog(new Object() {
-						}.getClass().getEnclosingMethod().getName(),
-						"Cambio immagine: Caricata bitmap.");
-			} catch (Exception e) {
-				l.ScriveLog(new Object() {
-						}.getClass().getEnclosingMethod().getName(),
-						"Cambio immagine: Prende immagine reale errore: " +  u.PrendeErroreDaException(e));
-			}
+			Bitmap setWallToDevice = u.PrendeImmagineReale(src, l);
 
 			if (setWallToDevice != null) {
-				try {
-					l.ScriveLog(new Object() {
-							}.getClass().getEnclosingMethod().getName(),
-							"Cambio immagine: Applicazione wallpaper.");
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Cambio immagine: Applicazione wallpaper.");
 
-					WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
+				WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
+				try {
 					l.ScriveLog(new Object() {
 							}.getClass().getEnclosingMethod().getName(),
 							"Cambio immagine: Impostazione dimensioni.");
@@ -62,36 +48,24 @@ public class ChangeWallpaper {
 							}.getClass().getEnclosingMethod().getName(),
 							"Cambio immagine: Settaggio bitmap.");
 
-					try {
-						wallpaperManager.setBitmap(setWallToDevice);
-						l.ScriveLog(new Object() {
-								}.getClass().getEnclosingMethod().getName(),
-								"Cambio immagine: Settata bitmap.");
-					} catch (IOException e) {
-						l.ScriveLog(new Object() {
-								}.getClass().getEnclosingMethod().getName(),
-								"Cambio immagine: Settaggio bitmap. Errore: " + e.getMessage());
-					}
+					wallpaperManager.setBitmap(setWallToDevice);
+
+					l.ScriveLog(new Object() {
+							}.getClass().getEnclosingMethod().getName(),
+							"Cambio immagine: Settata bitmap.");
 
 					if (SharedObjects.getInstance().isSettaLockScreen()) {
-						Bitmap b = VariabiliGlobali.getInstance().getBitmapOriginale();
-						if (b == null) {
-							b = setWallToDevice;
-						}
-
 						// set wallpaper lock screen
 						ByteArrayOutputStream bos = new ByteArrayOutputStream();
-						b.compress(Bitmap.CompressFormat.PNG, 0, bos);
+						setWallToDevice.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
 						byte[] bitmapdata = bos.toByteArray();
 						ByteArrayInputStream bs = new ByteArrayInputStream(bitmapdata);
 
 						WallpaperManager.getInstance(VariabiliGlobali.getInstance().getContext())
 								.setStream(bs, null, true, WallpaperManager.FLAG_LOCK);
 						// set wallpaper lock screen
-
-						VariabiliGlobali.getInstance().setBitmapOriginale(null);
 					}
-				} catch (Exception e) {
+				} catch (IOException e) {
 					// l.ScriveLog("Errore: " + u.PrendeErroreDaException(e));
 					// e.printStackTrace();
 

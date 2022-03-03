@@ -34,16 +34,15 @@ public class VariabiliGlobali {
     private Runnable r;
     private String CHANNEL_ID = "ForegroundServiceChannel";
     private boolean Partito = false;
+    private Bitmap BitmapOriginale;
 
     public Bitmap getBitmapOriginale() {
-        return bitmapOriginale;
+        return BitmapOriginale;
     }
 
     public void setBitmapOriginale(Bitmap bitmapOriginale) {
-        this.bitmapOriginale = bitmapOriginale;
+        BitmapOriginale = bitmapOriginale;
     }
-
-    private Bitmap bitmapOriginale;
 
     public boolean isPartito() {
         return Partito;

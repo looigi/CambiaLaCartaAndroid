@@ -92,7 +92,7 @@ public class Utility {
 
 				DisplayMetrics metrics = new DisplayMetrics();
 				if (SharedObjects.getInstance().getA1() == null) {
-					SharedObjects.getInstance().setA1(MainActivity.activity.getWindowManager());
+					SharedObjects.getInstance().setA1(VariabiliGlobali.getInstance().activityPrincipale.getWindowManager());
 				}
 				SharedObjects.getInstance().getA1().getDefaultDisplay().getMetrics(metrics);
 
@@ -670,7 +670,7 @@ public class Utility {
 
 			// ImpostaDimensioni();
 
-			MainActivity.activity.setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
+			VariabiliGlobali.getInstance().activityPrincipale.setTitle(u.ControllaLingua(context, R.string.app_name, R.string.app_nameEN));
 		} catch (Exception ignored) {
 
 		}
@@ -727,7 +727,13 @@ public class Utility {
 				"Fai partire Timer");
 		// if (VariabiliGlobali.getInstance().getHandler() == null) {
 			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
-			int Tempo = 60000;
+			if (TotMinuti == 0) {
+				l.ScriveLog(new Object() {
+						}.getClass().getEnclosingMethod().getName(),
+						"Esco per tempo = 0");
+				return;
+			}
+			int Tempo = 30000;
 			// final Utility u = new Utility();
 		if (MainActivity.ct != null) {
 			l.ScriveLog(new Object() {
@@ -741,11 +747,12 @@ public class Utility {
 		} catch (Exception ignored) {
 
 		} */
+		final int arrivo = Tempo * TotMinuti * 2;
 
-		MainActivity.ct = new CountDownTimer( (Tempo * TotMinuti), Tempo) {
+		MainActivity.ct = new CountDownTimer( arrivo, Tempo) {
 			public void onTick(long millisUntilFinished) {
 				MinutiPassati++;
-				SharedObjects.getInstance().getTxtTempoPassato().setText(" Min: " + Integer.toString(MinutiPassati) + "/" + Integer.toString(TotMinuti));
+				SharedObjects.getInstance().getTxtTempoPassato().setText(" Min: " + Integer.toString(MinutiPassati) + "/" + Integer.toString(arrivo));
 
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
@@ -753,6 +760,7 @@ public class Utility {
 			}
 
 			public void onFinish() {
+				SharedObjects.getInstance().getTxtTempoPassato().setText(" Cambio");
 				l.ScriveLog(new Object() {
 						}.getClass().getEnclosingMethod().getName(),
 						"Cambio immagine in timer");
