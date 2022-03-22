@@ -1,4 +1,4 @@
-package com.looigi.cambiolacarta;
+/* package com.looigi.cambiolacarta;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -79,3 +79,4 @@ public class MemoryBoss implements ComponentCallbacks2 {
 
     }
 }
+*/

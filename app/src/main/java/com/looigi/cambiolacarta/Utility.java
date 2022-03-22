@@ -747,7 +747,7 @@ public class Utility {
 		} catch (Exception ignored) {
 
 		} */
-		final int arrivo = Tempo * TotMinuti * 2;
+		final int arrivo = (Tempo * TotMinuti) * 2;
 
 		MainActivity.ct = new CountDownTimer( arrivo, Tempo) {
 			public void onTick(long millisUntilFinished) {

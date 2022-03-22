@@ -44,15 +44,13 @@ import java.util.Timer;
 
 public class MainActivity extends Activity {
 	private boolean CiSonoPermessi;
-	private MemoryBoss mMemoryBoss;
+	// private MemoryBoss mMemoryBoss;
 	public static CountDownTimer ct;
 	// public static Context ctxPrincipale;
 
 	@Override
 	protected void onStop() {
-		super.onStop();
-
-		unregisterComponentCallbacks(mMemoryBoss);
+		// unregisterComponentCallbacks(mMemoryBoss);
 
 		Log l = new Log();
 
@@ -62,6 +60,9 @@ public class MainActivity extends Activity {
 
 		// MediaPlayer mp = MediaPlayer.create(VariabiliStatiche.getInstance().getContext(), R.raw.schui);
 		// mp.start();
+		this.moveTaskToBack(true);
+
+		super.onStop();
 	}
 
 	// Banner di pubblicit�
@@ -128,10 +129,10 @@ public class MainActivity extends Activity {
 		if (CiSonoPermessi) {
 			EsegueEntrata();
 
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+			/* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 				mMemoryBoss = new MemoryBoss();
 				registerComponentCallbacks(mMemoryBoss);
-			}
+			} */
 		}
 
 	}
