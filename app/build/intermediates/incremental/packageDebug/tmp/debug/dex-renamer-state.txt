@@ -1,4 +1,4 @@
-#Tue Mar 22 12:35:48 CET 2022
+#Mon Apr 11 07:47:40 CEST 2022
 base.0=D\:\\Sorgenti\\Android\\Sviluppo\\Miei\\Cambio La Carta 2\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

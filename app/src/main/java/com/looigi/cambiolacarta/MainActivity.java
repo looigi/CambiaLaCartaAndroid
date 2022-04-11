@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onStop() {
+		super.onStop();
 		// unregisterComponentCallbacks(mMemoryBoss);
 
 		Log l = new Log();
@@ -61,8 +62,6 @@ public class MainActivity extends Activity {
 		// MediaPlayer mp = MediaPlayer.create(VariabiliStatiche.getInstance().getContext(), R.raw.schui);
 		// mp.start();
 		this.moveTaskToBack(true);
-
-		super.onStop();
 	}
 
 	// Banner di pubblicit�
@@ -105,6 +104,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		super.onDestroy();
 
     	Log l = new Log();
 
@@ -114,8 +114,6 @@ public class MainActivity extends Activity {
 
 		// this.recreate();
 		this.moveTaskToBack(true);
-
-		super.onDestroy();
 	}
 
 	@Override
@@ -286,23 +284,27 @@ public class MainActivity extends Activity {
 	    } */
 	// }
 
-	/* @Override
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		super.onKeyDown(keyCode, event);
 
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			moveTaskToBack(true); */
-        	/* //
-            Intent setIntent = new Intent(Intent.ACTION_MAIN);
-            setIntent.addCategory(Intent.CATEGORY_HOME);
-            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(setIntent); */
+		Log l = new Log();
 
-        	/* return false;
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Premuto back. Nascondo app");
+			moveTaskToBack(true);
+
+			return false;
 		} else {
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Stoppo tutto");
+
 			return true;
 		}
-	} */
+	}
 
 	/* @Override
 	protected void onStop() {
