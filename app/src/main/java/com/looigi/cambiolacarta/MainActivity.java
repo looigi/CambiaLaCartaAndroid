@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 	public static CountDownTimer ct;
 	// public static Context ctxPrincipale;
 
-	@Override
+	/* @Override
 	protected void onStop() {
 		super.onStop();
 		// unregisterComponentCallbacks(mMemoryBoss);
@@ -61,8 +61,8 @@ public class MainActivity extends Activity {
 
 		// MediaPlayer mp = MediaPlayer.create(VariabiliStatiche.getInstance().getContext(), R.raw.schui);
 		// mp.start();
-		this.moveTaskToBack(true);
-	}
+		// this.moveTaskToBack(true);
+	} */
 
 	// Banner di pubblicit�
 	// private RelativeLayout layout;
@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
 		super.onResume();
 
 		this.onCreate(null);
-	} */
+	}
 
 	@Override
 	protected void onDestroy() {
@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 
 		// this.recreate();
 		this.moveTaskToBack(true);
-	}
+	} */
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -198,6 +198,7 @@ public class MainActivity extends Activity {
 		// } else {
 		// 	VariabiliGlobali.getInstance().getActivityPrincipale().startService(serviceIntent);
 		// }
+		this.moveTaskToBack(true);
 	}
 
 	public void stopService() {

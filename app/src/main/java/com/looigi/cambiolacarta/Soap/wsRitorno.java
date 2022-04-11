@@ -25,11 +25,15 @@ public class wsRitorno {
             Utility u = new Utility();
             u.faiRipartireTimer();
 
-            DialogMessaggio.getInstance().show(VariabiliGlobali.getInstance().getContext(),
+            l.ScriveLog(new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Errore nel caricmaneto dell\'immagine: " + Ritorno);
+
+            /* DialogMessaggio.getInstance().show(VariabiliGlobali.getInstance().getContext(),
                     Ritorno,
                     true,
                     "looVF",
-                    false);
+                    false); */
         } else {
             l.ScriveLog(new Object() {
                     }.getClass().getEnclosingMethod().getName(),

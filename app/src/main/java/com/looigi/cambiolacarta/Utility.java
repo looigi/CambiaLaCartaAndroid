@@ -726,14 +726,14 @@ public class Utility {
 				}.getClass().getEnclosingMethod().getName(),
 				"Fai partire Timer");
 		// if (VariabiliGlobali.getInstance().getHandler() == null) {
-			final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
-			if (TotMinuti == 0) {
-				l.ScriveLog(new Object() {
-						}.getClass().getEnclosingMethod().getName(),
-						"Esco per tempo = 0");
-				return;
-			}
-			int Tempo = 30000;
+		final int TotMinuti = SharedObjects.getInstance().getMinutiPerCambio();
+		if (TotMinuti == 0) {
+			l.ScriveLog(new Object() {
+					}.getClass().getEnclosingMethod().getName(),
+					"Esco per tempo = 0");
+			return;
+		}
+		int Tempo = 30000;
 			// final Utility u = new Utility();
 		if (MainActivity.ct != null) {
 			l.ScriveLog(new Object() {
@@ -749,7 +749,7 @@ public class Utility {
 		} */
 		final int arrivo = (Tempo * TotMinuti) * 2;
 
-		MainActivity.ct = new CountDownTimer( arrivo, Tempo) {
+		MainActivity.ct = new CountDownTimer(arrivo, Tempo) {
 			public void onTick(long millisUntilFinished) {
 				MinutiPassati++;
 				SharedObjects.getInstance().getTxtTempoPassato().setText(" Min: " + Integer.toString(MinutiPassati) + "/" + Integer.toString(arrivo));
